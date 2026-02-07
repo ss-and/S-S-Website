@@ -868,7 +868,17 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [activePage, setActivePage] = useState<Page>('home');
 
+  // Dynamic SEO title based on active page
   useEffect(() => {
+    const pageTitles: Record<Page, string> = {
+      home: 'S&S | Salesforce・DXコンサルティング | CRM導入・AI活用支援',
+      concept: 'コンセプト | S&S - Success, Strategy, Synergy',
+      service: 'サービス | S&S - Salesforce導入・DX推進・AI活用支援',
+      case: '導入事例 | S&S - お客様の成功事例',
+      contact: 'お問い合わせ | S&S - 無料相談受付中'
+    };
+
+    document.title = pageTitles[activePage];
     window.scrollTo(0, 0);
   }, [activePage]);
 
