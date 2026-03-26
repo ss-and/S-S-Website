@@ -607,6 +607,90 @@ const Concept = () => (
       ))}
     </div>
 
+    {/* Corporate Identity */}
+    <section className="py-28 bg-[#f9f9f3] border-t border-[#3a4a1d]/8">
+      <div className="max-w-4xl mx-auto px-6">
+        <FadeUp className="text-center mb-20">
+          <span className="text-[#3a4a1d] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Corporate Identity</span>
+          <h3 className="text-4xl md:text-5xl font-serif text-[#192c0d]">企業理念</h3>
+        </FadeUp>
+
+        {/* Mission */}
+        <FadeUp>
+          <div className="bg-[#192c0d] rounded-3xl p-10 md:p-14 text-center mb-16 relative overflow-hidden">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 80, repeat: Infinity, ease: 'linear' }}
+              className="absolute -top-20 -right-20 w-72 h-72 rounded-full border border-[#f9f9f3]/5 pointer-events-none"
+            />
+            <span className="text-[#a8d878] text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Mission</span>
+            <p className="text-[#f9f9f3] text-xl md:text-2xl font-serif leading-relaxed relative z-10">
+              「働く環境に変化をもたらし、<br />
+              関わる人たちの毎日を少しでも<span className="text-[#a8d878]">『楽』</span>にする。」
+            </p>
+          </div>
+        </FadeUp>
+
+        {/* Story */}
+        <FadeUp>
+          <div className="bg-white rounded-3xl p-10 md:p-14 mb-10 border border-[#3a4a1d]/8">
+            <span className="text-[#3a4a1d] text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Story — 創業の背景</span>
+            <div className="space-y-5 text-[#555] leading-[2] text-base">
+              <p>
+                子どもの頃、初めて「チョコットランド」や「メイプルストーリー」といったオンラインゲームの世界に触発された時の、あの衝撃とワクワク感。世界が一気に広がり、常識が変わるような感動がありました。
+              </p>
+              <p>
+                大人になり、AIやCRMといった最新テクノロジーに触れた時、私はあの頃と全く同じ「感動」を覚えました。テクノロジーは、一瞬にして目の前の環境を変え、人を驚かせ、そして毎日の作業を劇的に「楽」にしてくれます。
+              </p>
+              <p>
+                S&S合同会社は、この「環境が変わる感動」をビジネスの世界で提供し続け、関わるすべての人たちの毎日を少しでも楽に、そして笑顔にするためのお手伝いをします。
+              </p>
+            </div>
+          </div>
+        </FadeUp>
+
+        {/* Values */}
+        <FadeUp className="mb-4">
+          <span className="text-[#3a4a1d] text-xs font-bold tracking-[0.3em] uppercase mb-8 block">Value — 3つの行動指針</span>
+        </FadeUp>
+        <div className="grid md:grid-cols-3 gap-5">
+          {[
+            {
+              num: '1',
+              title: 'Speed & Share',
+              sub: '最速の行動と、価値の共有',
+              desc: '完璧主義を捨てて最速で動き、得た知識や感動は出し惜しみせずに関わる人とシェアする。',
+            },
+            {
+              num: '2',
+              title: 'Smart & Strong',
+              sub: '賢い戦略と、ブレない強さ',
+              desc: '既存の枠にとらわれない賢い視点（ハック）を持ち、それを最後まで実行しきる強さを持つ。',
+            },
+            {
+              num: '3',
+              title: 'Smile & Synergy',
+              sub: '笑顔と相乗効果',
+              desc: '相手の課題に笑顔で寄り添い、お互いの強みを掛け合わせることで、一人では生み出せない変化とゆとりを創り出す。',
+            },
+          ].map((v, i) => (
+            <FadeUp key={i} delay={i * 0.1}>
+              <motion.div
+                whileHover={{ y: -5 }}
+                className="bg-white border border-[#3a4a1d]/8 rounded-2xl p-8 h-full hover:shadow-xl transition-all duration-300"
+              >
+                <span className="text-5xl font-serif font-bold text-[#3a4a1d]/10 block mb-4">{v.num}</span>
+                <h4 className="text-lg font-serif font-bold text-[#192c0d] mb-1">{v.title}</h4>
+                <p className="text-xs text-[#999] mb-5 tracking-wide">{v.sub}</p>
+                <div className="w-8 h-0.5 bg-[#3a4a1d] opacity-30 mb-5" />
+                <p className="text-sm text-[#666] leading-relaxed">{v.desc}</p>
+              </motion.div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+
     {/* Company Info */}
     <section className="bg-white py-24 border-t border-[#3a4a1d]/8">
       <div className="max-w-3xl mx-auto px-6">
@@ -618,14 +702,13 @@ const Concept = () => (
         <div className="bg-[#f9f9f3] rounded-3xl overflow-hidden">
           {[
             { icon: <Building size={18} />, label: '会社名', value: 'S＆S合同会社' },
-            { icon: <User size={18} />, label: '代表社員', value: '境野 竣介' },
+            { icon: <User size={18} />, label: '代表取締役', value: '境野 竣介' },
             {
               icon: <MapPin size={18} />, label: '所在地',
               value: (
                 <span>〒150-0043<br />東京都渋谷区道玄坂1丁目10番8号<br />渋谷道玄坂東急ビル2F−C</span>
               ),
             },
-            { icon: <Briefcase size={18} />, label: '法人番号', value: '6011003024013' },
             { icon: <Code size={18} />, label: '資本金', value: '1,000,000円' },
             {
               icon: <Layers size={18} />, label: '事業内容',
@@ -639,9 +722,9 @@ const Concept = () => (
                 </ul>
               ),
             },
-          ].map((row, i) => (
+          ].map((row, i, arr) => (
             <FadeUp key={i} delay={i * 0.05}>
-              <div className={`flex gap-6 p-6 md:p-8 ${i < 5 ? 'border-b border-[#3a4a1d]/8' : ''}`}>
+              <div className={`flex gap-6 p-6 md:p-8 ${i < arr.length - 1 ? 'border-b border-[#3a4a1d]/8' : ''}`}>
                 <div className="w-10 h-10 bg-[#192c0d] rounded-xl flex items-center justify-center text-[#a8d878] shrink-0">
                   {row.icon}
                 </div>
