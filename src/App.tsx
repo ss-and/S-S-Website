@@ -4,8 +4,8 @@ import { motion, AnimatePresence, useInView } from 'framer-motion';
 import {
   ArrowRight, Menu, X,
   Users, Layers, CheckCircle,
-  Database, Code, HelpCircle, Zap,
-  Target, Instagram, MapPin, User, Building
+  Database, HelpCircle, Zap,
+  Target, Instagram
 } from 'lucide-react';
 
 // ---- Brand Logo ----
@@ -118,10 +118,10 @@ const Navbar = () => {
               <button
                 key={item.path}
                 onClick={() => navigate(item.path)}
-                className={`text-sm font-medium tracking-wide transition-all duration-300 relative py-2 ${
+                className={`text-sm font-semibold tracking-wide transition-all duration-300 relative py-2 ${
                   location.pathname === item.path
-                    ? isDark ? 'text-white' : 'text-[#3a4a1d]'
-                    : isDark ? 'text-white/70 hover:text-white' : 'text-[#555] hover:text-[#3a4a1d]'
+                    ? isDark ? 'text-white' : 'text-[#192c0d]'
+                    : isDark ? 'text-white/70 hover:text-white' : 'text-[#3a4a1d]/70 hover:text-[#192c0d]'
                 }`}
               >
                 {item.label}
@@ -188,39 +188,265 @@ const FadeUp = ({ children, delay = 0, className = '' }: { children: React.React
   );
 };
 
+// ---- Custom SVG Illustrations ----
+const IllustExpert = () => (
+  <svg viewBox="0 0 300 180" fill="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="265" cy="20" r="75" fill="#192c0d" fillOpacity="0.04"/>
+    <circle cx="28" cy="158" r="55" fill="#a8d878" fillOpacity="0.05"/>
+    {/* Monitor frame */}
+    <rect x="75" y="32" width="158" height="102" rx="10" fill="#192c0d" fillOpacity="0.07" stroke="#192c0d" strokeOpacity="0.12" strokeWidth="1.5"/>
+    {/* Screen */}
+    <rect x="84" y="40" width="141" height="87" rx="5" fill="#f0f5eb"/>
+    {/* Top bar */}
+    <rect x="84" y="40" width="141" height="18" rx="5" fill="#192c0d" fillOpacity="0.09"/>
+    <circle cx="94" cy="49" r="3.5" fill="#a8d878" fillOpacity="0.5"/>
+    <circle cx="105" cy="49" r="3.5" fill="#a8d878" fillOpacity="0.3"/>
+    <circle cx="116" cy="49" r="3.5" fill="#3a4a1d" fillOpacity="0.15"/>
+    {/* CRM data rows */}
+    <rect x="93" y="66" width="78" height="5" rx="2" fill="#3a4a1d" fillOpacity="0.18"/>
+    <rect x="93" y="76" width="62" height="5" rx="2" fill="#3a4a1d" fillOpacity="0.12"/>
+    <rect x="93" y="86" width="72" height="5" rx="2" fill="#3a4a1d" fillOpacity="0.12"/>
+    <rect x="93" y="96" width="55" height="5" rx="2" fill="#3a4a1d" fillOpacity="0.09"/>
+    <rect x="93" y="106" width="68" height="5" rx="2" fill="#3a4a1d" fillOpacity="0.09"/>
+    {/* Bar chart */}
+    <rect x="182" y="103" width="11" height="25" rx="2" fill="#a8d878" fillOpacity="0.38"/>
+    <rect x="197" y="91" width="11" height="37" rx="2" fill="#a8d878" fillOpacity="0.55"/>
+    <rect x="212" y="78" width="11" height="50" rx="2" fill="#a8d878" fillOpacity="0.72"/>
+    {/* Stand */}
+    <rect x="141" y="136" width="26" height="8" rx="4" fill="#3a4a1d" fillOpacity="0.11"/>
+    <rect x="126" y="144" width="56" height="5" rx="2.5" fill="#3a4a1d" fillOpacity="0.09"/>
+    {/* Badge */}
+    <circle cx="250" cy="48" r="27" fill="white" stroke="#a8d878" strokeOpacity="0.28" strokeWidth="1.5"/>
+    <circle cx="250" cy="48" r="20" fill="#f0f5eb"/>
+    <path d="M250 32 L253.8 43.5 L266 43.5 L256 50.5 L259.8 62 L250 55 L240.2 62 L244 50.5 L234 43.5 L246.2 43.5 Z" fill="#a8d878" fillOpacity="0.6"/>
+    {/* Floating node */}
+    <circle cx="42" cy="82" r="8" fill="#a8d878" fillOpacity="0.18"/>
+    <circle cx="42" cy="82" r="16" stroke="#a8d878" strokeOpacity="0.12" strokeWidth="1.5"/>
+    <line x1="58" y1="82" x2="75" y2="82" stroke="#a8d878" strokeOpacity="0.22" strokeWidth="1" strokeDasharray="4,3"/>
+  </svg>
+);
+
+const IllustTeam = () => (
+  <svg viewBox="0 0 300 180" fill="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+    {/* Pulse rings */}
+    <circle cx="150" cy="90" r="52" stroke="#a8d878" strokeOpacity="0.11" strokeWidth="1" strokeDasharray="5,5"/>
+    <circle cx="150" cy="90" r="72" stroke="#a8d878" strokeOpacity="0.06" strokeWidth="1" strokeDasharray="4,9"/>
+    {/* Center hub */}
+    <circle cx="150" cy="90" r="30" fill="#192c0d" fillOpacity="0.08" stroke="#192c0d" strokeOpacity="0.12" strokeWidth="1.5"/>
+    <circle cx="150" cy="90" r="20" fill="#192c0d" fillOpacity="0.07"/>
+    <circle cx="150" cy="90" r="10" fill="#a8d878" fillOpacity="0.32"/>
+    {/* Top */}
+    <line x1="150" y1="38" x2="150" y2="60" stroke="#a8d878" strokeOpacity="0.32" strokeWidth="1.5"/>
+    <circle cx="150" cy="22" r="18" fill="#192c0d" fillOpacity="0.07" stroke="#a8d878" strokeOpacity="0.22" strokeWidth="1.5"/>
+    <circle cx="150" cy="22" r="10" fill="#a8d878" fillOpacity="0.25"/>
+    {/* Top-right */}
+    <line x1="226" y1="56" x2="180" y2="76" stroke="#a8d878" strokeOpacity="0.28" strokeWidth="1.5"/>
+    <circle cx="240" cy="48" r="16" fill="#192c0d" fillOpacity="0.07" stroke="#a8d878" strokeOpacity="0.18" strokeWidth="1"/>
+    <circle cx="240" cy="48" r="9" fill="#a8d878" fillOpacity="0.2"/>
+    {/* Bottom-right */}
+    <line x1="226" y1="126" x2="180" y2="106" stroke="#a8d878" strokeOpacity="0.28" strokeWidth="1.5"/>
+    <circle cx="240" cy="134" r="16" fill="#192c0d" fillOpacity="0.07" stroke="#a8d878" strokeOpacity="0.18" strokeWidth="1"/>
+    <circle cx="240" cy="134" r="9" fill="#a8d878" fillOpacity="0.2"/>
+    {/* Top-left */}
+    <line x1="74" y1="56" x2="120" y2="76" stroke="#a8d878" strokeOpacity="0.28" strokeWidth="1.5"/>
+    <circle cx="60" cy="48" r="16" fill="#192c0d" fillOpacity="0.07" stroke="#a8d878" strokeOpacity="0.18" strokeWidth="1"/>
+    <circle cx="60" cy="48" r="9" fill="#a8d878" fillOpacity="0.2"/>
+    {/* Bottom-left */}
+    <line x1="74" y1="126" x2="120" y2="106" stroke="#a8d878" strokeOpacity="0.28" strokeWidth="1.5"/>
+    <circle cx="60" cy="134" r="16" fill="#192c0d" fillOpacity="0.07" stroke="#a8d878" strokeOpacity="0.18" strokeWidth="1"/>
+    <circle cx="60" cy="134" r="9" fill="#a8d878" fillOpacity="0.2"/>
+    {/* Bottom */}
+    <line x1="150" y1="158" x2="150" y2="120" stroke="#a8d878" strokeOpacity="0.28" strokeWidth="1.5"/>
+    <circle cx="150" cy="163" r="15" fill="#192c0d" fillOpacity="0.07" stroke="#a8d878" strokeOpacity="0.18" strokeWidth="1"/>
+    <circle cx="150" cy="163" r="8" fill="#a8d878" fillOpacity="0.2"/>
+  </svg>
+);
+
+const IllustSupport = () => (
+  <svg viewBox="0 0 300 180" fill="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="lg_sup" x1="30" y1="0" x2="270" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#192c0d" stopOpacity="0.07"/>
+        <stop offset="100%" stopColor="#a8d878" stopOpacity="0.28"/>
+      </linearGradient>
+    </defs>
+    {/* Grid lines */}
+    <line x1="28" y1="170" x2="275" y2="170" stroke="#3a4a1d" strokeOpacity="0.06" strokeWidth="1"/>
+    <line x1="28" y1="135" x2="275" y2="135" stroke="#3a4a1d" strokeOpacity="0.04" strokeWidth="1" strokeDasharray="3,5"/>
+    <line x1="28" y1="100" x2="275" y2="100" stroke="#3a4a1d" strokeOpacity="0.04" strokeWidth="1" strokeDasharray="3,5"/>
+    <line x1="28" y1="65" x2="275" y2="65" stroke="#3a4a1d" strokeOpacity="0.04" strokeWidth="1" strokeDasharray="3,5"/>
+    <line x1="28" y1="30" x2="275" y2="30" stroke="#3a4a1d" strokeOpacity="0.04" strokeWidth="1" strokeDasharray="3,5"/>
+    {/* Area fill */}
+    <path d="M50 148 C95 148 115 95 152 78 C189 62 220 82 268 44 L268 170 L50 170 Z" fill="#a8d878" fillOpacity="0.05"/>
+    {/* Path */}
+    <path d="M50 148 C95 148 115 95 152 78 C189 62 220 82 268 44" stroke="url(#lg_sup)" strokeWidth="2.5" fill="none"/>
+    <path d="M50 148 C95 148 115 95 152 78 C189 62 220 82 268 44" stroke="#a8d878" strokeWidth="2" strokeDasharray="6,4" fill="none" strokeOpacity="0.35"/>
+    {/* Stage 1 - 導入 */}
+    <circle cx="50" cy="148" r="22" fill="white" stroke="#192c0d" strokeOpacity="0.13" strokeWidth="1.5"/>
+    <circle cx="50" cy="148" r="14" fill="#192c0d" fillOpacity="0.06"/>
+    <circle cx="50" cy="148" r="7" fill="#192c0d" fillOpacity="0.18"/>
+    <text x="50" y="127" textAnchor="middle" fontSize="9" fill="#3a4a1d" fillOpacity="0.55" fontWeight="700" letterSpacing="0.3">導入</text>
+    {/* Stage 2 - 定着 */}
+    <circle cx="152" cy="78" r="22" fill="white" stroke="#a8d878" strokeOpacity="0.28" strokeWidth="1.5"/>
+    <circle cx="152" cy="78" r="14" fill="#192c0d" fillOpacity="0.07"/>
+    <circle cx="152" cy="78" r="7" fill="#a8d878" fillOpacity="0.42"/>
+    <text x="152" y="57" textAnchor="middle" fontSize="9" fill="#3a4a1d" fillOpacity="0.55" fontWeight="700" letterSpacing="0.3">定着</text>
+    {/* Stage 3 - 改善 */}
+    <circle cx="262" cy="47" r="22" fill="white" stroke="#a8d878" strokeOpacity="0.42" strokeWidth="1.5"/>
+    <circle cx="262" cy="47" r="14" fill="#a8d878" fillOpacity="0.1"/>
+    <circle cx="262" cy="47" r="7" fill="#a8d878" fillOpacity="0.55"/>
+    <text x="262" y="26" textAnchor="middle" fontSize="9" fill="#3a4a1d" fillOpacity="0.55" fontWeight="700" letterSpacing="0.3">改善</text>
+    {/* Arrow */}
+    <path d="M268 42 L276 28 L284 42" stroke="#a8d878" strokeWidth="2" strokeOpacity="0.48" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+    {/* Tiny dots */}
+    <circle cx="100" cy="128" r="3" fill="#a8d878" fillOpacity="0.25"/>
+    <circle cx="205" cy="64" r="3" fill="#a8d878" fillOpacity="0.25"/>
+  </svg>
+);
+
+// SVG illustrations for Service detail panels
+const IllustImplement = () => (
+  <svg viewBox="0 0 260 200" fill="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="lg_impl" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#a8d878" stopOpacity="0.2"/>
+        <stop offset="100%" stopColor="#192c0d" stopOpacity="0.04"/>
+      </linearGradient>
+    </defs>
+    {/* Connection lines */}
+    <line x1="130" y1="60" x2="80" y2="105" stroke="#a8d878" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4,3"/>
+    <line x1="130" y1="60" x2="130" y2="105" stroke="#a8d878" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4,3"/>
+    <line x1="130" y1="60" x2="180" y2="105" stroke="#a8d878" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4,3"/>
+    <line x1="80" y1="130" x2="55" y2="160" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="3,3"/>
+    <line x1="80" y1="130" x2="105" y2="160" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="3,3"/>
+    <line x1="180" y1="130" x2="155" y2="160" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="3,3"/>
+    <line x1="180" y1="130" x2="205" y2="160" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="3,3"/>
+    {/* Top node */}
+    <rect x="105" y="35" width="50" height="32" rx="8" fill="#192c0d" fillOpacity="0.1" stroke="#192c0d" strokeOpacity="0.15" strokeWidth="1.5"/>
+    <rect x="113" y="45" width="34" height="5" rx="2" fill="#a8d878" fillOpacity="0.5"/>
+    <rect x="113" y="53" width="24" height="4" rx="2" fill="#a8d878" fillOpacity="0.3"/>
+    {/* Mid nodes */}
+    <rect x="55" y="105" width="50" height="30" rx="7" fill="#192c0d" fillOpacity="0.08" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1"/>
+    <rect x="62" y="114" width="30" height="4" rx="2" fill="#a8d878" fillOpacity="0.4"/>
+    <rect x="62" y="121" width="22" height="4" rx="2" fill="#a8d878" fillOpacity="0.25"/>
+    <rect x="105" y="105" width="50" height="30" rx="7" fill="#192c0d" fillOpacity="0.08" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1"/>
+    <rect x="112" y="114" width="30" height="4" rx="2" fill="#a8d878" fillOpacity="0.4"/>
+    <rect x="112" y="121" width="22" height="4" rx="2" fill="#a8d878" fillOpacity="0.25"/>
+    <rect x="155" y="105" width="50" height="30" rx="7" fill="#192c0d" fillOpacity="0.08" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1"/>
+    <rect x="162" y="114" width="30" height="4" rx="2" fill="#a8d878" fillOpacity="0.4"/>
+    <rect x="162" y="121" width="22" height="4" rx="2" fill="#a8d878" fillOpacity="0.25"/>
+    {/* Bottom nodes */}
+    <rect x="30" y="155" width="40" height="26" rx="6" fill="url(#lg_impl)" stroke="#a8d878" strokeOpacity="0.15" strokeWidth="1"/>
+    <rect x="80" y="155" width="40" height="26" rx="6" fill="url(#lg_impl)" stroke="#a8d878" strokeOpacity="0.15" strokeWidth="1"/>
+    <rect x="138" y="155" width="40" height="26" rx="6" fill="url(#lg_impl)" stroke="#a8d878" strokeOpacity="0.15" strokeWidth="1"/>
+    <rect x="188" y="155" width="40" height="26" rx="6" fill="url(#lg_impl)" stroke="#a8d878" strokeOpacity="0.15" strokeWidth="1"/>
+  </svg>
+);
+
+const IllustOps = () => (
+  <svg viewBox="0 0 260 200" fill="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+    {/* Outer ring */}
+    <circle cx="130" cy="100" r="80" stroke="#192c0d" strokeOpacity="0.08" strokeWidth="1.5" strokeDasharray="5,5"/>
+    {/* Middle ring */}
+    <circle cx="130" cy="100" r="58" stroke="#a8d878" strokeOpacity="0.18" strokeWidth="1.5"/>
+    {/* Inner ring */}
+    <circle cx="130" cy="100" r="36" stroke="#a8d878" strokeOpacity="0.28" strokeWidth="2"/>
+    {/* Center */}
+    <circle cx="130" cy="100" r="20" fill="#192c0d" fillOpacity="0.09"/>
+    <circle cx="130" cy="100" r="11" fill="#a8d878" fillOpacity="0.35"/>
+    {/* Ticks on outer ring */}
+    {[0,60,120,180,240,300].map((deg, i) => {
+      const rad = (deg - 90) * Math.PI / 180;
+      const x1 = 130 + 72 * Math.cos(rad); const y1 = 100 + 72 * Math.sin(rad);
+      const x2 = 130 + 80 * Math.cos(rad); const y2 = 100 + 80 * Math.sin(rad);
+      return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#a8d878" strokeOpacity="0.4" strokeWidth="2" strokeLinecap="round"/>;
+    })}
+    {/* Status dots on middle ring */}
+    {[30,90,150,210,270,330].map((deg, i) => {
+      const rad = (deg - 90) * Math.PI / 180;
+      const cx = 130 + 58 * Math.cos(rad); const cy = 100 + 58 * Math.sin(rad);
+      return <circle key={i} cx={cx} cy={cy} r="5" fill="#a8d878" fillOpacity={0.25 + i*0.08}/>;
+    })}
+    {/* Sweep indicator */}
+    <path d="M130 100 L130 44" stroke="#a8d878" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M130 100 L168 68" stroke="#192c0d" strokeOpacity="0.25" strokeWidth="1.5" strokeLinecap="round"/>
+    <circle cx="130" cy="100" r="4" fill="#a8d878" fillOpacity="0.7"/>
+  </svg>
+);
+
+const IllustConsult = () => (
+  <svg viewBox="0 0 260 200" fill="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="lg_con" x1="0" y1="200" x2="0" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#a8d878" stopOpacity="0.35"/>
+        <stop offset="100%" stopColor="#a8d878" stopOpacity="0.08"/>
+      </linearGradient>
+    </defs>
+    {/* Axes */}
+    <line x1="45" y1="165" x2="235" y2="165" stroke="#3a4a1d" strokeOpacity="0.12" strokeWidth="1.5"/>
+    <line x1="45" y1="30" x2="45" y2="165" stroke="#3a4a1d" strokeOpacity="0.12" strokeWidth="1.5"/>
+    {/* Grid */}
+    {[45,80,115,150].map((y, i) => (
+      <line key={i} x1="45" y1={y} x2="235" y2={y} stroke="#3a4a1d" strokeOpacity="0.05" strokeWidth="1" strokeDasharray="3,5"/>
+    ))}
+    {/* Area */}
+    <path d="M60 145 L95 130 L130 105 L165 80 L200 55 L225 40 L225 165 L60 165 Z" fill="url(#lg_con)"/>
+    {/* Line */}
+    <path d="M60 145 L95 130 L130 105 L165 80 L200 55 L225 40" stroke="#a8d878" strokeWidth="2.5" fill="none" strokeLinejoin="round"/>
+    {/* Data points */}
+    {[[60,145],[95,130],[130,105],[165,80],[200,55],[225,40]].map(([x,y],i) => (
+      <circle key={i} cx={x} cy={y} r="5" fill="white" stroke="#a8d878" strokeWidth="2" strokeOpacity="0.7"/>
+    ))}
+    {/* KPI boxes */}
+    <rect x="155" y="100" width="70" height="28" rx="6" fill="#192c0d" fillOpacity="0.07" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1"/>
+    <rect x="162" y="108" width="35" height="4" rx="2" fill="#a8d878" fillOpacity="0.45"/>
+    <rect x="162" y="116" width="25" height="4" rx="2" fill="#a8d878" fillOpacity="0.25"/>
+  </svg>
+);
+
 // ---- Shared: Why Choose Us ----
 const WhyChooseUs = () => (
-  <section className="py-24 bg-[#f9f9f3] border-t border-[#3a4a1d]/8">
+  <section className="py-28 bg-[#f9f9f3] border-t border-[#3a4a1d]/8 overflow-hidden">
     <div className="max-w-6xl mx-auto px-6">
-      <FadeUp className="mb-16">
-        <span className="text-[#3a4a1d] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Why S&S?</span>
-        <h2 className="text-3xl md:text-4xl font-serif text-[#192c0d]">S＆Sが選ばれる理由</h2>
+      <FadeUp className="mb-20">
+        <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">Why S&S?</p>
+        <h2 className="text-5xl md:text-7xl font-serif font-bold text-[#192c0d] leading-[0.92] mb-6">
+          S＆Sが<br />選ばれる<br />理由
+        </h2>
+        <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full" />
       </FadeUp>
+
       <div className="grid md:grid-cols-3 gap-6">
         {[
           {
-            icon: <Database size={28} />,
+            illust: <IllustExpert />,
+            label: '01',
             title: 'Salesforce Japan出身SEがリード',
             desc: '代表は元Salesforce JapanのSEとして多数のCRM導入プロジェクトを経験。Salesforce認定資格保有者が貴社の案件に直接対応します。',
           },
           {
-            icon: <Users size={28} />,
+            illust: <IllustTeam />,
+            label: '02',
             title: 'エンジニア・SIer・構築パートナー出身のチーム',
             desc: 'エンジニア出身、SIer経験者、Salesforce構築パートナー出身のメンバーで構成。現場を熟知したプロフェッショナルが課題解決を支援します。',
           },
           {
-            icon: <CheckCircle size={28} />,
+            illust: <IllustSupport />,
+            label: '03',
             title: '導入から運用まで一貫サポート',
             desc: 'CRMの導入支援で終わらず、定着化・継続改善まで伴走します。長期的なパートナーとして、投資対効果の最大化をともに目指します。',
           },
         ].map((item, i) => (
-          <FadeUp key={i} delay={i * 0.1}>
-            <div className="bg-white p-10 rounded-2xl h-full hover:shadow-xl transition-shadow duration-300 border border-[#3a4a1d]/5">
-              <div className="w-14 h-14 bg-[#192c0d] rounded-2xl flex items-center justify-center text-[#a8d878] mb-6">
-                {item.icon}
+          <FadeUp key={i} delay={i * 0.12}>
+            <div className="bg-white rounded-3xl overflow-hidden h-full group hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border border-[#3a4a1d]/5">
+              <div className="h-48 bg-gradient-to-br from-[#eef6e6] to-[#f5faf2] relative overflow-hidden">
+                {item.illust}
+                <span className="absolute top-4 right-5 text-[#192c0d]/10 font-serif font-black text-5xl leading-none select-none">{item.label}</span>
               </div>
-              <h3 className="text-lg font-bold text-[#192c0d] mb-4 leading-snug">{item.title}</h3>
-              <p className="text-[#666] leading-loose text-sm">{item.desc}</p>
+              <div className="p-8">
+                <h3 className="text-base font-bold text-[#192c0d] mb-4 leading-snug">{item.title}</h3>
+                <p className="text-[#666] leading-loose text-sm">{item.desc}</p>
+              </div>
             </div>
           </FadeUp>
         ))}
@@ -386,8 +612,13 @@ const Home = () => {
       <section className="py-32 bg-[#f9f9f3]">
         <div className="max-w-7xl mx-auto px-6">
           <FadeUp className="mb-20">
-            <span className="text-[#3a4a1d] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">What We Do</span>
-            <h2 className="text-5xl md:text-7xl font-serif text-[#192c0d] leading-tight">Services</h2>
+            <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">What We Do</p>
+            <h2 className="text-5xl md:text-7xl font-serif font-bold text-[#192c0d] leading-[0.92] mb-6">
+              CRMで<br />
+              <span className="text-[#3a4a1d]">ビジネスを</span><br />
+              変える
+            </h2>
+            <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full" />
           </FadeUp>
 
           <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#3a4a1d]/10 border border-[#3a4a1d]/10 rounded-3xl overflow-hidden">
@@ -539,8 +770,9 @@ const About = () => (
     <section className="py-28 bg-[#f9f9f3]">
       <div className="max-w-4xl mx-auto px-6">
         <FadeUp className="text-center mb-20">
-          <span className="text-[#3a4a1d] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Corporate Identity</span>
-          <h3 className="text-4xl md:text-5xl font-serif text-[#192c0d]">企業理念</h3>
+          <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">Corporate Identity</p>
+          <h3 className="text-5xl md:text-6xl font-serif font-bold text-[#192c0d] leading-[0.95] mb-6">企業理念</h3>
+          <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full mx-auto" />
         </FadeUp>
 
         {/* Mission */}
@@ -612,20 +844,21 @@ const About = () => (
     <section className="bg-white py-24 border-t border-[#3a4a1d]/8">
       <div className="max-w-3xl mx-auto px-6">
         <FadeUp className="text-center mb-16">
-          <span className="text-[#3a4a1d] font-bold tracking-[0.2em] text-xs uppercase mb-4 block">About</span>
-          <h3 className="text-4xl md:text-5xl font-serif text-[#192c0d]">会社概要</h3>
+          <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">Company</p>
+          <h3 className="text-5xl md:text-6xl font-serif font-bold text-[#192c0d] leading-[0.95] mb-6">会社概要</h3>
+          <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full mx-auto" />
         </FadeUp>
 
         <div className="bg-[#f9f9f3] rounded-3xl overflow-hidden">
           {[
-            { icon: <Building size={18} />, label: '会社名', value: 'S＆S合同会社' },
-            { icon: <User size={18} />, label: '代表取締役', value: '境野 竣介' },
+            { label: '会社名', value: <span>S＆S合同会社</span> },
+            { label: '代表取締役', value: <span>境野 竣介</span> },
             {
-              icon: <MapPin size={18} />, label: '所在地',
+              label: '所在地',
               value: (<span>〒150-0043<br />東京都渋谷区道玄坂1丁目10番8号<br />渋谷道玄坂東急ビル2F−C</span>),
             },
             {
-              icon: <MapPin size={18} />, label: 'アクセス',
+              label: 'アクセス',
               value: (
                 <div className="w-full mt-2 rounded-xl overflow-hidden">
                   <iframe
@@ -638,10 +871,10 @@ const About = () => (
                 </div>
               ),
             },
-            { icon: <Code size={18} />, label: '資本金', value: '1,000,000円' },
-            { icon: <Users size={18} />, label: '従業員数', value: '10名（業務委託含む）' },
+            { label: '資本金', value: <span>1,000,000円</span> },
+            { label: '従業員数', value: <span>10名（業務委託含む）</span> },
             {
-              icon: <Layers size={18} />, label: '事業内容',
+              label: '事業内容',
               value: (
                 <ul className="space-y-1">
                   <li>CRMのコンサルティング・構築・保守運用</li>
@@ -654,10 +887,10 @@ const About = () => (
             },
           ].map((row, i, arr) => (
             <FadeUp key={i} delay={i * 0.05}>
-              <div className={`flex gap-6 p-6 md:p-8 ${i < arr.length - 1 ? 'border-b border-[#3a4a1d]/8' : ''}`}>
-                <div className="w-10 h-10 bg-[#192c0d] rounded-xl flex items-center justify-center text-[#a8d878] shrink-0">{row.icon}</div>
+              <div className={`flex gap-6 p-6 md:p-8 items-start ${i < arr.length - 1 ? 'border-b border-[#3a4a1d]/8' : ''}`}>
+                <div className="w-px self-stretch bg-[#a8d878]/40 shrink-0 ml-1" />
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-bold text-[#3a4a1d] tracking-widest uppercase mb-1">{row.label}</p>
+                  <p className="text-[10px] font-black text-[#3a4a1d] tracking-[0.25em] uppercase mb-2">{row.label}</p>
                   <div className="text-base text-[#333] leading-relaxed">{row.value}</div>
                 </div>
               </div>
@@ -734,46 +967,45 @@ const Service = () => {
         <div className="max-w-7xl mx-auto px-6 space-y-20">
           {[
             {
-              num: '01', title: 'CRM導入・構築', en: 'CRM Implementation', icon: <Database size={40} />,
+              num: '01', title: 'CRM導入・構築', en: 'CRM Implementation',
+              illust: <IllustImplement />,
               points: ['Salesforce設計・構築・カスタマイズ', 'HubSpot / Kintone の導入・設定', 'データ移行・外部システム連携', 'アジャイルな反復開発'],
               desc: 'Salesforce認定資格を持つ元SEが直接担当。要件定義から実装・テスト・リリースまで、貴社の業務プロセスに完全フィットしたCRM環境を構築します。',
             },
             {
-              num: '02', title: 'CRM保守・運用サポート', en: 'Operations & Support', icon: <Layers size={40} />,
+              num: '02', title: 'CRM保守・運用サポート', en: 'Operations & Support',
+              illust: <IllustOps />,
               points: ['導入後の定着化・ユーザー研修', '継続的な機能改善・追加開発', 'システム監視・障害対応', '月次レポートと改善提案'],
               desc: '「システムを入れたら終わり」ではなく、使い続けられる体制を一緒に作ります。定着化支援から継続改善まで、長期パートナーとして伴走します。',
             },
             {
-              num: '03', title: 'CRMの活用コンサルティング', en: 'CRM Consulting', icon: <Target size={40} />,
+              num: '03', title: 'CRMの活用コンサルティング', en: 'CRM Consulting',
+              illust: <IllustConsult />,
               points: ['CRMデータの活用戦略策定', 'MA・AIツールとのシステム連携', 'KPI設計・レポーティング体制の構築', 'CRM活用研修・社内展開サポート'],
               desc: '導入したCRMを真に活用するための戦略設計から支援します。データドリブンな営業・マーケティングの実現に向け、AI・MAツール連携も含めてサポートします。',
             },
           ].map((s, i) => (
             <FadeUp key={i}>
-              <div className={`grid md:grid-cols-2 gap-16 items-start ${i % 2 === 1 ? 'md:grid-flow-dense' : ''}`}>
+              <div className={`grid md:grid-cols-2 gap-16 items-center ${i % 2 === 1 ? 'md:grid-flow-dense' : ''}`}>
                 <div className={i % 2 === 1 ? 'md:col-start-2' : ''}>
-                  <div className="flex items-center gap-4 mb-6">
-                    <span className="text-5xl font-serif font-bold text-[#3a4a1d]/15">{s.num}</span>
-                    <div className="text-[#3a4a1d]">{s.icon}</div>
+                  <div className="flex items-baseline gap-3 mb-6">
+                    <span className="text-6xl font-serif font-black text-[#3a4a1d]/10 leading-none">{s.num}</span>
+                    <div className="w-8 h-0.5 bg-[#a8d878] rounded-full" />
                   </div>
                   <h3 className="text-3xl font-serif font-bold text-[#192c0d] mb-2">{s.title}</h3>
-                  <p className="text-sm text-[#999] tracking-widest uppercase mb-6">{s.en}</p>
+                  <p className="text-xs text-[#aaa] tracking-[0.25em] uppercase mb-6">{s.en}</p>
                   <p className="text-[#555] leading-loose mb-8">{s.desc}</p>
                   <ul className="space-y-3">
                     {s.points.map((p, j) => (
                       <li key={j} className="flex items-start gap-3 text-sm text-[#444]">
-                        <CheckCircle size={16} className="text-[#3a4a1d] shrink-0 mt-0.5" />{p}
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#a8d878] shrink-0 mt-2" />{p}
                       </li>
                     ))}
                   </ul>
                 </div>
-                <div className={`bg-[#f9f9f3] rounded-3xl p-12 flex items-center justify-center min-h-64 relative overflow-hidden ${i % 2 === 1 ? 'md:col-start-1 md:row-start-1' : ''}`}>
-                  <motion.div animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
-                    transition={{ duration: 50, repeat: Infinity, ease: 'linear' }}
-                    className="absolute inset-0 m-8 rounded-full border-2 border-dashed border-[#3a4a1d]/10" />
-                  <div className="relative z-10 text-center">
-                    <div className="text-[#3a4a1d]/30 flex justify-center mb-4">{s.icon}</div>
-                    <span className="text-[#3a4a1d]/40 text-xs tracking-[0.3em] uppercase">{s.en}</span>
+                <div className={`bg-gradient-to-br from-[#eef6e6] to-[#f5faf2] rounded-3xl overflow-hidden min-h-72 flex items-center justify-center p-8 ${i % 2 === 1 ? 'md:col-start-1 md:row-start-1' : ''}`}>
+                  <div className="w-full h-64">
+                    {s.illust}
                   </div>
                 </div>
               </div>
