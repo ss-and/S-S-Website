@@ -5,7 +5,7 @@ import {
   ArrowRight, Menu, X,
   Users, Layers, CheckCircle,
   Database, HelpCircle, Zap,
-  Target, Instagram, MessageSquare, Send
+  Target, Instagram, Send
 } from 'lucide-react';
 
 // ---- Brand Logo ----
@@ -455,62 +455,120 @@ const WhyChooseUs = () => (
   </section>
 );
 
+// ---- Claude × S&S Bot icon ----
+const ClaudeSSIcon = ({ size = 36 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="36" height="36" rx="10" fill="#192c0d"/>
+    {/* Claude-inspired asterisk (6-arm starburst) */}
+    <line x1="18" y1="6.5" x2="18" y2="29.5" stroke="#a8d878" strokeWidth="2.2" strokeLinecap="round"/>
+    <line x1="7.4" y1="12.2" x2="28.6" y2="23.8" stroke="#a8d878" strokeWidth="2.2" strokeLinecap="round"/>
+    <line x1="7.4" y1="23.8" x2="28.6" y2="12.2" stroke="#a8d878" strokeWidth="2.2" strokeLinecap="round"/>
+    {/* Center glow dot */}
+    <circle cx="18" cy="18" r="3" fill="#a8d878" fillOpacity="0.9"/>
+    <circle cx="18" cy="18" r="1.4" fill="#f9f9f3"/>
+  </svg>
+);
+
+// ---- Typing bubble ----
+const TypingBubble = () => (
+  <div className="flex justify-start">
+    <div className="bg-[#f0f5eb] rounded-2xl rounded-bl-none border border-[#3a4a1d]/8 px-5 py-3.5 flex gap-2 items-center">
+      {[0, 0.18, 0.36].map((delay, i) => (
+        <motion.span
+          key={i}
+          className="w-2 h-2 rounded-full bg-[#3a4a1d]/35"
+          animate={{ y: [0, -5, 0] }}
+          transition={{ duration: 0.55, repeat: Infinity, delay, ease: 'easeInOut' }}
+        />
+      ))}
+    </div>
+  </div>
+);
+
 // ---- ChatBot ----
 const faqList = [
-  { keys: ['salesforce', 'セールスフォース', 'sf', 'sales cloud', 'service cloud', 'agentforce', 'experience cloud', 'marketing cloud'],
-    ans: 'SalesforceはS&Sの得意領域です。Sales Cloud / Service Cloud / Marketing Cloud / Experience Cloud / Agentforceなど全製品に対応しています。Salesforce認定資格を持つ専門家が直接対応します。' },
-  { keys: ['hubspot', 'ハブスポット'],
-    ans: 'HubSpotはマーケティング・営業・CSが一体化したCRMです。Marketing Hub / Sales Hub / Service Hubの導入・設定・運用支援を行っています。' },
-  { keys: ['kintone', 'キントーン', 'サイボウズ'],
-    ans: 'kintoneはサイボウズのノーコードプラットフォームです。CRMアプリの構築・外部システム連携・自動化のサポートが可能です。' },
-  { keys: ['料金', '費用', 'コスト', '価格', 'いくら'],
-    ans: 'プロジェクトの規模・期間・内容によって異なります。初回相談は無料ですので、まずはお気軽にお問い合わせください。' },
-  { keys: ['期間', 'どのくらい', 'スケジュール', '工期'],
-    ans: '最短1ヶ月から対応可能です。標準的な導入は3〜6ヶ月程度ですが、規模によって変わります。アジャイルに進めるので途中変更にも対応できます。' },
-  { keys: ['導入', '始め', 'スタート', '検討', '初めて'],
-    ans: 'まずは無料ヒアリングから。現状の課題・目標・既存システムを整理した上で、最適なCRMとロードマップをご提案します。お問い合わせフォームからご連絡ください。' },
-  { keys: ['保守', '運用', 'サポート', 'メンテ', '障害'],
-    ans: '導入後の定着化支援・機能追加・システム監視・月次改善提案など、長期パートナーとして伴走します。スポット対応も可能です。' },
-  { keys: ['資格', '認定', '実績', '経験'],
-    ans: '代表は元Salesforce JapanのSEで複数の認定資格を保有。チームはSIer・構築パートナー出身の実践経験者で構成されています。' },
-  { keys: ['ai', 'エージェント', '自動化', '生成ai', 'llm'],
-    ans: 'SalesforceのAgentforceや生成AIを活用したCRM連携・業務自動化の支援も行っています。Claude Codeを使ったカスタム開発も対応可能です。' },
-  { keys: ['データ移行', '移行', 'migration', '乗り換え', '引越し'],
-    ans: '既存CRMからのデータ移行も対応しています。データクレンジング・マッピング・テストまで一貫してサポートします。' },
-  { keys: ['会社', 'どんな', 'どういう', 's&s', 'エスアンドエス'],
-    ans: 'S&S合同会社は渋谷区を拠点とするCRM専門のコンサルティング会社です。元Salesforce SE出身の代表を中心に、SIer・構築パートナー出身のメンバーが在籍しています。' },
-  { keys: ['連絡', 'お問い合わせ', 'contact', '相談', 'メール'],
-    ans: 'お問い合わせフォームからご連絡ください（画面上部のメニューから）。初回相談無料・通常2営業日以内にご返信します。' },
+  {
+    keys: ['salesforce', 'セールスフォース', 'sf', 'sales cloud', 'service cloud', 'agentforce', 'experience cloud', 'marketing cloud'],
+    ans: 'Salesforceについてですね。世界No.1シェアを誇るCRMプラットフォームで、営業・CS・マーケティング・ECと幅広い業務領域をカバーしています。\n\nS&Sでは Sales Cloud / Service Cloud / Marketing Cloud / Experience Cloud / Agentforce など全製品に対応しており、元Salesforce Japan SEの代表が直接プロジェクトに参画します。どの製品についてお知りになりたいですか？',
+  },
+  {
+    keys: ['hubspot', 'ハブスポット'],
+    ans: 'HubSpotは、マーケティング・営業・CS機能が一体化したオールインワンCRMです。比較的導入ハードルが低く、スタートアップ〜中小企業に人気があります。\n\nS&Sでは Marketing Hub / Sales Hub / Service Hub の導入設定から運用定着まで支援しています。Salesforceとの比較や、どちらが自社に合うかといったご相談もお気軽にどうぞ。',
+  },
+  {
+    keys: ['kintone', 'キントーン', 'サイボウズ'],
+    ans: 'kintoneはサイボウズが提供するノーコード業務プラットフォームです。エンジニアなしでもアプリを作れる柔軟性が特徴で、CRMとして活用する企業も増えています。\n\nS&Sでは kintone を活用した業務アプリ開発・外部CRMとの連携・自動化設計まで対応しています。既存の業務フローを踏まえた提案が可能です。',
+  },
+  {
+    keys: ['料金', '費用', 'コスト', '価格', 'いくら'],
+    ans: 'ご予算について気になられているんですね。料金はプロジェクトの規模・期間・カスタマイズ量によって大きく異なるため、一概にお答えするのが難しい部分があります。\n\nただ、まずは無料のヒアリングで現状の課題を整理し、予算感に合わせた最適なプランをご提案しています。「費用を抑えたい」というご要望も遠慮なくお伝えください。',
+  },
+  {
+    keys: ['期間', 'どのくらい', 'スケジュール', '工期', 'いつ'],
+    ans: '導入期間はプロジェクトの複雑さによりますが、目安としては：\n\n• 小規模（標準設定）：1〜2ヶ月\n• 標準導入（カスタマイズあり）：3〜4ヶ月\n• 大規模（複数部門・連携多数）：6ヶ月〜\n\nアジャイルで進めるため、途中での仕様変更にも柔軟に対応できます。まず動かして改善していくスタイルが好評です。',
+  },
+  {
+    keys: ['導入', '始め', 'スタート', '検討', '初めて'],
+    ans: 'CRM導入を検討されているんですね。最初の一歩として、まず現状の課題を整理することが大切です。\n\nS&Sでは無料のヒアリングセッションを提供しており、「どのCRMが合うか」「どこから手をつければいいか」といった入口からご支援しています。初めての方でも安心してご相談ください。',
+  },
+  {
+    keys: ['保守', '運用', 'サポート', 'メンテ', '障害', '定着'],
+    ans: '「入れたら終わり」にならないよう、S&Sでは導入後の伴走支援を重視しています。\n\n具体的には、ユーザー研修・定着化支援・継続的な機能改善・システム監視・月次レポートと改善提案などを長期パートナーとして提供します。スポット対応のみのご依頼も歓迎です。',
+  },
+  {
+    keys: ['資格', '認定', '実績', '経験', '専門'],
+    ans: 'S&Sのチームについてですね。代表は元Salesforce JapanのSEとして多数のCRM導入プロジェクトを経験し、複数のSalesforce認定資格を保有しています。\n\nメンバーもSIer・Salesforce構築パートナー出身の実践経験者で構成されており、「現場を知るチーム」として貴社の案件に直接向き合います。',
+  },
+  {
+    keys: ['ai', 'エージェント', '自動化', '生成ai', 'llm', 'claude', 'gpt'],
+    ans: 'AIとCRMの連携は非常に注目されている領域ですね。S&SではSalesforceのAgentforce（AIエージェント機能）を活用した業務自動化や、生成AIをCRMデータと組み合わせた提案書・メール自動生成なども支援しています。\n\nまた、このBotそのものがClaude Codeを活用して構築されています。カスタムCRM開発にAIを組み込むご要望もお気軽にどうぞ。',
+  },
+  {
+    keys: ['データ移行', '移行', 'migration', '乗り換え', '引越し', '移管'],
+    ans: 'CRMの乗り換えや移行は、データの整合性確保が最も重要な工程です。S&Sではデータクレンジング・マッピング設計・移行テスト・本番移行まで、リスクを最小化しながら一貫してサポートします。\n\nExcelや旧システムからの移行実績もあります。どのようなデータをお持ちか教えていただけると、より具体的にお答えできます。',
+  },
+  {
+    keys: ['会社', 'どんな', 'どういう', 's&s', 'エスアンドエス', 'について'],
+    ans: 'S&S合同会社は、東京・渋谷を拠点とするCRM専門のコンサルティング会社です。\n\n元Salesforce Japan SEの代表を中心に、SIer・構築パートナー出身メンバーが在籍。「導入して終わり」ではなく、CRMが現場に定着して成果を出すまでを支援することをミッションとしています。',
+  },
+  {
+    keys: ['連絡', 'お問い合わせ', 'contact', '相談', 'メール', '電話'],
+    ans: 'ご相談は画面上部の「お問い合わせ」メニューから、フォームにてお気軽にどうぞ。\n\n初回相談は無料で、通常2営業日以内にご返信します。「まだ検討段階」「何から聞けばいいかわからない」という段階でも大歓迎です。',
+  },
 ];
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'bot', text: 'こんにちは！S&SのCRMサポートBotです。\nSalesforce・HubSpot・Kintoneなど、CRMに関するご質問にお答えします。' },
+    { role: 'bot', text: 'こんにちは！S&SのCRMアシスタントです。\nSalesforce・HubSpot・Kintoneなどの導入・活用についてお気軽にご質問ください。' },
   ]);
   const [input, setInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages]);
+  useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages, isTyping]);
 
   const getAnswer = (text: string) => {
     const q = text.toLowerCase();
     for (const faq of faqList) {
       if (faq.keys.some(k => q.includes(k))) return faq.ans;
     }
-    return 'ご質問ありがとうございます。より詳しい内容はお問い合わせフォームからご相談ください。専門スタッフが2営業日以内にご回答します。';
+    return 'ご質問ありがとうございます。いただいた内容について、より正確にお答えするために専門スタッフが対応させていただきます。\n\nお問い合わせフォームからご連絡いただけますと、2営業日以内にご回答します。';
   };
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (!input.trim()) return;
+    if (!input.trim() || isTyping) return;
     const userText = input.trim();
     setInput('');
-    setMessages(prev => [
-      ...prev,
-      { role: 'user', text: userText },
-      { role: 'bot', text: getAnswer(userText) },
-    ]);
+    setMessages(prev => [...prev, { role: 'user', text: userText }]);
+    setIsTyping(true);
+    // 考えている演出: 1.2〜2秒のランダム遅延
+    const delay = 1200 + Math.random() * 800;
+    setTimeout(() => {
+      setIsTyping(false);
+      setMessages(prev => [...prev, { role: 'bot', text: getAnswer(userText) }]);
+    }, delay);
   };
 
   return (
@@ -519,13 +577,19 @@ const ChatBot = () => {
       <motion.button
         whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(v => !v)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#192c0d] rounded-full flex items-center justify-center shadow-2xl border-2 border-[#a8d878]/20"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xl"
+        style={{ background: 'transparent' }}
         aria-label="チャットを開く"
       >
         <AnimatePresence mode="wait">
           {isOpen
-            ? <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}><X size={22} className="text-[#a8d878]" /></motion.div>
-            : <motion.div key="chat" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}><MessageSquare size={22} className="text-[#a8d878]" /></motion.div>
+            ? <motion.div key="x" initial={{ rotate: -90, opacity: 0, scale: 0.8 }} animate={{ rotate: 0, opacity: 1, scale: 1 }} exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
+                className="w-14 h-14 bg-[#192c0d] rounded-2xl flex items-center justify-center border-2 border-[#a8d878]/20">
+                <X size={22} className="text-[#a8d878]" />
+              </motion.div>
+            : <motion.div key="icon" initial={{ rotate: 90, opacity: 0, scale: 0.8 }} animate={{ rotate: 0, opacity: 1, scale: 1 }} exit={{ rotate: -90, opacity: 0, scale: 0.8 }}>
+                <ClaudeSSIcon size={56} />
+              </motion.div>
           }
         </AnimatePresence>
       </motion.button>
@@ -543,12 +607,10 @@ const ChatBot = () => {
           >
             {/* Header */}
             <div className="bg-[#192c0d] px-5 py-4 flex items-center gap-3 shrink-0">
-              <div className="w-9 h-9 rounded-full bg-[#a8d878]/15 border border-[#a8d878]/30 flex items-center justify-center shrink-0">
-                <MessageSquare size={15} className="text-[#a8d878]" />
-              </div>
+              <ClaudeSSIcon size={38} />
               <div className="flex-1 min-w-0">
-                <p className="text-white font-bold text-sm leading-none mb-0.5">S&S CRM Bot</p>
-                <p className="text-[#a8d878]/70 text-[10px] tracking-wide">Powered by Claude Code</p>
+                <p className="text-white font-bold text-sm leading-none mb-1">S&S CRM アシスタント</p>
+                <p className="text-[#a8d878]/70 text-[10px] tracking-wide">Powered by Claude Code × S&S</p>
               </div>
               <span className="flex items-center gap-1.5 text-[#a8d878] text-xs shrink-0">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#a8d878] animate-pulse" />
@@ -560,7 +622,17 @@ const ChatBot = () => {
             <div className="flex-1 overflow-y-auto p-4 space-y-3">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-line ${
+                  {msg.role === 'bot' && (
+                    <div className="w-6 h-6 rounded-lg bg-[#192c0d] flex items-center justify-center shrink-0 mr-2 mt-0.5">
+                      <svg width="14" height="14" viewBox="0 0 36 36" fill="none">
+                        <line x1="18" y1="4" x2="18" y2="32" stroke="#a8d878" strokeWidth="3" strokeLinecap="round"/>
+                        <line x1="5" y1="11" x2="31" y2="25" stroke="#a8d878" strokeWidth="3" strokeLinecap="round"/>
+                        <line x1="5" y1="25" x2="31" y2="11" stroke="#a8d878" strokeWidth="3" strokeLinecap="round"/>
+                        <circle cx="18" cy="18" r="3" fill="#a8d878"/>
+                      </svg>
+                    </div>
+                  )}
+                  <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-line ${
                     msg.role === 'user'
                       ? 'bg-[#192c0d] text-[#f9f9f3] rounded-br-none'
                       : 'bg-[#f0f5eb] text-[#333] rounded-bl-none border border-[#3a4a1d]/8'
@@ -569,13 +641,26 @@ const ChatBot = () => {
                   </div>
                 </div>
               ))}
+              {isTyping && (
+                <div className="flex items-end gap-2">
+                  <div className="w-6 h-6 rounded-lg bg-[#192c0d] flex items-center justify-center shrink-0">
+                    <svg width="14" height="14" viewBox="0 0 36 36" fill="none">
+                      <line x1="18" y1="4" x2="18" y2="32" stroke="#a8d878" strokeWidth="3" strokeLinecap="round"/>
+                      <line x1="5" y1="11" x2="31" y2="25" stroke="#a8d878" strokeWidth="3" strokeLinecap="round"/>
+                      <line x1="5" y1="25" x2="31" y2="11" stroke="#a8d878" strokeWidth="3" strokeLinecap="round"/>
+                      <circle cx="18" cy="18" r="3" fill="#a8d878"/>
+                    </svg>
+                  </div>
+                  <TypingBubble />
+                </div>
+              )}
               <div ref={endRef} />
             </div>
 
             {/* Suggestions */}
-            <div className="px-4 pb-2 flex gap-2 overflow-x-auto shrink-0">
-              {['料金について', '導入期間', 'Salesforceとは'].map(s => (
-                <button key={s} onClick={() => setInput(s)}
+            <div className="px-4 pb-2 flex gap-2 overflow-x-auto shrink-0 scrollbar-none">
+              {['料金について', '導入期間は？', 'Salesforceとは', 'AIとCRMは？'].map(s => (
+                <button key={s} onClick={() => { setInput(s); }}
                   className="shrink-0 text-xs px-3 py-1.5 rounded-full bg-[#f0f5eb] text-[#3a4a1d] border border-[#3a4a1d]/12 hover:bg-[#e4f0d8] transition-colors whitespace-nowrap">
                   {s}
                 </button>
@@ -588,9 +673,10 @@ const ChatBot = () => {
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 placeholder="CRMについて質問する..."
-                className="flex-1 text-sm px-4 py-2.5 rounded-full bg-[#f9f9f3] border border-[#3a4a1d]/12 focus:outline-none focus:border-[#3a4a1d]/30 transition-colors"
+                disabled={isTyping}
+                className="flex-1 text-sm px-4 py-2.5 rounded-full bg-[#f9f9f3] border border-[#3a4a1d]/12 focus:outline-none focus:border-[#3a4a1d]/30 transition-colors disabled:opacity-50"
               />
-              <button type="submit" disabled={!input.trim()}
+              <button type="submit" disabled={!input.trim() || isTyping}
                 className="w-10 h-10 rounded-full bg-[#192c0d] flex items-center justify-center shrink-0 hover:bg-[#2a4a18] disabled:opacity-40 disabled:cursor-not-allowed transition-colors">
                 <Send size={14} className="text-[#a8d878]" />
               </button>
