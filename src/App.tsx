@@ -199,8 +199,8 @@ const Home = ({ navigate }: { navigate: (p: Page) => void }) => (
           className="mb-12"
         >
           <h2 className="text-5xl md:text-8xl font-serif text-[#3a4a1d] mb-8 leading-tight font-medium">
-            Organic Professional.<br />
-            Timeless Trust.
+            AI & CRM.<br />
+            Strategy to Operation.
           </h2>
           <div className="w-24 h-1 bg-[#3a4a1d] mx-auto mb-10 opacity-30"></div>
         </motion.div>
@@ -211,9 +211,8 @@ const Home = ({ navigate }: { navigate: (p: Page) => void }) => (
           transition={{ delay: 0.6 }}
           className="text-lg md:text-2xl text-[#333333] mb-16 max-w-3xl mx-auto leading-loose font-light"
         >
-          戦略から実装まで。<br className="md:hidden" />
-          確かな技術とお客様第一の姿勢で、<br />
-          企業のCRM活用を次のステージへ。
+          AI・CRMの導入相談から構築・保守運用まで。<br />
+          S＆S合同会社が、貴社のデジタル変革を一気通貫で支援します。
         </motion.p>
 
         <motion.button
@@ -233,12 +232,11 @@ const Home = ({ navigate }: { navigate: (p: Page) => void }) => (
         <div className="order-2 md:order-1">
           <span className="text-[#3a4a1d] font-bold tracking-[0.2em] text-sm uppercase mb-6 block">Who We Are</span>
           <h3 className="text-4xl font-serif text-[#3a4a1d] mb-8 leading-tight">
-            デジタル時代だからこそ、<br />有機的なつながりを。
+            AI・CRMの力で、<br />ビジネスの成長を加速する。
           </h3>
           <p className="text-[#333333] leading-loose text-lg mb-8">
-            テクノロジーは日々進化していますが、それを扱うのは「人」です。
-            S&Sは、Salesforceをはじめとする最新のクラウド技術に精通したプロフェッショナル集団でありながら、
-            何よりもクライアントとの「対話」と「信頼」を重視しています。
+            S＆S合同会社は、AI活用・CRM（Salesforce等）のコンサルティング・構築・保守運用を専門とする会社です。
+            戦略策定から実装、定着化・継続運用まで、一貫したサポートでお客様のビジネス課題を解決します。
           </p>
           <button onClick={() => navigate('concept')} className="text-[#3a4a1d] font-bold border-b border-[#3a4a1d] pb-1 hover:opacity-70 transition-opacity">
             私たちの想い（コンセプト）へ
@@ -274,24 +272,6 @@ const Home = ({ navigate }: { navigate: (p: Page) => void }) => (
       </div>
     </section>
 
-    {/* 4. News Section */}
-    <section className="max-w-6xl mx-auto px-6 mb-32 pt-20 border-t border-[#3a4a1d]/10">
-      <div className="flex flex-col md:flex-row items-start gap-8 md:gap-16">
-        <h3 className="text-2xl font-serif text-[#3a4a1d] whitespace-nowrap px-4">Latest News</h3>
-        <div className="flex flex-col gap-6 w-full">
-          <div className="group flex flex-col md:flex-row gap-2 md:gap-8 cursor-pointer hover:bg-[#3a4a1d]/5 p-4 rounded transition-colors border-b border-[#3a4a1d]/5 pb-4">
-            <span className="text-sm font-bold text-[#3a4a1d] opacity-60">2026.02.07</span>
-            <span className="text-base text-[#333333] group-hover:text-[#3a4a1d] transition-colors">ホームページをリリースしました。</span>
-            <span className="md:ml-auto text-xs border border-[#3a4a1d] text-[#3a4a1d] px-2 py-0.5 rounded-full w-fit">Info</span>
-          </div>
-          <div className="group flex flex-col md:flex-row gap-2 md:gap-8 cursor-pointer hover:bg-[#3a4a1d]/5 p-4 rounded transition-colors border-b border-[#3a4a1d]/5 pb-4">
-            <span className="text-sm font-bold text-[#3a4a1d] opacity-60">2025.10.31</span>
-            <span className="text-base text-[#333333] group-hover:text-[#3a4a1d] transition-colors">セールスフォース・ジャパンを卒業しました。</span>
-            <span className="md:ml-auto text-xs border border-[#3a4a1d] text-[#3a4a1d] px-2 py-0.5 rounded-full w-fit">Press</span>
-          </div>
-        </div>
-      </div>
-    </section>
   </motion.div>
 );
 
@@ -402,8 +382,8 @@ const Concept = () => (
                 <Building size={24} />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-[#3a4a1d] mb-2">屋号</h4>
-                <p className="text-xl text-[#333333] font-serif">S&S</p>
+                <h4 className="text-sm font-bold text-[#3a4a1d] mb-2">会社名</h4>
+                <p className="text-xl text-[#333333] font-serif">S＆S合同会社</p>
               </div>
             </div>
 
@@ -412,19 +392,58 @@ const Concept = () => (
                 <User size={24} />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-[#3a4a1d] mb-2">代表</h4>
+                <h4 className="text-sm font-bold text-[#3a4a1d] mb-2">代表社員</h4>
                 <p className="text-xl text-[#333333] font-serif">境野 竣介</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-6">
+            <div className="flex items-start gap-6 pb-6 border-b border-[#3a4a1d]/10">
               <div className="w-12 h-12 bg-[#3a4a1d]/10 rounded-full flex items-center justify-center text-[#3a4a1d] shrink-0">
                 <MapPin size={24} />
               </div>
               <div>
                 <h4 className="text-sm font-bold text-[#3a4a1d] mb-2">所在地</h4>
-                <p className="text-xl text-[#333333] font-serif">フルリモート</p>
-                <p className="text-sm text-[#666] mt-1">（目黒区周辺）</p>
+                <p className="text-base text-[#333333] font-serif leading-relaxed">
+                  〒150-0043<br />
+                  東京都渋谷区道玄坂1丁目10番8号<br />
+                  渋谷道玄坂東急ビル2F−C
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-6 pb-6 border-b border-[#3a4a1d]/10">
+              <div className="w-12 h-12 bg-[#3a4a1d]/10 rounded-full flex items-center justify-center text-[#3a4a1d] shrink-0">
+                <Layers size={24} />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-[#3a4a1d] mb-2">法人番号</h4>
+                <p className="text-xl text-[#333333] font-serif">6011003024013</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-6 pb-6 border-b border-[#3a4a1d]/10">
+              <div className="w-12 h-12 bg-[#3a4a1d]/10 rounded-full flex items-center justify-center text-[#3a4a1d] shrink-0">
+                <Briefcase size={24} />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-[#3a4a1d] mb-2">資本金</h4>
+                <p className="text-xl text-[#333333] font-serif">1,000,000円</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-6">
+              <div className="w-12 h-12 bg-[#3a4a1d]/10 rounded-full flex items-center justify-center text-[#3a4a1d] shrink-0">
+                <Code size={24} />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-[#3a4a1d] mb-3">事業内容</h4>
+                <ul className="text-base text-[#333333] leading-loose space-y-1">
+                  <li>AI・CRMのコンサルティング・構築・保守運用</li>
+                  <li>クラウドサービスの導入支援・運用</li>
+                  <li>ITシステム・ソフトウェアの企画・開発・販売</li>
+                  <li>DX推進・経営コンサルティング</li>
+                  <li>人材育成・研修・セミナーの企画・運営</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -725,7 +744,7 @@ const Contact = () => {
         <div className="space-y-6">
           {[
             { q: "プロジェクトの期間はどのくらいですか？", a: "プロジェクトの規模によりますが、最短で1ヶ月から対応可能です。大規模なプロジェクトでは、チームを組んで長期的なサポートも行っております。" },
-            { q: "個人事業主ならではの強みは何ですか？", a: "大手にはないスピード感と柔軟な対応が強みです。意思決定が速く、お客様のご要望に迅速にお応えできます。また、中間マージンがないため、高品質なサービスを適正価格でご提供できます。" },
+            { q: "S＆S合同会社ならではの強みは何ですか？", a: "大手にはないスピード感と柔軟な対応が強みです。少数精鋭による意思決定の速さと、元Salesforce SEの専門知識を活かした高品質な実装を、適正価格でご提供します。" },
             { q: "Salesforce以外のご相談も可能ですか？", a: "はい、DX全般に精通しております。CRM/MAツール選定、業務フロー設計、データ活用戦略など、デジタル変革に関する幅広いご相談に対応可能です。" },
             { q: "AI活用についても相談できますか？", a: "はい、法人様向けにAI活用の講師・コンサルティングも行っております。ChatGPT/生成AIの業務活用、Agentforceの導入支援など、AIに関するお困りごともお気軽にご相談ください。" },
             { q: "保守・運用サポートのみの依頼も可能ですか？", a: "はい、可能です。既存システムの改修や定着化支援のみのプランもご用意しております。スポットでのご依頼も歓迎です。" }
@@ -871,11 +890,11 @@ export default function App() {
   // Dynamic SEO title based on active page
   useEffect(() => {
     const pageTitles: Record<Page, string> = {
-      home: 'S&S | Salesforce・DXコンサルティング | CRM導入・AI活用支援',
-      concept: 'コンセプト | S&S - Success, Strategy, Synergy',
-      service: 'サービス | S&S - Salesforce導入・DX推進・AI活用支援',
-      case: '導入事例 | S&S - お客様の成功事例',
-      contact: 'お問い合わせ | S&S - 無料相談受付中'
+      home: 'S＆S合同会社 | AI・CRMコンサルティング・構築・保守運用',
+      concept: 'コンセプト | S＆S合同会社 - Success, Strategy, Synergy',
+      service: 'サービス | S＆S合同会社 - AI・CRM導入・DX推進支援',
+      case: '導入事例 | S＆S合同会社',
+      contact: 'お問い合わせ | S＆S合同会社'
     };
 
     document.title = pageTitles[activePage];
@@ -928,7 +947,7 @@ export default function App() {
                 <div>
                   <h4 className="font-serif text-lg mb-6 text-[#f9f9f3]/80">Contact</h4>
                   <div className="flex flex-col gap-4 text-sm opacity-60">
-                    <p>フルリモート<br />（目黒区周辺）</p>
+                    <p>〒150-0043<br />東京都渋谷区道玄坂1丁目10番8号<br />渋谷道玄坂東急ビル2F−C</p>
                     <p>ssakaino@ss-and.com</p>
                     <button onClick={() => setActivePage('contact')} className="text-left mt-2 underline hover:text-white hover:opacity-100 transition-all">
                       お問い合わせフォーム
@@ -951,7 +970,7 @@ export default function App() {
               </div>
 
               <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs opacity-40">
-                <p>© 2024 S&S Consulting. All Rights Reserved.</p>
+                <p>© 2025 S＆S合同会社. All Rights Reserved.</p>
                 <div className="flex gap-6">
                   <span>Privacy Policy</span>
                   <span>Terms of Service</span>
