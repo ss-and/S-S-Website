@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import {
   ArrowRight, Menu, X, Users, Layers, CheckCircle,
-  Briefcase, Database, Code, HelpCircle, Zap,
+  Database, Code, HelpCircle, Zap,
   Target, Instagram, MapPin, User, Building
 } from 'lucide-react';
 
@@ -100,10 +100,10 @@ const Navbar = ({ activePage, navigate }: { activePage: Page; navigate: (p: Page
   const isDark = activePage === 'home' && !scrolled;
 
   const navItems: { id: Page; label: string }[] = [
-    { id: 'home', label: 'Home' },
-    { id: 'concept', label: 'About' },
-    { id: 'service', label: 'Service' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'home', label: 'ホーム' },
+    { id: 'concept', label: '会社について' },
+    { id: 'service', label: 'サービス' },
+    { id: 'contact', label: 'お問い合わせ' },
   ];
 
   return (
@@ -254,7 +254,7 @@ const Home = ({ navigate }: { navigate: (p: Page) => void }) => (
           transition={{ delay: 0.2, duration: 0.7 }}
         >
           <span className="inline-block text-[#a8d878] text-xs font-bold tracking-[0.4em] uppercase mb-10 px-4 py-2 border border-[#a8d878]/30 rounded-full">
-            AI & CRM Consulting
+            CRM Consulting
           </span>
         </motion.div>
 
@@ -262,21 +262,20 @@ const Home = ({ navigate }: { navigate: (p: Page) => void }) => (
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.9 }}
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-serif text-[#f9f9f3] mb-8 leading-[1.05] font-bold"
+          className="text-5xl sm:text-6xl md:text-7xl font-serif text-[#f9f9f3] mb-8 leading-[1.1] font-bold"
         >
-          ビジネスの<br />
-          <span className="text-[#a8d878]">可能性</span>を、<br />
-          解き放つ。
+          働く環境に変化をもたらし、<br />
+          毎日を少しでも<span className="text-[#a8d878]">『楽』</span>に。
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="text-base md:text-xl text-[#f9f9f3]/65 mb-12 max-w-2xl mx-auto leading-loose"
+          className="text-base md:text-lg text-[#f9f9f3]/65 mb-12 max-w-2xl mx-auto leading-loose"
         >
-          AI・CRMのコンサルティングから構築・保守運用まで。<br />
-          S＆S合同会社が、貴社のデジタル変革を一気通貫で支援します。
+          CRMの導入・構築・保守運用を中心に、<br />
+          S＆S合同会社が貴社のビジネス課題を一気通貫で解決します。
         </motion.p>
 
         <motion.div
@@ -306,12 +305,13 @@ const Home = ({ navigate }: { navigate: (p: Page) => void }) => (
 
       {/* Scroll indicator */}
       <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#f9f9f3]/30"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
-        <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-[#f9f9f3]/30 to-transparent" />
+        <div className="w-6 h-10 rounded-full border border-[#f9f9f3]/20 flex items-start justify-center pt-2">
+          <div className="w-1 h-2 bg-[#f9f9f3]/40 rounded-full" />
+        </div>
       </motion.div>
     </section>
 
@@ -327,24 +327,24 @@ const Home = ({ navigate }: { navigate: (p: Page) => void }) => (
           {[
             {
               num: '01',
-              icon: <Target size={32} />,
-              title: 'AI活用コンサルティング',
-              en: 'AI Consulting',
-              desc: '生成AI・Agentforceの業務活用から戦略策定まで。現状分析と実行可能なロードマップを提供します。',
-            },
-            {
-              num: '02',
               icon: <Database size={32} />,
               title: 'CRM導入・構築',
               en: 'CRM Implementation',
-              desc: 'Salesforceを中心としたCRM/MAツールの設計・実装。ビジネスに合わせた柔軟な構築を実現します。',
+              desc: 'SalesforceをはじめとするクラウドCRMの設計・実装。貴社の業務プロセスに合わせた柔軟な構築を実現します。',
+            },
+            {
+              num: '02',
+              icon: <Layers size={32} />,
+              title: 'CRM保守・運用サポート',
+              en: 'Operations & Support',
+              desc: '導入後の定着化支援から継続的な改善まで。長期パートナーとして運用をフルサポートします。',
             },
             {
               num: '03',
-              icon: <Layers size={32} />,
-              title: '保守・運用サポート',
-              en: 'Operations & Support',
-              desc: '導入後の定着化支援から継続的な改善まで。長期パートナーとして運用をフルサポートします。',
+              icon: <Target size={32} />,
+              title: 'CRMの活用コンサルティング',
+              en: 'CRM Consulting',
+              desc: 'CRMデータの活用戦略策定から、AI・MAツールの連携支援まで。投資対効果を最大化します。',
             },
           ].map((s, i) => (
             <motion.div
@@ -436,19 +436,19 @@ const Home = ({ navigate }: { navigate: (p: Page) => void }) => (
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
-              icon: <Briefcase size={28} />,
-              title: '元Salesforce SEによる高品質実装',
-              desc: 'Salesforce Japan出身のエンジニアが直接対応。認定資格保有者による確かな技術力で、高品質な実装を提供します。',
+              icon: <Database size={28} />,
+              title: 'Salesforce認定資格保有者による実装',
+              desc: 'Salesforce Japan出身の認定資格保有者が直接対応します。確かな技術力と現場経験で、貴社の要件に合った高品質なCRM環境を構築します。',
             },
             {
-              icon: <Zap size={28} />,
-              title: '少数精鋭のスピード対応',
-              desc: '大手にはない意思決定の速さと柔軟性。お客様のニーズに合わせた迅速な対応で、スピーディな課題解決を実現します。',
+              icon: <Users size={28} />,
+              title: 'スピーディで柔軟な対応',
+              desc: '少数精鋭体制だからこそ、意思決定が速く、状況の変化にも柔軟に対応できます。大手にはないスピード感で、課題解決を前に進めます。',
             },
             {
               icon: <CheckCircle size={28} />,
-              title: '戦略〜運用まで一気通貫',
-              desc: '導入支援だけで終わらない。定着化・継続改善まで伴走するロングタームなサポートで、投資対効果を最大化します。',
+              title: '導入から運用まで一貫してサポート',
+              desc: 'CRMの導入支援で終わらず、定着化・継続的な改善まで伴走します。長期的なパートナーとして、投資対効果の最大化をともに目指します。',
             },
           ].map((item, i) => (
             <FadeUp key={i} delay={i * 0.1}>
@@ -504,107 +504,33 @@ const Home = ({ navigate }: { navigate: (p: Page) => void }) => (
 const Concept = () => (
   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full">
 
-    {/* Hero */}
-    <div className="min-h-[60vh] flex items-center justify-center bg-[#192c0d] relative overflow-hidden">
-      <svg className="absolute inset-0 w-full h-full opacity-[0.05] pointer-events-none">
-        <defs>
-          <pattern id="dots2" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
-            <circle cx="2" cy="2" r="1.5" fill="#f9f9f3" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#dots2)" />
-      </svg>
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 90, repeat: Infinity, ease: 'linear' }}
-        className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full border border-[#f9f9f3]/6 pointer-events-none"
-      />
-      <div className="text-center z-10 px-6 py-24">
+    {/* Page Header */}
+    <div className="py-28 md:py-36 bg-[#f9f9f3] border-b border-[#3a4a1d]/10">
+      <div className="max-w-4xl mx-auto px-6">
         <motion.span
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="block text-xs tracking-[0.4em] mb-6 text-[#a8d878] uppercase"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-[#3a4a1d] font-bold tracking-[0.2em] text-xs uppercase mb-6 block"
         >
-          Philosophy
+          About
         </motion.span>
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="text-6xl md:text-8xl font-serif font-bold text-[#f9f9f3]"
+          transition={{ delay: 0.2 }}
+          className="text-6xl md:text-7xl font-serif text-[#192c0d] mb-8 leading-tight"
         >
-          The 3 &quot;S&quot;
+          会社について
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="mt-6 text-base text-[#f9f9f3]/60 max-w-xl mx-auto leading-loose"
+          transition={{ delay: 0.4 }}
+          className="text-[#666] text-base md:text-lg leading-loose max-w-2xl"
         >
-          私たちが大切にする、3つの指針。
+          S＆S合同会社のミッション・ストーリー・行動指針と会社概要をご紹介します。
         </motion.p>
       </div>
-    </div>
-
-    {/* The 3 S's */}
-    <div className="max-w-6xl mx-auto px-6 py-28 space-y-20">
-      {[
-        {
-          num: '01',
-          title: 'Success',
-          ja: '成功',
-          icon: <Target size={100} />,
-          text: 'プロジェクトの完了はゴールではありません。お客様のビジネスが実際に成長し、成果を生み出すことこそが、真の成功です。私たちは常に「顧客の成功」を第一義に考え、すべての施策を設計します。',
-        },
-        {
-          num: '02',
-          title: 'Strategy',
-          ja: '戦略',
-          icon: <Zap size={100} />,
-          text: '場当たり的な対応ではなく、全体俯瞰に基づいた戦略を。現状の課題分析から、あるべき姿（To-Be）の策定まで、ロジカルかつ実現可能なロードマップを描きます。',
-        },
-        {
-          num: '03',
-          title: 'Synergy',
-          ja: '相乗効果',
-          icon: <Users size={100} />,
-          text: 'S＆Sという社名には、お客様との共創という意味が込められています。私たちの技術と、お客様のビジネス知見。二つが掛け合わさることで、想像以上の価値を生み出します。',
-        },
-      ].map((s, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className={`grid md:grid-cols-2 gap-12 items-stretch ${i % 2 === 1 ? 'md:grid-flow-dense' : ''}`}
-        >
-          <div className={`bg-white border border-[#3a4a1d]/8 p-12 rounded-3xl flex flex-col justify-center relative overflow-hidden ${i % 2 === 1 ? 'md:col-start-2' : ''}`}>
-            <div className="absolute top-0 right-0 p-8 opacity-[0.04] text-[#3a4a1d]">{s.icon}</div>
-            <span className="text-7xl font-serif text-[#3a4a1d]/10 font-bold mb-4">{s.num}</span>
-            <h3 className="text-4xl font-serif text-[#192c0d] mb-2">
-              {s.title}
-              <span className="text-base ml-4 text-[#999] font-sans font-normal">{s.ja}</span>
-            </h3>
-            <div className="w-12 h-0.5 bg-[#3a4a1d] my-6 opacity-30" />
-            <p className="text-[#555] leading-loose text-base">{s.text}</p>
-          </div>
-          <div className={`bg-[#192c0d] rounded-3xl flex items-center justify-center min-h-56 relative overflow-hidden ${i % 2 === 1 ? 'md:col-start-1 md:row-start-1' : ''}`}>
-            <div className="absolute inset-0 opacity-10">
-              <motion.div
-                animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-                className="absolute -top-20 -right-20 w-80 h-80 rounded-full border border-[#f9f9f3]"
-              />
-            </div>
-            <div className="relative z-10 text-center p-12">
-              <div className="text-[#a8d878] opacity-40 flex justify-center mb-6">{s.icon}</div>
-              <span className="text-[#f9f9f3]/40 text-xs tracking-[0.3em] uppercase">{s.title}</span>
-            </div>
-          </div>
-        </motion.div>
-      ))}
     </div>
 
     {/* Corporate Identity */}
@@ -709,6 +635,23 @@ const Concept = () => (
                 <span>〒150-0043<br />東京都渋谷区道玄坂1丁目10番8号<br />渋谷道玄坂東急ビル2F−C</span>
               ),
             },
+            {
+              icon: <MapPin size={18} />, label: 'アクセス',
+              value: (
+                <div className="w-full mt-2 rounded-xl overflow-hidden">
+                  <iframe
+                    src="https://maps.google.com/maps?q=東京都渋谷区道玄坂1丁目10番8号+渋谷道玄坂東急ビル&z=16&output=embed&hl=ja"
+                    width="100%"
+                    height="220"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="S&S合同会社 地図"
+                  />
+                </div>
+              ),
+            },
             { icon: <Code size={18} />, label: '資本金', value: '1,000,000円' },
             {
               icon: <Layers size={18} />, label: '事業内容',
@@ -780,27 +723,27 @@ const Service = ({ navigate }: { navigate: (p: Page) => void }) => (
         {[
           {
             num: '01',
-            title: 'AI活用コンサルティング',
-            en: 'AI Consulting',
-            icon: <Target size={40} />,
-            points: ['生成AI・ChatGPT業務活用の戦略策定', 'Agentforce / Salesforce AI導入支援', 'AI活用研修・社内展開支援', 'PoC（概念実証）設計と評価'],
-            desc: '「AIを使いたいが何から始めればいいかわからない」という企業様に。現状把握から優先度の高いユースケース選定、PoC設計、実装、社内展開まで一貫してサポートします。',
-          },
-          {
-            num: '02',
             title: 'CRM導入・構築',
             en: 'CRM Implementation',
             icon: <Database size={40} />,
             points: ['Salesforce設計・構築・カスタマイズ', 'Sales Cloud / Service Cloud / Marketing Cloud', 'データ移行・外部システム連携', 'アジャイルな反復開発'],
-            desc: 'Salesforce認定資格を持つ元SEが直接担当。要件定義から実装・テスト・リリースまで、お客様の業務プロセスに完全フィットしたCRM環境を構築します。',
+            desc: 'Salesforce認定資格を持つ元SEが直接担当。要件定義から実装・テスト・リリースまで、貴社の業務プロセスに完全フィットしたCRM環境を構築します。',
           },
           {
-            num: '03',
-            title: '保守・運用サポート',
+            num: '02',
+            title: 'CRM保守・運用サポート',
             en: 'Operations & Support',
             icon: <Layers size={40} />,
             points: ['導入後の定着化・ユーザー研修', '継続的な機能改善・追加開発', 'システム監視・障害対応', '月次レポートと改善提案'],
             desc: '「システムを入れたら終わり」ではなく、使い続けられる体制を一緒に作ります。定着化支援から継続改善まで、長期パートナーとして伴走します。',
+          },
+          {
+            num: '03',
+            title: 'CRMの活用コンサルティング',
+            en: 'CRM Consulting',
+            icon: <Target size={40} />,
+            points: ['CRMデータの活用戦略策定', 'MA・AIツールとのシステム連携支援', 'KPI設計・レポーティング体制の構築', 'CRM活用研修・社内展開サポート'],
+            desc: '導入したCRMを真に活用するための戦略設計から支援します。データドリブンな営業・マーケティングの実現に向け、AI・MAツール連携も含めてサポートします。',
           },
         ].map((s, i) => (
           <FadeUp key={i}>
@@ -1178,7 +1121,7 @@ export default function App() {
             </AnimatePresence>
           </main>
 
-          <footer className="bg-[#0f1f07] text-[#f9f9f3] pt-20 pb-10 rounded-t-[2.5rem]">
+          <footer className="bg-[#0f1f07] text-[#f9f9f3] pt-20 pb-10">
             <div className="max-w-7xl mx-auto px-6">
               <div className="grid md:grid-cols-4 gap-12 mb-16 pb-12 border-b border-[#f9f9f3]/8">
                 <div className="md:col-span-2 space-y-6">
