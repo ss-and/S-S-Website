@@ -410,8 +410,8 @@ const WhyChooseUs = () => (
     <div className="max-w-6xl mx-auto px-6">
       <FadeUp className="mb-20">
         <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">Why S&S?</p>
-        <h2 className="text-5xl md:text-7xl font-serif font-bold text-[#192c0d] leading-[0.92] mb-6">
-          S＆Sが<br />選ばれる<br />理由
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-[#192c0d] leading-tight mb-6">
+          S＆Sが選ばれる理由
         </h2>
         <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full" />
       </FadeUp>
@@ -421,8 +421,8 @@ const WhyChooseUs = () => (
           {
             illust: <IllustExpert />,
             label: '01',
-            title: 'Salesforce Japan出身SEがリード',
-            desc: '代表は元Salesforce JapanのSEとして多数のCRM導入プロジェクトを経験。Salesforce認定資格保有者が貴社の案件に直接対応します。',
+            title: 'Salesforce公認の専門家が直接参画',
+            desc: '代表は元Salesforce JapanのSEとして多数のCRM導入プロジェクトを経験。Salesforce認定資格保有者が貴社の案件に直接参画します。',
           },
           {
             illust: <IllustTeam />,
@@ -563,7 +563,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.9 }}
-            className="text-5xl sm:text-6xl md:text-7xl font-serif text-[#f9f9f3] mb-8 leading-[1.1] font-bold"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-[#f9f9f3] mb-8 leading-[1.15] font-bold"
           >
             働く環境に変化をもたらし<br />
             毎日を少しでも<span className="text-[#a8d878]">『楽』</span>に
@@ -613,10 +613,8 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-6">
           <FadeUp className="mb-20">
             <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">What We Do</p>
-            <h2 className="text-5xl md:text-7xl font-serif font-bold text-[#192c0d] leading-[0.92] mb-6">
-              CRMで<br />
-              <span className="text-[#3a4a1d]">ビジネスを</span><br />
-              変える
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-[#192c0d] leading-tight mb-6">
+              CRMで<span className="text-[#3a4a1d]">ビジネスを</span>変える
             </h2>
             <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full" />
           </FadeUp>
@@ -758,7 +756,7 @@ const About = () => (
         <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           className="text-[#3a4a1d] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">About</motion.span>
         <motion.h2 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-          className="text-6xl md:text-7xl font-serif text-[#192c0d] mb-8 leading-tight">会社について</motion.h2>
+          className="text-4xl sm:text-5xl md:text-6xl font-serif text-[#192c0d] mb-8 leading-tight">会社について</motion.h2>
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
           className="text-[#666] text-base md:text-lg leading-loose max-w-2xl">
           S＆S合同会社のミッション・ストーリー・行動指針と会社概要をご紹介します。
@@ -771,7 +769,7 @@ const About = () => (
       <div className="max-w-4xl mx-auto px-6">
         <FadeUp className="text-center mb-20">
           <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">Corporate Identity</p>
-          <h3 className="text-5xl md:text-6xl font-serif font-bold text-[#192c0d] leading-[0.95] mb-6">企業理念</h3>
+          <h3 className="text-4xl sm:text-5xl md:text-5xl font-serif font-bold text-[#192c0d] leading-tight mb-6">企業理念</h3>
           <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full mx-auto" />
         </FadeUp>
 
@@ -845,7 +843,7 @@ const About = () => (
       <div className="max-w-3xl mx-auto px-6">
         <FadeUp className="text-center mb-16">
           <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">Company</p>
-          <h3 className="text-5xl md:text-6xl font-serif font-bold text-[#192c0d] leading-[0.95] mb-6">会社概要</h3>
+          <h3 className="text-4xl sm:text-5xl md:text-5xl font-serif font-bold text-[#192c0d] leading-tight mb-6">会社概要</h3>
           <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full mx-auto" />
         </FadeUp>
 
@@ -914,11 +912,10 @@ const Service = () => {
           <motion.span initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
             className="text-[#3a4a1d] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">Our Service</motion.span>
           <motion.h2 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="text-6xl md:text-8xl font-serif text-[#192c0d] leading-tight mb-8">CRM<br />Consulting</motion.h2>
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[#192c0d] leading-tight mb-8">CRM<br className="hidden sm:block" />Consulting</motion.h2>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
-            className="text-[#666] text-lg max-w-2xl leading-loose">
-            Salesforce・HubSpot・Kintoneなど、主要CRMの導入から活用・保守運用まで。<br />
-            貴社のフェーズに合わせた柔軟なサポートを提供します。
+            className="text-[#666] text-base md:text-lg max-w-2xl leading-loose">
+            Salesforce・HubSpot・Kintoneなど、主要CRMの導入から活用・保守運用まで。貴社のフェーズに合わせた柔軟なサポートを提供します。
           </motion.p>
         </div>
       </div>
@@ -1147,7 +1144,7 @@ const Contact = () => {
           <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }}
             className="text-[#3a4a1d] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">Get in Touch</motion.span>
           <motion.h2 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="text-6xl md:text-7xl font-serif text-[#192c0d] mb-8">お問い合わせ</motion.h2>
+            className="text-4xl sm:text-5xl md:text-6xl font-serif text-[#192c0d] mb-8 leading-tight">お問い合わせ</motion.h2>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
             className="text-[#666] leading-loose text-base md:text-lg">
             CRM導入・DX推進に関するご相談は下記フォームより<br />
