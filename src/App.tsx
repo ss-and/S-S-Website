@@ -5,7 +5,7 @@ import {
   ArrowRight, Menu, X,
   Users, Layers, CheckCircle,
   Database, HelpCircle, Zap,
-  Target, Instagram
+  Target, Instagram, MessageSquare, Send
 } from 'lucide-react';
 
 // ---- Brand Logo ----
@@ -455,6 +455,153 @@ const WhyChooseUs = () => (
   </section>
 );
 
+// ---- ChatBot ----
+const faqList = [
+  { keys: ['salesforce', 'セールスフォース', 'sf', 'sales cloud', 'service cloud', 'agentforce', 'experience cloud', 'marketing cloud'],
+    ans: 'SalesforceはS&Sの得意領域です。Sales Cloud / Service Cloud / Marketing Cloud / Experience Cloud / Agentforceなど全製品に対応しています。Salesforce認定資格を持つ専門家が直接対応します。' },
+  { keys: ['hubspot', 'ハブスポット'],
+    ans: 'HubSpotはマーケティング・営業・CSが一体化したCRMです。Marketing Hub / Sales Hub / Service Hubの導入・設定・運用支援を行っています。' },
+  { keys: ['kintone', 'キントーン', 'サイボウズ'],
+    ans: 'kintoneはサイボウズのノーコードプラットフォームです。CRMアプリの構築・外部システム連携・自動化のサポートが可能です。' },
+  { keys: ['料金', '費用', 'コスト', '価格', 'いくら'],
+    ans: 'プロジェクトの規模・期間・内容によって異なります。初回相談は無料ですので、まずはお気軽にお問い合わせください。' },
+  { keys: ['期間', 'どのくらい', 'スケジュール', '工期'],
+    ans: '最短1ヶ月から対応可能です。標準的な導入は3〜6ヶ月程度ですが、規模によって変わります。アジャイルに進めるので途中変更にも対応できます。' },
+  { keys: ['導入', '始め', 'スタート', '検討', '初めて'],
+    ans: 'まずは無料ヒアリングから。現状の課題・目標・既存システムを整理した上で、最適なCRMとロードマップをご提案します。お問い合わせフォームからご連絡ください。' },
+  { keys: ['保守', '運用', 'サポート', 'メンテ', '障害'],
+    ans: '導入後の定着化支援・機能追加・システム監視・月次改善提案など、長期パートナーとして伴走します。スポット対応も可能です。' },
+  { keys: ['資格', '認定', '実績', '経験'],
+    ans: '代表は元Salesforce JapanのSEで複数の認定資格を保有。チームはSIer・構築パートナー出身の実践経験者で構成されています。' },
+  { keys: ['ai', 'エージェント', '自動化', '生成ai', 'llm'],
+    ans: 'SalesforceのAgentforceや生成AIを活用したCRM連携・業務自動化の支援も行っています。Claude Codeを使ったカスタム開発も対応可能です。' },
+  { keys: ['データ移行', '移行', 'migration', '乗り換え', '引越し'],
+    ans: '既存CRMからのデータ移行も対応しています。データクレンジング・マッピング・テストまで一貫してサポートします。' },
+  { keys: ['会社', 'どんな', 'どういう', 's&s', 'エスアンドエス'],
+    ans: 'S&S合同会社は渋谷区を拠点とするCRM専門のコンサルティング会社です。元Salesforce SE出身の代表を中心に、SIer・構築パートナー出身のメンバーが在籍しています。' },
+  { keys: ['連絡', 'お問い合わせ', 'contact', '相談', 'メール'],
+    ans: 'お問い合わせフォームからご連絡ください（画面上部のメニューから）。初回相談無料・通常2営業日以内にご返信します。' },
+];
+
+const ChatBot = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([
+    { role: 'bot', text: 'こんにちは！S&SのCRMサポートBotです。\nSalesforce・HubSpot・Kintoneなど、CRMに関するご質問にお答えします。' },
+  ]);
+  const [input, setInput] = useState('');
+  const endRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages]);
+
+  const getAnswer = (text: string) => {
+    const q = text.toLowerCase();
+    for (const faq of faqList) {
+      if (faq.keys.some(k => q.includes(k))) return faq.ans;
+    }
+    return 'ご質問ありがとうございます。より詳しい内容はお問い合わせフォームからご相談ください。専門スタッフが2営業日以内にご回答します。';
+  };
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    const userText = input.trim();
+    setInput('');
+    setMessages(prev => [
+      ...prev,
+      { role: 'user', text: userText },
+      { role: 'bot', text: getAnswer(userText) },
+    ]);
+  };
+
+  return (
+    <>
+      {/* Floating button */}
+      <motion.button
+        whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}
+        onClick={() => setIsOpen(v => !v)}
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#192c0d] rounded-full flex items-center justify-center shadow-2xl border-2 border-[#a8d878]/20"
+        aria-label="チャットを開く"
+      >
+        <AnimatePresence mode="wait">
+          {isOpen
+            ? <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}><X size={22} className="text-[#a8d878]" /></motion.div>
+            : <motion.div key="chat" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}><MessageSquare size={22} className="text-[#a8d878]" /></motion.div>
+          }
+        </AnimatePresence>
+      </motion.button>
+
+      {/* Chat window */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.95 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
+            className="fixed bottom-24 right-6 z-50 w-[calc(100vw-48px)] sm:w-96 bg-white rounded-3xl shadow-2xl overflow-hidden border border-[#3a4a1d]/8 flex flex-col"
+            style={{ maxHeight: '72vh' }}
+          >
+            {/* Header */}
+            <div className="bg-[#192c0d] px-5 py-4 flex items-center gap-3 shrink-0">
+              <div className="w-9 h-9 rounded-full bg-[#a8d878]/15 border border-[#a8d878]/30 flex items-center justify-center shrink-0">
+                <MessageSquare size={15} className="text-[#a8d878]" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-bold text-sm leading-none mb-0.5">S&S CRM Bot</p>
+                <p className="text-[#a8d878]/70 text-[10px] tracking-wide">Powered by Claude Code</p>
+              </div>
+              <span className="flex items-center gap-1.5 text-[#a8d878] text-xs shrink-0">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#a8d878] animate-pulse" />
+                オンライン
+              </span>
+            </div>
+
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-3">
+              {messages.map((msg, i) => (
+                <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-line ${
+                    msg.role === 'user'
+                      ? 'bg-[#192c0d] text-[#f9f9f3] rounded-br-none'
+                      : 'bg-[#f0f5eb] text-[#333] rounded-bl-none border border-[#3a4a1d]/8'
+                  }`}>
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
+              <div ref={endRef} />
+            </div>
+
+            {/* Suggestions */}
+            <div className="px-4 pb-2 flex gap-2 overflow-x-auto shrink-0">
+              {['料金について', '導入期間', 'Salesforceとは'].map(s => (
+                <button key={s} onClick={() => setInput(s)}
+                  className="shrink-0 text-xs px-3 py-1.5 rounded-full bg-[#f0f5eb] text-[#3a4a1d] border border-[#3a4a1d]/12 hover:bg-[#e4f0d8] transition-colors whitespace-nowrap">
+                  {s}
+                </button>
+              ))}
+            </div>
+
+            {/* Input */}
+            <form onSubmit={handleSubmit} className="p-3 border-t border-[#3a4a1d]/8 flex gap-2 shrink-0">
+              <input
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                placeholder="CRMについて質問する..."
+                className="flex-1 text-sm px-4 py-2.5 rounded-full bg-[#f9f9f3] border border-[#3a4a1d]/12 focus:outline-none focus:border-[#3a4a1d]/30 transition-colors"
+              />
+              <button type="submit" disabled={!input.trim()}
+                className="w-10 h-10 rounded-full bg-[#192c0d] flex items-center justify-center shrink-0 hover:bg-[#2a4a18] disabled:opacity-40 disabled:cursor-not-allowed transition-colors">
+                <Send size={14} className="text-[#a8d878]" />
+              </button>
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
 // ---- Footer ----
 const Footer = () => {
   const navigate = useNavigate();
@@ -533,8 +680,8 @@ const Home = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full">
 
-      {/* Hero */}
-      <section className="relative min-h-screen bg-[#192c0d] flex items-center justify-center overflow-hidden">
+      {/* Hero — negative margin extends section behind sticky transparent navbar */}
+      <section className="relative min-h-screen bg-[#192c0d] flex items-center justify-center overflow-hidden -mt-20 pt-20">
         <svg className="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none">
           <defs>
             <pattern id="dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
@@ -1267,6 +1414,7 @@ const AppInner = ({ loading, setLoading }: { loading: boolean; setLoading: (v: b
             </AnimatePresence>
           </main>
           <Footer />
+          <ChatBot />
         </motion.div>
       )}
     </div>
