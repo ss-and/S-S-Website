@@ -9,49 +9,19 @@ import {
 } from 'lucide-react';
 
 // ---- Brand Logo ----
-const BrandLogo = ({ size = 'medium', showTagline = false, invert = false }: {
+const BrandLogo = ({ size = 'medium', invert = false }: {
   size?: 'small' | 'medium' | 'large';
   showTagline?: boolean;
   invert?: boolean;
 }) => {
-  const [imageError, setImageError] = useState(false);
-  const sizeClasses = {
-    small: { width: 'w-24', text: 'text-xl', ruby: 'text-[6px] -top-2 -right-4' },
-    medium: { width: 'w-40', text: 'text-3xl', ruby: 'text-[8px] -top-3 -right-6' },
-    large: { width: 'w-80', text: 'text-6xl', ruby: 'text-xs -top-5 -right-10' },
-  };
-  const s = sizeClasses[size];
-  const color = invert ? 'text-[#f9f9f3]' : 'text-[#3a4a1d]';
-
-  if (imageError) {
-    return (
-      <div className="flex flex-col items-center justify-center">
-        <div className="relative inline-block">
-          <h1 className={`font-serif font-bold tracking-widest leading-none ${s.text} ${color}`}>S & S</h1>
-          <span className={`absolute font-sans font-bold tracking-widest whitespace-nowrap ${s.ruby} ${color}`}>エスアンドエス</span>
-        </div>
-        {showTagline && size === 'large' && (
-          <div className="flex flex-col items-center w-full mt-2">
-            <div className={`w-full h-px my-2 opacity-80 ${invert ? 'bg-[#f9f9f3]' : 'bg-[#3a4a1d]'}`} />
-            <p className={`font-sans font-bold tracking-tight uppercase whitespace-nowrap text-xs ${color}`}>
-              Success Strategy Synergy Simple Side-by-side Straight Smile
-            </p>
-          </div>
-        )}
-      </div>
-    );
-  }
-
+  const widthClass = { small: 'w-28', medium: 'w-44', large: 'w-72' }[size];
+  const src = invert ? '/images/logo-dark.png' : '/images/logo-light.png';
   return (
-    <div className="flex flex-col items-center justify-center">
-      <img
-        src="/images/logo.png"
-        alt="S&S エスアンドエス"
-        className={`${s.width} h-auto object-contain`}
-        style={invert ? { filter: 'brightness(0) invert(1)' } : undefined}
-        onError={() => setImageError(true)}
-      />
-    </div>
+    <img
+      src={src}
+      alt="S&S エスアンドエス"
+      className={`${widthClass} h-auto object-contain`}
+    />
   );
 };
 
@@ -66,7 +36,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.8, ease: 'easeInOut' } }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#f9f9f3]"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-white"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
