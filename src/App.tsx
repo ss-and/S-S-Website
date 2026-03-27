@@ -1505,7 +1505,7 @@ const AppInner = ({ loading, setLoading }: { loading: boolean; setLoading: (v: b
   }, [location]);
 
   return (
-    <div className="min-h-screen bg-[#f9f9f3] font-sans text-[#333] selection:bg-[#3a4a1d] selection:text-[#f9f9f3]">
+    <div className={`min-h-screen font-sans text-[#333] selection:bg-[#3a4a1d] selection:text-[#f9f9f3] ${location.pathname === '/' ? 'bg-[#192c0d]' : 'bg-[#f9f9f3]'}`}>
       <AnimatePresence>
         {loading && <SplashScreen onComplete={() => setLoading(false)} />}
       </AnimatePresence>
