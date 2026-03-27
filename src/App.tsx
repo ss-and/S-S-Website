@@ -538,6 +538,7 @@ const faqList = [
 ];
 
 const ChatBot = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     { role: 'bot', text: 'こんにちは！S&SのCRMアシスタントです。\nSalesforce・HubSpot・Kintoneなどの導入・活用についてお気軽にご質問ください。' },
@@ -547,6 +548,18 @@ const ChatBot = () => {
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages, isTyping]);
+
+  const userMessages = messages.filter(m => m.role === 'user');
+
+  const handleInquiry = () => {
+    const summary = messages
+      .filter(m => m.role === 'user' || m.role === 'bot')
+      .map(m => m.role === 'user' ? `【ご質問】${m.text}` : `【回答概要】${m.text.split('\n')[0]}`)
+      .join('\n');
+    const description = `＝チャットでのご相談内容＝\n${summary}\n\n（上記の内容について、さらに詳しくご相談したい場合はこちらにご記入ください）`;
+    setIsOpen(false);
+    navigate('/contact', { state: { description } });
+  };
 
   const getAnswer = (text: string) => {
     const q = text.toLowerCase();
@@ -667,6 +680,19 @@ const ChatBot = () => {
               ))}
             </div>
 
+            {/* Chat → Contact form handoff */}
+            {userMessages.length >= 1 && (
+              <div className="px-3 pb-3 shrink-0">
+                <button
+                  onClick={handleInquiry}
+                  className="w-full text-xs py-2.5 rounded-full bg-[#192c0d] text-[#a8d878] font-bold tracking-wide hover:bg-[#2a4a18] transition-colors flex items-center justify-center gap-2"
+                >
+                  <ArrowRight size={13} />
+                  この内容でお問い合わせフォームへ
+                </button>
+              </div>
+            )}
+
             {/* Input */}
             <form onSubmit={handleSubmit} className="p-3 border-t border-[#3a4a1d]/8 flex gap-2 shrink-0">
               <input
@@ -700,8 +726,7 @@ const Footer = () => {
               <BrandLogo size="small" />
             </div>
             <p className="text-sm leading-loose text-[#f9f9f3]/45 max-w-sm">
-              CRMの導入・構築・保守運用を通じて、<br />
-              お客様のビジネス課題を一気通貫で解決します。
+              CRMの導入・構築・保守運用を通じて、お客様のビジネス課題を一気通貫で解決します。
             </p>
           </div>
           <div>
@@ -808,8 +833,7 @@ const Home = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="text-base md:text-lg text-[#f9f9f3]/65 mb-12 max-w-2xl mx-auto leading-loose"
           >
-            CRMの導入・構築・保守運用を中心に<br />
-            S＆S合同会社が貴社のビジネス課題を一気通貫で解決します
+            CRMの導入・構築・保守運用を中心にS＆S合同会社が貴社のビジネス課題を一気通貫で解決します
           </motion.p>
 
           <motion.div
@@ -846,7 +870,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-6">
           <FadeUp className="mb-20">
             <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">What We Do</p>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-[#192c0d] leading-tight mb-6">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-[#192c0d] leading-tight mb-6">
               CRMで<span className="text-[#3a4a1d]">ビジネスを</span>変える
             </h2>
             <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full" />
@@ -963,8 +987,7 @@ const Home = () => {
               CRMのことなら<br />まずはご相談を
             </h2>
             <p className="text-[#f9f9f3]/55 text-base md:text-lg mb-10 leading-loose">
-              導入を検討中の方から、既存システムの改善をお考えの方まで<br />
-              初回のご相談は無料で承っております
+              導入を検討中の方から、既存システムの改善をお考えの方まで。初回のご相談は無料で承っております
             </p>
             <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
               onClick={() => navigate('/contact')}
@@ -1330,8 +1353,10 @@ const Service = () => {
 
 // ---- Contact ----
 const Contact = () => {
+  const location = useLocation();
+  const prefill = (location.state as { description?: string } | null)?.description ?? '';
   const [formData, setFormData] = useState({
-    lastname: '', firstname: '', company: '', email: '', phone: '', description: ''
+    lastname: '', firstname: '', company: '', email: '', phone: '', description: prefill
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -1380,8 +1405,7 @@ const Contact = () => {
             className="text-4xl sm:text-5xl md:text-6xl font-serif text-[#192c0d] mb-8 leading-tight">お問い合わせ</motion.h2>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
             className="text-[#666] leading-loose text-base md:text-lg">
-            CRM導入・DX推進に関するご相談は下記フォームより<br />
-            初回相談無料・通常2営業日以内にご連絡いたします
+            CRM導入・DX推進に関するご相談は下記フォームより。初回相談無料・通常2営業日以内にご連絡いたします
           </motion.p>
         </div>
       </div>
