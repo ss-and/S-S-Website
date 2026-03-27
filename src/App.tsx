@@ -905,7 +905,7 @@ const Home = () => {
               </h2>
               <p className="text-[#555] leading-loose text-base md:text-lg mb-10">
                 S＆S合同会社は、CRM（Salesforce・HubSpot・Kintone等）の導入・構築・保守運用を専門とするコンサルティング会社です。
-                元Salesforce SEの代表を中心に、エンジニア・SIer・構築パートナー出身のメンバーが、戦略から実装・定着化まで一貫してサポートします。
+                元Salesforce Japan出身の代表を中心に、エンジニア・SIer・構築パートナー出身のメンバーが、戦略から実装・定着化まで一貫してサポートします。
               </p>
               <button
                 onClick={() => navigate('/about')}
@@ -918,7 +918,7 @@ const Home = () => {
 
             <div className="grid grid-cols-2 gap-4">
               {[
-                { label: 'Salesforce', desc: '元Salesforce SE出身の代表が対応', icon: <Database size={22} /> },
+                { label: 'Salesforce', desc: '元Salesforce Japan出身の代表が対応', icon: <Database size={22} /> },
                 { label: 'Speed', desc: '少数精鋭のスピード感ある実行力', icon: <Zap size={22} /> },
                 { label: 'All-in-One', desc: '導入から運用まで一気通貫', icon: <CheckCircle size={22} /> },
                 { label: 'Team', desc: 'SIer・パートナー出身の多彩なチーム', icon: <Users size={22} /> },
@@ -957,7 +957,7 @@ const Home = () => {
               CRMのことなら<br />まずはご相談を
             </h2>
             <p className="text-[#f9f9f3]/55 text-base md:text-lg mb-10 leading-loose">
-              導入を検討中の方から、既存システムの改善をお考えの方まで。初回のご相談は無料で承っております
+              導入を検討中の方から、既存システムの改善をお考えの方まで。初回のご相談は無料で承っております。
             </p>
             <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
               onClick={() => navigate('/contact')}
@@ -1138,7 +1138,7 @@ const Service = () => {
           <motion.span initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
             className="text-[#3a4a1d] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">Our Service</motion.span>
           <motion.h2 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[#192c0d] leading-tight mb-8">CRM<br className="hidden sm:block" />Consulting</motion.h2>
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[#192c0d] leading-tight mb-8">CRM{' '}<br className="hidden sm:block" />Consulting</motion.h2>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
             className="text-[#666] text-base md:text-lg max-w-2xl leading-loose">
             Salesforce・HubSpot・Kintoneなど、主要CRMの導入から活用・保守運用まで。貴社のフェーズに合わせた柔軟なサポートを提供します。
