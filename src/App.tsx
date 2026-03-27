@@ -752,7 +752,6 @@ const Footer = () => {
             <h4 className="font-bold text-sm mb-6 text-[#f9f9f3]/60 tracking-widest uppercase">Contact</h4>
             <div className="flex flex-col gap-3 text-sm text-[#f9f9f3]/45">
               <p className="leading-relaxed">〒150-0043<br />東京都渋谷区道玄坂1丁目10番8号<br />渋谷道玄坂東急ビル2F−C</p>
-              <p>ssakaino@ss-and.com</p>
               <button
                 onClick={() => navigate('/contact')}
                 className="text-left underline hover:text-white hover:opacity-100 transition-all mt-2 text-xs"
@@ -821,7 +820,8 @@ const Home = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.9 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-[#f9f9f3] mb-8 leading-[1.15] font-bold"
+            className="font-serif text-[#f9f9f3] mb-8 font-bold"
+            style={{ fontSize: 'clamp(1.6rem, 6.8vw, 4.5rem)', lineHeight: 1.2 }}
           >
             働く環境に変化をもたらし<br />
             毎日を少しでも<span className="text-[#a8d878]">『楽』</span>に
