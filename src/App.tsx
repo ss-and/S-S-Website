@@ -1096,6 +1096,7 @@ const About = () => (
               ),
             },
             { label: '資本金', value: <span>1,000,000円</span> },
+            { label: '取引銀行', value: <span>三井住友銀行</span> },
             { label: '従業員数', value: <span>10名（業務委託含む）</span> },
             {
               label: '事業内容',
