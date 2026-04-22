@@ -1419,40 +1419,40 @@ const Contact = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <label htmlFor="last_name" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">名字 <span className="text-[#3a4a1d]">*</span></label>
-                <input id="last_name" name="last_name" type="text" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+                <input id="last_name" name="last_name" type="text" autoComplete="family-name" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
               </div>
               <div>
                 <label htmlFor="first_name" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">名前 <span className="text-[#3a4a1d]">*</span></label>
-                <input id="first_name" name="first_name" type="text" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+                <input id="first_name" name="first_name" type="text" autoComplete="given-name" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <label htmlFor="company" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">会社名 <span className="text-[#3a4a1d]">*</span></label>
-                <input id="company" name="company" type="text" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+                <input id="company" name="company" type="text" autoComplete="organization" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
                 <p className="text-xs text-[#666] mt-2">法人でない場合は、こちらに個人名（名字と名前）をご記入ください。</p>
               </div>
               <div>
                 <label htmlFor="email" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">メールアドレス <span className="text-[#3a4a1d]">*</span></label>
-                <input id="email" name="email" type="email" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+                <input id="email" name="email" type="email" autoComplete="email" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <label htmlFor="mobile" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">携帯</label>
-                <input id="mobile" name="mobile" type="text" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+                <input id="mobile" name="mobile" type="text" autoComplete="tel" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
               </div>
               <div>
                 <label htmlFor="city" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">市区郡</label>
-                <input id="city" name="city" type="text" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+                <input id="city" name="city" type="text" autoComplete="address-level2" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">お問い合わせ内容</label>
-              <textarea name="description" rows={6} placeholder="ご相談内容をご記入ください" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors resize-none text-sm" />
+              <label htmlFor="description" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">お問い合わせ内容</label>
+              <textarea id="description" name="description" rows={6} placeholder="ご相談内容をご記入ください" autoComplete="off" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors resize-none text-sm" />
             </div>
 
             <div className="text-center">
