@@ -68,9 +68,11 @@
       "sameAs": []
     }
     </script>
-  <!-- WebToLead / reCAPTCHA -->
-  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- WebToLead / reCAPTCHA -->
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <!-- Temporarily disabled reCAPTCHA script to avoid site-key errors in production.
+      Remove this comment and restore the script tag after reCAPTCHA key is fixed. -->
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
   <script>
     // Update captcha_settings.ts periodically only when elements exist.
     function timestamp() {
