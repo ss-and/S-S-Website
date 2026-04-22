@@ -1324,12 +1324,7 @@ const Service = () => {
 
 // ---- Contact ----
 const Contact = () => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const prefill = (location.state as { description?: string } | null)?.description ?? '';
-  const [formData, setFormData] = useState({
-    lastname: '', firstname: '', company: '', email: '', phone: '', description: prefill
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [retURL, setRetURL] = useState<string>('');
@@ -1371,39 +1366,7 @@ const Contact = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    const iframe = document.createElement('iframe');
-    iframe.name = 'hidden_iframe';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = 'https://script.google.com/macros/s/AKfycbw1Us_NobvOU50BBvYsjI9eCucHxOqC3PICOU6rD9G-p2-ktS06wE4XySbsJKHvzqnj/exec';
-    form.target = 'hidden_iframe';
-
-    ['lastname', 'firstname', 'company', 'email', 'phone', 'description'].forEach(field => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = field;
-      input.value = formData[field as keyof typeof formData];
-      form.appendChild(input);
-    });
-
-    document.body.appendChild(form);
-    form.submit();
-
-    setTimeout(() => {
-      document.body.removeChild(form);
-      document.body.removeChild(iframe);
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ lastname: '', firstname: '', company: '', email: '', phone: '', description: '' });
-    }, 2000);
-  };
+  
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full">
