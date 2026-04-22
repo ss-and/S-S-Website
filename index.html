@@ -76,15 +76,17 @@
     function timestamp() {
       try {
         var response = document.getElementById("g-recaptcha-response");
-        // guard: if response is present and has a value, skip updating
-        if (response && response.value && response.value.trim() !== "") return;
+        var responseValue = response?.value;
+        if (typeof responseValue === 'string' && responseValue.trim() !== "") return;
 
         var captchaEls = document.getElementsByName("captcha_settings");
-        if (!captchaEls || !captchaEls[0] || !captchaEls[0].value) return;
+        var cap0 = captchaEls?.[0];
+        var cap0Value = cap0?.value;
+        if (typeof cap0Value !== 'string' || cap0Value.trim() === '') return;
 
-        var elems = JSON.parse(captchaEls[0].value);
+        var elems = JSON.parse(cap0Value);
         elems["ts"] = JSON.stringify(new Date().getTime());
-        captchaEls[0].value = JSON.stringify(elems);
+        cap0.value = JSON.stringify(elems);
       } catch (e) {
         // ignore errors in this debug/timestamp updater
       }
