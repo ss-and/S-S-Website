@@ -72,7 +72,24 @@
   <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
-    function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500);
+    // Update captcha_settings.ts periodically only when elements exist.
+    function timestamp() {
+      try {
+        var response = document.getElementById("g-recaptcha-response");
+        // guard: if response is present and has a value, skip updating
+        if (response && response.value && response.value.trim() !== "") return;
+
+        var captchaEls = document.getElementsByName("captcha_settings");
+        if (!captchaEls || !captchaEls[0] || !captchaEls[0].value) return;
+
+        var elems = JSON.parse(captchaEls[0].value);
+        elems["ts"] = JSON.stringify(new Date().getTime());
+        captchaEls[0].value = JSON.stringify(elems);
+      } catch (e) {
+        // ignore errors in this debug/timestamp updater
+      }
+    }
+    setInterval(timestamp, 500);
   </script>
 </head>
 
