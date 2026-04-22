@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import {
   ArrowRight, Menu, X,
@@ -1325,12 +1325,51 @@ const Service = () => {
 // ---- Contact ----
 const Contact = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const prefill = (location.state as { description?: string } | null)?.description ?? '';
   const [formData, setFormData] = useState({
     lastname: '', firstname: '', company: '', email: '', phone: '', description: prefill
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [retURL, setRetURL] = useState<string>('');
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    // Ensure Salesforce retURL points to our /thanks page and render reCAPTCHA when available
+    const origin = window.location.origin;
+    setRetURL(`${origin}/thanks`);
+    const retEl = document.querySelector('input[name="retURL"]') as HTMLInputElement | null;
+    if (retEl) retEl.value = `${origin}/thanks`;
+
+    // Try to render grecaptcha if it's loaded; if not, poll until available (max ~10s)
+    const tryRender = () => {
+      const w: any = window as any;
+      const container = document.getElementById('recaptcha-container');
+      if (w.grecaptcha && container && (container.childElementCount === 0)) {
+        try {
+          // Use Google's test key on localhost to avoid "invalid key type" errors during development.
+          const PROD_SITEKEY = (import.meta as any).env?.VITE_RECAPTCHA_SITEKEY || '6LfJBsQsAAAAAGZJ-pys1KU6EtQWIwS90j090749';
+          const DEV_TEST_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
+          const host = window.location.hostname || '';
+          const sitekey = (host.includes('localhost') || host === '127.0.0.1') ? DEV_TEST_KEY : PROD_SITEKEY;
+          w.grecaptcha.render(container, { sitekey });
+        } catch (err) {
+          // ignore render errors
+        }
+        return true;
+      }
+      return false;
+    };
+
+    let attempts = 0;
+    const interval = setInterval(() => {
+      attempts += 1;
+      if (tryRender() || attempts > 50) clearInterval(interval);
+    }, 200);
+    tryRender();
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -1396,69 +1435,94 @@ const Contact = () => {
             </button>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit}
+          <form
+            action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Dd500000Fup0n"
+            method="POST"
+            target="hidden_iframe"
+            onSubmit={() => { setSubmitted(true); setIsSubmitting(true); }}
             className={`bg-white p-10 md:p-16 rounded-3xl shadow-xl border space-y-8 ${submitStatus === 'error' ? 'border-red-300' : 'border-[#3a4a1d]/8'}`}>
+            <input type="hidden" name="captcha_settings" value='{"keyname":"reCAPTCHA","fallback":"true","orgId":"00Dd500000Fup0n","ts":""}' />
+            <input type="hidden" name="oid" value="00Dd500000Fup0n" />
+            <input type="hidden" name="retURL" value={retURL} />
+
             <div className="grid md:grid-cols-2 gap-8">
-              {[
-                { label: '姓', field: 'lastname', placeholder: '山田', required: true },
-                { label: '名', field: 'firstname', placeholder: '太郎', required: true },
-              ].map(({ label, field, placeholder, required }) => (
-                <div key={field}>
-                  <label className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">
-                    {label} {required && <span className="text-[#3a4a1d]">*</span>}
-                  </label>
-                  <input type="text" required={required} value={formData[field as keyof typeof formData]}
-                    onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
-                    placeholder={placeholder}
-                    className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
-                </div>
-              ))}
+              <div>
+                <label htmlFor="last_name" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">姓 <span className="text-[#3a4a1d]">*</span></label>
+                <input id="last_name" name="last_name" type="text" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+              </div>
+              <div>
+                <label htmlFor="first_name" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">名 <span className="text-[#3a4a1d]">*</span></label>
+                <input id="first_name" name="first_name" type="text" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+              </div>
             </div>
+
             <div className="grid md:grid-cols-2 gap-8">
-              {[
-                { label: '会社名', field: 'company', placeholder: '株式会社〇〇', type: 'text' },
-                { label: '電話番号', field: 'phone', placeholder: '03-1234-5678', type: 'tel' },
-              ].map(({ label, field, placeholder, type }) => (
-                <div key={field}>
-                  <label className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">{label}</label>
-                  <input type={type} value={formData[field as keyof typeof formData]}
-                    onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
-                    placeholder={placeholder}
-                    className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
-                </div>
-              ))}
+              <div>
+                <label htmlFor="company" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">会社名</label>
+                <input id="company" name="company" type="text" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">メールアドレス <span className="text-[#3a4a1d]">*</span></label>
+                <input id="email" name="email" type="email" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+              </div>
             </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <label htmlFor="city" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">市区郡</label>
+                <input id="city" name="city" type="text" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+              </div>
+              <div>
+                <label htmlFor="state" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">都道府県</label>
+                <input id="state" name="state" type="text" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+              </div>
+            </div>
+
             <div>
-              <label className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">
-                メールアドレス <span className="text-[#3a4a1d]">*</span>
-              </label>
-              <input type="email" required value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="info@example.com"
-                className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+              <label className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">お問い合わせ内容</label>
+              <textarea name="description" rows={6} placeholder="ご相談内容をご記入ください" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors resize-none text-sm" />
             </div>
-            <div>
-              <label className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">
-                お問い合わせ内容 <span className="text-[#3a4a1d]">*</span>
-              </label>
-              <textarea rows={6} required value={formData.description}
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                placeholder="ご相談内容をご記入ください"
-                className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors resize-none text-sm" />
+
+            <div className="text-center">
+              <div id="recaptcha-container" className="inline-block mb-6" />
+              <div>
+                <button type="submit" className="w-full md:w-auto bg-[#192c0d] text-[#f9f9f3] px-16 py-5 rounded-full font-bold tracking-widest hover:bg-[#1e3610] transition-all shadow-lg disabled:opacity-50 text-sm">{isSubmitting ? '送信中...' : '送信する'}</button>
+              </div>
             </div>
-            <div className="text-center pt-4">
-              <motion.button type="submit" disabled={isSubmitting}
-                whileHover={{ scale: isSubmitting ? 1 : 1.03 }} whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
-                className="w-full md:w-auto bg-[#192c0d] text-[#f9f9f3] px-16 py-5 rounded-full font-bold tracking-widest hover:bg-[#1e3610] transition-all shadow-lg disabled:opacity-50 text-sm">
-                {isSubmitting ? '送信中...' : '送信する'}
-              </motion.button>
-            </div>
+            <iframe name="hidden_iframe" id="hidden_iframe" style={{ display: 'none' }} onLoad={() => {
+              if (submitted) {
+                // navigate to thanks after iframe loads response from Salesforce
+                navigate('/thanks');
+                setSubmitted(false);
+                setIsSubmitting(false);
+              }
+            }} />
           </form>
         )}
       </div>
     </motion.div>
   );
 };
+
+  // ---- Thanks ----
+  const Thanks = () => {
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full py-28 md:py-40">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="bg-[#f0f5eb] p-16 rounded-3xl border border-[#3a4a1d]/20 text-center">
+            <div className="w-16 h-16 rounded-full bg-[#192c0d] flex items-center justify-center mx-auto mb-8">
+              <CheckCircle className="w-8 h-8 text-[#a8d878]" />
+            </div>
+            <h3 className="text-2xl font-serif text-[#192c0d] mb-4">送信が完了しました</h3>
+            <p className="text-[#555] leading-relaxed mb-2">お問い合わせありがとうございます。内容を確認のうえ、2営業日以内にご連絡いたします。</p>
+            <div className="mt-8">
+              <Link to="/" className="text-[#3a4a1d] font-bold underline underline-offset-4 hover:opacity-70 transition-opacity text-sm">トップに戻る</Link>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    );
+  };
 
 // ---- App Inner (uses Router hooks) ----
 const AppInner = ({ loading, setLoading }: { loading: boolean; setLoading: (v: boolean) => void }) => {
@@ -1470,6 +1534,7 @@ const AppInner = ({ loading, setLoading }: { loading: boolean; setLoading: (v: b
       '/about': '会社について | S＆S合同会社',
       '/service': 'サービス | S＆S合同会社 - CRM導入・構築・保守',
       '/contact': 'お問い合わせ | S＆S合同会社',
+      '/thanks': 'お問い合わせありがとうございました | S＆S合同会社',
     };
     document.title = titles[location.pathname] || 'S＆S合同会社';
     window.scrollTo(0, 0);
@@ -1491,6 +1556,7 @@ const AppInner = ({ loading, setLoading }: { loading: boolean; setLoading: (v: b
                 <Route path="/about" element={<About />} />
                 <Route path="/service" element={<Service />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/thanks" element={<Thanks />} />
               </Routes>
             </AnimatePresence>
           </main>
