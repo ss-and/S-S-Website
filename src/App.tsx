@@ -1345,6 +1345,17 @@ const Contact = () => {
           const DEV_TEST_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
           const host = window.location.hostname || '';
           const sitekey = (host.includes('localhost') || host === '127.0.0.1') ? DEV_TEST_KEY : PROD_SITEKEY;
+          // Debug: expose which sitekey is being used at runtime (public sitekey only)
+          try {
+            // attach to container dataset for quick inspection in DOM
+            if (container) container.setAttribute('data-recaptcha-sitekey', sitekey);
+            // also log to console so we can verify Cloudflare env var is being picked up
+            // (sitekey is public and safe to log)
+            // eslint-disable-next-line no-console
+            console.debug('[S&S] reCAPTCHA sitekey in use:', sitekey);
+          } catch (e) {
+            // ignore any debug errors
+          }
           w.grecaptcha.render(container, { sitekey });
         } catch (err) {
           // ignore render errors
