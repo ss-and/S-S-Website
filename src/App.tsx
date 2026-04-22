@@ -1327,15 +1327,12 @@ const Contact = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [retURL, setRetURL] = useState<string>('');
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     // Ensure Salesforce retURL points to our /thanks page and render reCAPTCHA when available
-    const origin = window.location.origin;
-    setRetURL(`${origin}/thanks`);
     const retEl = document.querySelector('input[name="retURL"]') as HTMLInputElement | null;
-    if (retEl) retEl.value = `${origin}/thanks`;
+    if (retEl) retEl.value = `https://ss-and.com/thanks`;
 
     // Try to render grecaptcha if it's loaded; if not, poll until available (max ~10s)
     const tryRender = () => {
@@ -1406,23 +1403,24 @@ const Contact = () => {
             className={`bg-white p-10 md:p-16 rounded-3xl shadow-xl border space-y-8 ${submitStatus === 'error' ? 'border-red-300' : 'border-[#3a4a1d]/8'}`}>
             <input type="hidden" name="captcha_settings" value='{"keyname":"reCAPTCHA","fallback":"true","orgId":"00Dd500000Fup0n","ts":""}' />
             <input type="hidden" name="oid" value="00Dd500000Fup0n" />
-            <input type="hidden" name="retURL" value={retURL} />
+            <input type="hidden" name="retURL" value="https://ss-and.com/thanks" />
 
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <label htmlFor="last_name" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">姓 <span className="text-[#3a4a1d]">*</span></label>
+                <label htmlFor="last_name" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">名字 <span className="text-[#3a4a1d]">*</span></label>
                 <input id="last_name" name="last_name" type="text" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
               </div>
               <div>
-                <label htmlFor="first_name" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">名 <span className="text-[#3a4a1d]">*</span></label>
+                <label htmlFor="first_name" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">名前 <span className="text-[#3a4a1d]">*</span></label>
                 <input id="first_name" name="first_name" type="text" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <label htmlFor="company" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">会社名</label>
-                <input id="company" name="company" type="text" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+                <label htmlFor="company" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">会社名 <span className="text-[#3a4a1d]">*</span></label>
+                <input id="company" name="company" type="text" required className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+                <p className="text-xs text-[#666] mt-2">法人でない場合は、こちらに個人名（名字と名前）をご記入ください。</p>
               </div>
               <div>
                 <label htmlFor="email" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">メールアドレス <span className="text-[#3a4a1d]">*</span></label>
@@ -1432,12 +1430,12 @@ const Contact = () => {
 
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <label htmlFor="city" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">市区郡</label>
-                <input id="city" name="city" type="text" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+                <label htmlFor="mobile" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">携帯</label>
+                <input id="mobile" name="mobile" type="text" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
               </div>
               <div>
-                <label htmlFor="state" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">都道府県</label>
-                <input id="state" name="state" type="text" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
+                <label htmlFor="city" className="block text-xs font-bold text-[#192c0d] mb-3 tracking-wider uppercase">市区郡</label>
+                <input id="city" name="city" type="text" className="w-full bg-[#f9f9f3] border-b-2 border-[#3a4a1d]/20 rounded-t-lg p-4 focus:outline-none focus:border-[#3a4a1d] transition-colors text-sm" />
               </div>
             </div>
 
