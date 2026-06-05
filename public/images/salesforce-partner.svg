@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 572" role="img" aria-label="Salesforce Partner">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf5fd"/>
+      <stop offset="1" stop-color="#9cd3f6"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="988" height="560" rx="56" fill="url(#bg)"/>
+  <!-- Salesforce cloud -->
+  <g transform="translate(150 196)" fill="#00A1E0">
+    <circle cx="70" cy="120" r="70"/>
+    <circle cx="150" cy="62" r="92"/>
+    <circle cx="262" cy="96" r="74"/>
+    <circle cx="206" cy="150" r="78"/>
+    <rect x="62" y="118" width="210" height="76" rx="38"/>
+  </g>
+  <!-- salesforce wordmark (approximate) -->
+  <text x="296" y="318" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="74" font-weight="600" font-style="italic" fill="#ffffff">salesforce</text>
+  <!-- Partner -->
+  <text x="660" y="318" font-family="Helvetica, Arial, sans-serif" font-size="118" font-weight="700" fill="#ffffff">Partner</text>
+</svg>
