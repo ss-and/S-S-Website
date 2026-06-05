@@ -1500,48 +1500,9 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    // Ensure Salesforce retURL points to our /thanks page and render reCAPTCHA when available
+    // Ensure the Salesforce Web-to-Lead retURL points to our /thanks page.
     const retEl = document.querySelector('input[name="retURL"]') as HTMLInputElement | null;
     if (retEl) retEl.value = `https://ss-and.com/thanks`;
-
-    // Try to render grecaptcha if it's loaded; if not, poll until available (max ~10s)
-    const tryRender = () => {
-      const w: any = window as any;
-      const container = document.getElementById('recaptcha-container');
-      if (w.grecaptcha && container && (container.childElementCount === 0)) {
-        try {
-          // Use Google's test key on localhost to avoid "invalid key type" errors during development.
-          const PROD_SITEKEY = (import.meta as any).env?.VITE_RECAPTCHA_SITEKEY || '6LfJBsQsAAAAAGZJ-pys1KU6EtQWIwS90j090749';
-          const DEV_TEST_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
-          const host = window.location.hostname || '';
-          const sitekey = (host.includes('localhost') || host === '127.0.0.1') ? DEV_TEST_KEY : PROD_SITEKEY;
-          // Debug: expose which sitekey is being used at runtime (public sitekey only)
-          try {
-            // attach to container dataset for quick inspection in DOM
-            if (container) container.setAttribute('data-recaptcha-sitekey', sitekey);
-            // also log to console so we can verify Cloudflare env var is being picked up
-            // (sitekey is public and safe to log)
-            // eslint-disable-next-line no-console
-            console.debug('[S&S] reCAPTCHA sitekey in use:', sitekey);
-          } catch (e) {
-            // ignore any debug errors
-          }
-          w.grecaptcha.render(container, { sitekey });
-        } catch (err) {
-          // ignore render errors
-        }
-        return true;
-      }
-      return false;
-    };
-
-    let attempts = 0;
-    const interval = setInterval(() => {
-      attempts += 1;
-      if (tryRender() || attempts > 50) clearInterval(interval);
-    }, 200);
-    tryRender();
-    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -1583,7 +1544,6 @@ const Contact = () => {
             target="hidden_iframe"
             onSubmit={() => { setSubmitted(true); setIsSubmitting(true); }}
             className={`bg-white p-10 md:p-16 rounded-3xl shadow-xl border space-y-8 ${submitStatus === 'error' ? 'border-red-300' : 'border-[#3a4a1d]/8'}`}>
-            <input type="hidden" name="captcha_settings" value='{"keyname":"reCAPTCHA","fallback":"true","orgId":"00Dd500000Fup0n","ts":""}' />
             <input type="hidden" name="oid" value="00Dd500000Fup0n" />
             <input type="hidden" name="retURL" value="https://ss-and.com/thanks" />
             <input type="hidden" name="lead_source" value="Website" />
@@ -1628,7 +1588,6 @@ const Contact = () => {
             </div>
 
             <div className="text-center">
-              <div id="recaptcha-container" className="inline-block mb-6" />
               <div>
                 <button type="submit" className="w-full md:w-auto bg-[#192c0d] text-[#f9f9f3] px-16 py-5 rounded-full font-bold tracking-widest hover:bg-[#1e3610] transition-all shadow-lg disabled:opacity-50 text-sm">{isSubmitting ? t('送信中...', 'Sending...') : t('送信する', 'Submit')}</button>
               </div>
