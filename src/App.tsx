@@ -261,9 +261,9 @@ const IllustTeam = () => (
       <circle cx="58" cy="40" r="20" fill={SF_BLUE} />
       <rect x="20" y="30" width="56" height="20" rx="10" fill={SF_BLUE} />
     </g>
-    {/* center person mark */}
-    <circle cx="150" cy="84" r="7" fill="white" />
-    <path d="M138 100 a12 10 0 0 1 24 0 z" fill="white" />
+    {/* center person mark — centered within the cloud body */}
+    <circle cx="150" cy="73" r="8" fill="white" />
+    <path d="M137 92 a13 11 0 0 1 26 0 z" fill="white" />
     {/* satellite member nodes */}
     {[[62, 48], [238, 48], [60, 138], [240, 138]].map(([cx, cy], i) => (
       <g key={i}>
@@ -496,14 +496,14 @@ const Partners = () => {
       png: '/images/salesforce-partner-Horizen.png',
       fallback: '/images/salesforce-partner.svg',
       alt: 'Salesforce Partner',
-      label: t('Salesforce パートナー', 'Salesforce Partner'),
+      label: t('Salesforce 公式パートナー', 'Salesforce Official Partner'),
       bg: 'from-[#e8f4fc] to-[#f5fafe]',
     },
     {
       png: '/images/claude-partner.png',
       fallback: '/images/claude-partner.svg',
       alt: 'Claude Partner Network — Preferred Services Partner',
-      label: t('Claude Partner Network（Anthropic）', 'Claude Partner Network (Anthropic)'),
+      label: t('Anthropic 公式パートナー', 'Anthropic Official Partner'),
       bg: 'from-[#f0ede6] to-[#faf8f4]',
     },
   ];
