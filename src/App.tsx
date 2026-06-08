@@ -488,6 +488,72 @@ const WhyChooseUs = () => {
   );
 };
 
+// ---- Shared: Partners / Certifications ----
+const Partners = () => {
+  const { t } = useLang();
+  const badges = [
+    {
+      png: '/images/salesforce-partner-Horizen.png',
+      fallback: '/images/salesforce-partner.svg',
+      alt: 'Salesforce Partner',
+      label: t('Salesforce パートナー', 'Salesforce Partner'),
+      bg: 'from-[#e8f4fc] to-[#f5fafe]',
+    },
+    {
+      png: '/images/claude-partner.png',
+      fallback: '/images/claude-partner.svg',
+      alt: 'Claude Partner Network — Preferred Services Partner',
+      label: t('Claude Partner Network（Anthropic）', 'Claude Partner Network (Anthropic)'),
+      bg: 'from-[#f0ede6] to-[#faf8f4]',
+    },
+  ];
+  return (
+    <section className="py-28 bg-white border-t border-[#3a4a1d]/8 overflow-hidden">
+      <div className="max-w-5xl mx-auto px-6">
+        <FadeUp className="text-center mb-16">
+          <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">Partners</p>
+          <h2 className="text-4xl sm:text-5xl md:text-5xl font-serif font-bold text-[#192c0d] leading-tight mb-6">
+            {t('認定・パートナーシップ', 'Certifications & Partnerships')}
+          </h2>
+          <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full mx-auto" />
+        </FadeUp>
+
+        <div className="grid sm:grid-cols-2 gap-6 mb-14">
+          {badges.map((b, i) => (
+            <FadeUp key={i} delay={i * 0.12}>
+              <div className="bg-white rounded-3xl overflow-hidden h-full border border-[#3a4a1d]/8 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                <div className={`h-44 bg-gradient-to-br ${b.bg} flex items-center justify-center p-7`}>
+                  <img
+                    src={b.png}
+                    alt={b.alt}
+                    className="max-w-full max-h-full object-contain"
+                    onError={(e) => {
+                      const img = e.currentTarget;
+                      if (!img.src.endsWith('.svg')) img.src = b.fallback;
+                    }}
+                  />
+                </div>
+                <div className="px-7 py-5 border-t border-[#3a4a1d]/5">
+                  <p className="text-sm font-bold text-[#192c0d] text-center">{b.label}</p>
+                </div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+
+        <FadeUp>
+          <p className="text-[#555] leading-loose text-center max-w-2xl mx-auto text-base">
+            {t(
+              '私たちはまだ駆け出しのパートナーです。それでも Salesforce と Claude（Anthropic）両社の認定パートナーとして、より上位の認定を目指して日々キャッチアップを続けています。CRM × AI の最新の知見を、いち早く貴社の現場へお届けします。',
+              'We are still an early-stage partner. Even so, as a certified partner of both Salesforce and Claude (Anthropic), we keep catching up every day toward higher-tier certifications — delivering the latest CRM × AI expertise to your team as fast as we can.'
+            )}
+          </p>
+        </FadeUp>
+      </div>
+    </section>
+  );
+};
+
 // ---- Claude × S&S Bot icon ----
 const ClaudeSSIcon = ({ size = 36 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1079,6 +1145,9 @@ const Home = () => {
 
       {/* Why Choose Us (shared component) */}
       <WhyChooseUs />
+
+      {/* Partners / Certifications */}
+      <Partners />
 
       {/* CTA Banner */}
       <section className="py-28 bg-[#192c0d] relative overflow-hidden">
