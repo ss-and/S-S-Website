@@ -953,7 +953,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#f9f9f3]/25">
-          <p>© 2025 {t('S＆S合同会社', 'S&S LLC')}. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} {t('S＆S合同会社', 'S&S LLC')}. All Rights Reserved.</p>
           <div className="flex gap-6">
             <span>Privacy Policy</span>
             <span>Terms of Service</span>
