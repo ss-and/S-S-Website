@@ -491,7 +491,7 @@ const WhyChooseUs = () => {
 // ---- Shared: Partners / Certifications ----
 // 表記は各社の承認フォーマットに合わせる。
 //  - OpenAI: "OpenAI Select Partner"（バッジ使用可）
-//  - Claude Partner Network: 現在の階層ではバッジ・階層名の対外表記は不可 → 参加の事実のみ文字で表記
+//  - Claude Partner Network: 現在の階層ではバッジ・階層名の対外表記は不可 → プログラム名のみ文字で表記
 type Badge = { png?: string; fallback?: string; alt: string; wordmark: string; label: string; bg: string };
 const Partners = () => {
   const { t } = useLang();
@@ -501,7 +501,7 @@ const Partners = () => {
       fallback: '/images/salesforce-partner.svg',
       alt: 'Salesforce Partner',
       wordmark: 'Salesforce Partner',
-      label: t('Salesforce パートナー', 'Salesforce Partner'),
+      label: 'Salesforce Partner',
       bg: 'from-[#e8f4fc] to-[#f5fafe]',
     },
     {
@@ -515,7 +515,7 @@ const Partners = () => {
     {
       alt: 'Claude Partner Network',
       wordmark: 'Claude Partner Network',
-      label: t('Claude Partner Network 参加', 'Member of the Claude Partner Network'),
+      label: 'Claude Partner Network',
       bg: 'from-[#f0ede6] to-[#faf8f4]',
     },
   ];
