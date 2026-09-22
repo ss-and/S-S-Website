@@ -986,11 +986,12 @@ const Home = () => {
             style={{ fontSize: 'clamp(1.6rem, 6.8vw, 4.5rem)', lineHeight: 1.2 }}
           >
             {lang === 'en' ? (
-              <>Transform the way you work,<br />
-              make every day a little <span className="text-[#a8d878]">『easier』</span></>
+              <>Change how people work,<br />
+              so everyone can work <span className="text-[#a8d878]">their own way</span></>
             ) : (
-              <>働く環境に変化をもたらし<br />
-              毎日を少しでも<span className="text-[#a8d878]">『楽』</span>に</>
+              <>働く環境を変えて、<br />
+              <span className="inline-block">誰もが<span className="text-[#a8d878]">『自分らしく』</span></span><br />
+              働ける毎日を</>
             )}
           </motion.h1>
 
@@ -1290,10 +1291,10 @@ const About = () => {
               <span className="text-[#a8d878] text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Mission</span>
               <p className="text-[#f9f9f3] text-xl md:text-2xl font-serif leading-relaxed relative z-10">
                 {lang === 'en' ? (
-                  <>“Bring change to how people work, and make the daily lives of everyone involved a little <span className="text-[#a8d878]">『easier』</span>.”</>
+                  <>“Bring change to how people work, so that everyone involved can work <span className="text-[#a8d878]">their own way</span>.”</>
                 ) : (
-                  <>「働く環境に変化をもたらし<br />
-                  関わる人たちの毎日を少しでも<span className="text-[#a8d878]">『楽』</span>にする」</>
+                  <><span className="inline-block">「働く環境に</span><span className="inline-block">変化をもたらし</span><br />
+                  <span className="inline-block">関わる人たちが</span><span className="inline-block text-[#a8d878]">『自分らしく』</span><span className="inline-block">働ける毎日をつくる」</span></>
                 )}
               </p>
             </div>
@@ -1308,12 +1309,12 @@ const About = () => {
                   ? [
                       'I grew up in a rural area where graduating from high school or a vocational school and going straight to work was the norm. Thanks to my family\'s support, I went on to a university in Tokyo — and my world changed completely. Taking on a new sport, meeting diverse values — experiencing how "changing your environment" creates a chain of positive effects, not only for yourself but for those around you, became the foundation of who I am today.',
                       'As a working professional, while improving operations with Salesforce at the core, I was repeatedly amazed at how dramatically the way people work can change with a single use of technology. With the rise of AI, that potential is now expanding exponentially.',
-                      '"I want to make work easier." With that single thought, I started this company. Regardless of whether you are from the countryside or the city, your academic or work background — by making technology your ally, anyone can work in their own way. That is the origin of S&S LLC.',
+                      '"I want to change the environment people work in." With that single thought, I started this company. Regardless of whether you are from the countryside or the city, your academic or work background — by making technology your ally, anyone can work in their own way. That is the origin of S&S LLC.',
                     ]
                   : [
                       '地方出身で、高卒・専門卒で就職するのが当たり前の環境で育ちました。家族の支えもあり都内の大学へ進学したことで、世界は一変しました。新しいスポーツへの挑戦、多様な価値観との出会い——「環境を変える」ことが、自分だけでなく周囲にも連鎖的に良い影響をもたらすことを体感した経験は、今の自分の根幹になっています。',
                       '社会人になり、Salesforceを軸に業務効率化の現場に携わる中で、テクノロジーの使い方ひとつで人の働き方がここまで変わるのかという驚きを何度も経験しました。さらにAIの台頭により、その可能性は今まさに指数関数的に広がっています。',
-                      '「仕事を、もっと楽にしたい。」——その一心で起業しました。地方も都市も、学歴も職歴も関係なく、テクノロジーを味方につけることで誰もが自分らしく働ける環境をつくることが、S&S合同会社の原点です。',
+                      '「働く環境を、変えたい。」——その一心で起業しました。地方も都市も、学歴も職歴も関係なく、テクノロジーを味方につけることで誰もが自分らしく働ける環境をつくることが、S&S合同会社の原点です。',
                     ]
                 ).map((p, i) => <p key={i}>{p}</p>)}
               </div>
