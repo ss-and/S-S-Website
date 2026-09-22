@@ -213,6 +213,25 @@ const Navbar = () => {
 };
 
 // ---- Fade Up wrapper ----
+// 見出し下の罫線：画面に入ったら左右（左寄せなら左から）に線が伸びる
+const HeadingRule = ({ align = 'center', light = false }: { align?: 'center' | 'left'; light?: boolean }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-60px' });
+  const base = light ? 'bg-[#f9f9f3]/15' : 'bg-[#3a4a1d]/12';
+  const bar = light ? 'bg-[#a8d878]' : 'bg-[#3a4a1d]';
+  return (
+    <div ref={ref} className={`relative h-px w-40 sm:w-56 ${base} ${align === 'center' ? 'mx-auto' : ''}`}>
+      <motion.div
+        className={`absolute inset-y-0 left-0 w-full ${bar}`}
+        style={{ originX: align === 'center' ? 0.5 : 0 }}
+        initial={{ scaleX: 0 }}
+        animate={isInView ? { scaleX: 1 } : {}}
+        transition={{ duration: 1.1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+      />
+    </div>
+  );
+};
+
 const FadeUp = ({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -451,7 +470,7 @@ const WhyChooseUs = () => {
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-[#192c0d] leading-tight mb-6">
             {t('S＆Sが選ばれる理由', 'Why Choose S&S')}
           </h2>
-          <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full" />
+          <HeadingRule align="left" />
         </FadeUp>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -528,7 +547,7 @@ const Partners = () => {
           <h2 className="text-4xl sm:text-5xl md:text-5xl font-serif font-bold text-[#192c0d] leading-tight mb-6">
             {t('パートナーシップ', 'Partnerships')}
           </h2>
-          <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full mx-auto" />
+          <HeadingRule />
         </FadeUp>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
@@ -657,7 +676,7 @@ const faqList: Faq[] = [
   },
   {
     keys: ['会社', 'どんな', 'どういう', 's&s', 'エスアンドエス', 'について', 'company', 'about', 'who'],
-    ja: 'S&S合同会社は、東京・渋谷を拠点とするCRM専門のコンサルティング会社です。\n\n元Salesforce Japan SEの代表を中心に、SIer・構築パートナー出身メンバーが在籍。CRMを導入して終わりにせず、現場に定着して成果が出るまで支援しています。',
+    ja: 'S&Sは、東京・渋谷を拠点とするCRM専門のコンサルティング会社です。\n\n元Salesforce Japan SEの代表を中心に、SIer・構築パートナー出身メンバーが在籍。CRMを導入して終わりにせず、現場に定着して成果が出るまで支援しています。',
     en: 'S&S LLC is a CRM-focused consulting firm based in Shibuya, Tokyo.\n\nLed by a founder who was an SE at Salesforce Japan, the team includes members from system-integration and build-partner backgrounds. Our mission is not "install and done" but supporting CRM until it takes root in the field and delivers results.',
   },
   {
@@ -1002,7 +1021,7 @@ const Home = () => {
             className="text-base md:text-lg text-[#f9f9f3]/65 mb-12 max-w-2xl mx-auto leading-loose"
           >
             {t(
-              'CRMの導入・構築から保守運用まで、S＆S合同会社がひとつのチームで担当します',
+              'CRMの導入・構築から保守運用まで、S&Sがひとつのチームで担当します',
               'Centered on CRM implementation, development, and operational support, S&S LLC solves your business challenges end to end.'
             )}
           </motion.p>
@@ -1046,7 +1065,7 @@ const Home = () => {
                 ? <>Transform your <span className="text-[#3a4a1d]">Business</span> with CRM</>
                 : <>CRMで<span className="text-[#3a4a1d]">ビジネスを</span>変える</>}
             </h2>
-            <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full" />
+            <HeadingRule align="left" />
           </FadeUp>
 
           <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#3a4a1d]/10 border border-[#3a4a1d]/10 rounded-3xl overflow-hidden">
@@ -1123,7 +1142,7 @@ const Home = () => {
               </h2>
               <p className="text-[#555] leading-loose text-base md:text-lg mb-10">
                 {t(
-                  'S＆S合同会社は、CRM（Salesforce・HubSpot・Kintone等）の導入・構築・保守運用を専門とするコンサルティング会社です。元Salesforce Japan出身の代表を中心に、エンジニア・SIer・構築パートナー出身のメンバーが、戦略づくりから実装、定着まで担当します。',
+                  'S&Sは、CRM（Salesforce・HubSpot・Kintone等）の導入・構築・保守運用を専門とするコンサルティング会社です。元Salesforce Japan出身の代表を中心に、エンジニア・SIer・構築パートナー出身のメンバーが、戦略づくりから実装、定着まで担当します。',
                   'S&S LLC is a consulting firm specializing in the implementation, development, and operation of CRMs such as Salesforce, HubSpot, and Kintone. Led by a founder from Salesforce Japan, our members from engineering, SI, and build-partner backgrounds support you from strategy through implementation and adoption.'
                 )}
               </p>
@@ -1280,7 +1299,7 @@ const About = () => {
           <FadeUp className="text-center mb-20">
             <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">Corporate Identity</p>
             <h3 className="text-4xl sm:text-5xl md:text-5xl font-serif font-bold text-[#192c0d] leading-tight mb-6">{t('企業理念', 'Our Philosophy')}</h3>
-            <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full mx-auto" />
+            <HeadingRule />
           </FadeUp>
 
           {/* Mission */}
@@ -1348,7 +1367,7 @@ const About = () => {
           <FadeUp className="text-center mb-16">
             <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">Company</p>
             <h3 className="text-4xl sm:text-5xl md:text-5xl font-serif font-bold text-[#192c0d] leading-tight mb-6">{t('会社概要', 'Company Profile')}</h3>
-            <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full mx-auto" />
+            <HeadingRule />
           </FadeUp>
 
           <div className="bg-[#f9f9f3] rounded-3xl overflow-hidden">
