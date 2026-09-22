@@ -418,7 +418,7 @@ const WhyChooseUs = () => {
     {
       type: 'image' as const,
       label: '01',
-      title: t('Salesforce公認の専門家が直接参画', 'Certified Salesforce experts on your project'),
+      title: t('Salesforce認定資格者が直接担当', 'Certified Salesforce experts on your project'),
       desc: t(
         '代表は元Salesforce JapanのSEとして多数のCRM導入プロジェクトを経験。Salesforce認定資格保有者が貴社の案件に直接参画します。',
         'Our founder served as an SE at Salesforce Japan, leading many CRM implementation projects. Certified Salesforce professionals work directly on your engagement.'
@@ -429,7 +429,7 @@ const WhyChooseUs = () => {
       label: '02',
       title: t('エンジニア・SIer・構築パートナー出身のチーム', 'A team from engineering, SI, and Salesforce partner backgrounds'),
       desc: t(
-        'エンジニア出身、SIer経験者、Salesforce構築パートナー出身のメンバーで構成。現場を熟知したプロフェッショナルが課題解決を支援します。',
+        'エンジニア出身、SIer経験者、Salesforce構築パートナー出身のメンバーで構成。現場を知っているメンバーが、そのまま貴社の案件を担当します。',
         'Our members come from engineering, system-integration, and Salesforce build-partner backgrounds. Professionals who know the field support you in solving real challenges.'
       ),
     },
@@ -438,8 +438,8 @@ const WhyChooseUs = () => {
       label: '03',
       title: t('導入から運用まで一貫サポート', 'End-to-end support from implementation to operation'),
       desc: t(
-        'CRMの導入支援で終わらず、定着化・継続改善まで伴走します。長期的なパートナーとして、投資対効果の最大化をともに目指します。',
-        'We do not stop at implementation — we stay with you through adoption and continuous improvement. As a long-term partner, we maximize your return on investment together.'
+        '導入して終わりにせず、現場に定着して使われ続けるところまで一緒に進めます。',
+        'We do not stop at go-live. We keep working with you until the system is part of everyday work.'
       ),
     },
   ];
@@ -562,8 +562,8 @@ const Partners = () => {
         <FadeUp>
           <p className="text-[#555] leading-loose text-center max-w-2xl mx-auto text-base">
             {t(
-              '私たちはまだ駆け出しのパートナーです。Salesforce・OpenAI・Claude（Anthropic）それぞれのパートナープログラムに参加し、より上位の階層を目指して日々キャッチアップを続けています。CRM × AI の最新の知見を、いち早く貴社の現場へお届けします。',
-              'We are still an early-stage partner. We take part in the partner programs of Salesforce, OpenAI, and Claude (Anthropic), and keep catching up every day toward higher tiers — delivering the latest CRM × AI expertise to your team as fast as we can.'
+              'パートナーとしてはまだ駆け出しです。Salesforce・OpenAI・Claude（Anthropic）のパートナープログラムに参加し、上位の階層を目指して学び続けています。そこで得たCRMとAIの知見を、貴社の現場ですぐ使える形にしてお届けします。',
+              'We are still new as a partner. We take part in the partner programs of Salesforce, OpenAI, and Claude (Anthropic), and keep learning as we work toward higher tiers. What we learn about CRM and AI, we bring to your team in a form you can use right away.'
             )}
           </p>
         </FadeUp>
@@ -608,12 +608,12 @@ const faqList: Faq[] = [
   {
     keys: ['salesforce', 'セールスフォース', 'sf', 'sales cloud', 'service cloud', 'agentforce', 'experience cloud', 'marketing cloud'],
     ja: 'Salesforceについてですね。世界No.1シェアを誇るCRMプラットフォームで、営業・CS・マーケティング・ECと幅広い業務領域をカバーしています。\n\nS&Sでは Sales Cloud / Service Cloud / Marketing Cloud / Experience Cloud / Agentforce など全製品に対応しており、元Salesforce Japan SEの代表が直接プロジェクトに参画します。どの製品についてお知りになりたいですか？',
-    en: 'Happy to talk about Salesforce — the world\'s No.1 CRM platform, covering sales, customer service, marketing, and commerce.\n\nS&S supports the full product line — Sales Cloud / Service Cloud / Marketing Cloud / Experience Cloud / Agentforce — and our founder, a former Salesforce Japan SE, joins projects directly. Which product would you like to know more about?',
+    en: 'Happy to talk about Salesforce, the world\'s No.1 CRM platform, covering sales, customer service, marketing, and commerce.\n\nS&S supports the full product line (Sales Cloud, Service Cloud, Marketing Cloud, Experience Cloud, Agentforce), and our founder, a former Salesforce Japan SE, joins projects directly. Which product would you like to know more about?',
   },
   {
     keys: ['hubspot', 'ハブスポット'],
     ja: 'HubSpotは、マーケティング・営業・CS機能が一体化したオールインワンCRMです。比較的導入ハードルが低く、スタートアップ〜中小企業に人気があります。\n\nS&Sでは Marketing Hub / Sales Hub / Service Hub の導入設定から運用定着まで支援しています。Salesforceとの比較や、どちらが自社に合うかといったご相談もお気軽にどうぞ。',
-    en: 'HubSpot is an all-in-one CRM that unifies marketing, sales, and customer service. It has a relatively low barrier to entry and is popular with startups and SMBs.\n\nS&S supports Marketing Hub / Sales Hub / Service Hub — from setup to operational adoption. Feel free to ask us about Salesforce-vs-HubSpot comparisons or which fits your company best.',
+    en: 'HubSpot is an all-in-one CRM that unifies marketing, sales, and customer service. It has a relatively low barrier to entry and is popular with startups and SMBs.\n\nS&S supports Marketing Hub / Sales Hub / Service Hub, from setup to day-to-day adoption. Feel free to ask us about Salesforce-vs-HubSpot comparisons or which fits your company best.',
   },
   {
     keys: ['kintone', 'キントーン', 'サイボウズ', 'cybozu'],
@@ -622,8 +622,8 @@ const faqList: Faq[] = [
   },
   {
     keys: ['料金', '費用', 'コスト', '価格', 'いくら', 'price', 'cost', 'fee', 'budget', 'pricing'],
-    ja: 'ご予算について気になられているんですね。料金はプロジェクトの規模・期間・カスタマイズ量によって大きく異なるため、一概にお答えするのが難しい部分があります。\n\nただ、まずは無料のヒアリングで現状の課題を整理し、予算感に合わせた最適なプランをご提案しています。「費用を抑えたい」というご要望も遠慮なくお伝えください。',
-    en: 'Thinking about budget — understood. Pricing varies widely with project scale, duration, and the amount of customization, so a single figure is hard to give.\n\nThat said, we start with a free hearing to organize your challenges, then propose the best plan for your budget. Please tell us openly if keeping costs down is a priority.',
+    ja: 'ご予算についてですね。料金はプロジェクトの規模・期間・カスタマイズ量によって大きく変わるため、一概にはお答えしにくいところです。\n\nまずは無料のヒアリングで現状の課題を整理し、ご予算に合わせたプランをご提案しています。費用を抑えたいといったご要望も遠慮なくお伝えください。',
+    en: 'About pricing: Pricing varies widely with project scale, duration, and the amount of customization, so a single figure is hard to give.\n\nThat said, we start with a free hearing to organize your challenges, then propose a plan that fits your budget. Please tell us openly if keeping costs down is a priority.',
   },
   {
     keys: ['期間', 'どのくらい', 'スケジュール', '工期', 'いつ', 'how long', 'timeline', 'schedule', 'duration', 'when'],
@@ -632,37 +632,37 @@ const faqList: Faq[] = [
   },
   {
     keys: ['導入', '始め', 'スタート', '検討', '初めて', 'start', 'getting started', 'begin', 'introduce', 'first time'],
-    ja: 'CRM導入を検討されているんですね。最初の一歩として、まず現状の課題を整理することが大切です。\n\nS&Sでは無料のヒアリングセッションを提供しており、「どのCRMが合うか」「どこから手をつければいいか」といった入口からご支援しています。初めての方でも安心してご相談ください。',
-    en: 'Considering a CRM rollout — great. The first step is organizing your current challenges.\n\nS&S offers a free hearing session and supports you right from the entry point: "which CRM fits" and "where to start." Even first-timers can consult us with confidence.',
+    ja: 'CRM導入を検討されているんですね。最初の一歩として、まず現状の課題を整理することが大切です。\n\nS&Sでは無料のヒアリングセッションを提供しており、どのCRMが合うか、どこから手をつければいいかといった段階からご支援しています。初めての方でも安心してご相談ください。',
+    en: 'Considering a CRM rollout? The first step is organizing your current challenges.\n\nS&S offers a free hearing session and can help from the very beginning, such as which CRM fits and where to start. Even first-timers can consult us with confidence.',
   },
   {
     keys: ['保守', '運用', 'サポート', 'メンテ', '障害', '定着', 'support', 'maintenance', 'operation', 'adoption'],
-    ja: '「入れたら終わり」にならないよう、S&Sでは導入後の伴走支援を重視しています。\n\n具体的には、ユーザー研修・定着化支援・継続的な機能改善・システム監視・月次レポートと改善提案などを長期パートナーとして提供します。スポット対応のみのご依頼も歓迎です。',
+    ja: 'S&Sは、導入して終わりにならないよう、導入後の支援を大切にしています。\n\n具体的には、ユーザー研修・定着化支援・継続的な機能改善・システム監視・月次レポートと改善提案などを長期パートナーとして提供します。スポット対応のみのご依頼も歓迎です。',
     en: 'To avoid the "install and forget" trap, S&S emphasizes hands-on support after go-live.\n\nSpecifically, as a long-term partner we provide user training, adoption support, ongoing feature improvements, system monitoring, and monthly reports with improvement proposals. Spot-only engagements are welcome too.',
   },
   {
     keys: ['資格', '認定', '実績', '経験', '専門', 'certified', 'certification', 'experience', 'track record', 'expert'],
-    ja: 'S&Sのチームについてですね。代表は元Salesforce JapanのSEとして多数のCRM導入プロジェクトを経験し、複数のSalesforce認定資格を保有しています。\n\nメンバーもSIer・Salesforce構築パートナー出身の実践経験者で構成されており、「現場を知るチーム」として貴社の案件に直接向き合います。',
-    en: 'About the S&S team — our founder served as an SE at Salesforce Japan, led many CRM projects, and holds multiple Salesforce certifications.\n\nOur members are seasoned practitioners from system-integration and Salesforce build-partner backgrounds. As a "team that knows the field," we engage with your project directly.',
+    ja: 'S&Sのチームについてですね。代表は元Salesforce JapanのSEとして多数のCRM導入プロジェクトを経験し、複数のSalesforce認定資格を保有しています。\n\nメンバーもSIer・Salesforce構築パートナー出身の実践経験者で構成されており、現場を知るメンバーが貴社の案件を直接担当します。',
+    en: 'About the S&S team: our founder served as an SE at Salesforce Japan, led many CRM projects, and holds multiple Salesforce certifications.\n\nOur members are seasoned practitioners from system-integration and Salesforce build-partner backgrounds. People who know the field work on your project directly.',
   },
   {
     keys: ['ai', 'エージェント', '自動化', '生成ai', 'llm', 'claude', 'gpt', 'agent', 'automation', 'generative'],
-    ja: 'AIとCRMの連携は非常に注目されている領域ですね。S&SではSalesforceのAgentforce（AIエージェント機能）を活用した業務自動化や、生成AIをCRMデータと組み合わせた提案書・メール自動生成なども支援しています。\n\nまた、このBotそのものがClaude Codeを活用して構築されています。カスタムCRM開発にAIを組み込むご要望もお気軽にどうぞ。',
+    ja: 'AIとCRMの連携についてですね。S&SではSalesforceのAgentforce（AIエージェント機能）を活用した業務自動化や、生成AIをCRMデータと組み合わせた提案書・メール自動生成なども支援しています。\n\nまた、このBotそのものがClaude Codeを活用して構築されています。カスタムCRM開発にAIを組み込むご要望もお気軽にどうぞ。',
     en: 'AI-and-CRM integration is a very hot area. S&S supports business automation with Salesforce Agentforce (AI agents), as well as auto-generating proposals and emails by combining generative AI with CRM data.\n\nThis very bot was built with Claude Code. Feel free to ask about embedding AI into custom CRM development.',
   },
   {
     keys: ['データ移行', '移行', 'migration', '乗り換え', '引越し', '移管', 'migrate', 'switch'],
     ja: 'CRMの乗り換えや移行は、データの整合性確保が最も重要な工程です。S&Sではデータクレンジング・マッピング設計・移行テスト・本番移行まで、リスクを最小化しながら一貫してサポートします。\n\nExcelや旧システムからの移行実績もあります。どのようなデータをお持ちか教えていただけると、より具体的にお答えできます。',
-    en: 'For CRM switches and migrations, ensuring data integrity is the most critical step. S&S supports the whole path — data cleansing, mapping design, migration testing, and the production cutover — while minimizing risk.\n\nWe have a track record of migrating from Excel and legacy systems. Tell us what data you have and we can answer more specifically.',
+    en: 'For CRM switches and migrations, ensuring data integrity is the most critical step. S&S supports the whole path, from data cleansing and mapping design to migration testing and the production cutover, while keeping risk low.\n\nWe have a track record of migrating from Excel and legacy systems. Tell us what data you have and we can answer more specifically.',
   },
   {
     keys: ['会社', 'どんな', 'どういう', 's&s', 'エスアンドエス', 'について', 'company', 'about', 'who'],
-    ja: 'S&S合同会社は、東京・渋谷を拠点とするCRM専門のコンサルティング会社です。\n\n元Salesforce Japan SEの代表を中心に、SIer・構築パートナー出身メンバーが在籍。「導入して終わり」ではなく、CRMが現場に定着して成果を出すまでを支援することをミッションとしています。',
+    ja: 'S&S合同会社は、東京・渋谷を拠点とするCRM専門のコンサルティング会社です。\n\n元Salesforce Japan SEの代表を中心に、SIer・構築パートナー出身メンバーが在籍。CRMを導入して終わりにせず、現場に定着して成果が出るまで支援しています。',
     en: 'S&S LLC is a CRM-focused consulting firm based in Shibuya, Tokyo.\n\nLed by a founder who was an SE at Salesforce Japan, the team includes members from system-integration and build-partner backgrounds. Our mission is not "install and done" but supporting CRM until it takes root in the field and delivers results.',
   },
   {
     keys: ['連絡', 'お問い合わせ', 'contact', '相談', 'メール', '電話', 'reach', 'email', 'phone', 'inquiry'],
-    ja: 'ご相談は画面上部の「お問い合わせ」メニューから、フォームにてお気軽にどうぞ。\n\n初回相談は無料で、通常2営業日以内にご返信します。「まだ検討段階」「何から聞けばいいかわからない」という段階でも大歓迎です。',
+    ja: 'ご相談は画面上部の「お問い合わせ」メニューから、フォームにてお気軽にどうぞ。\n\n初回相談は無料で、通常2営業日以内にご返信します。まだ検討段階の方や、何から聞けばいいかわからない方も歓迎です。',
     en: 'Please reach us anytime via the "Contact" menu at the top of the page.\n\nThe first consultation is free, and we usually reply within two business days. Even "still just exploring" or "not sure what to ask" is perfectly welcome.',
   },
 ];
@@ -883,7 +883,7 @@ const Footer = () => {
             </div>
             <p className="text-sm leading-loose text-[#f9f9f3]/45 max-w-sm">
               {t(
-                'CRMの導入・構築・保守運用を通じて、お客様のビジネス課題を一気通貫で解決します。',
+                'CRMの導入・構築から保守運用まで、ひとつのチームで担当します。',
                 'Through CRM implementation, development, and operational support, we solve your business challenges end to end.'
               )}
             </p>
@@ -990,7 +990,7 @@ const Home = () => {
               so everyone can work <span className="text-[#a8d878]">their own way</span></>
             ) : (
               <>働く環境を変えて、<br />
-              <span className="inline-block">誰もが<span className="text-[#a8d878]">『自分らしく』</span></span><br />
+              <span className="inline-block">誰もが<span className="text-[#a8d878]">自分らしく</span></span><br />
               働ける毎日を</>
             )}
           </motion.h1>
@@ -1002,7 +1002,7 @@ const Home = () => {
             className="text-base md:text-lg text-[#f9f9f3]/65 mb-12 max-w-2xl mx-auto leading-loose"
           >
             {t(
-              'CRMの導入・構築・保守運用を中心にS＆S合同会社が貴社のビジネス課題を一気通貫で解決します',
+              'CRMの導入・構築から保守運用まで、S＆S合同会社がひとつのチームで担当します',
               'Centered on CRM implementation, development, and operational support, S&S LLC solves your business challenges end to end.'
             )}
           </motion.p>
@@ -1056,8 +1056,8 @@ const Home = () => {
                 title: t('CRM導入・構築', 'CRM Implementation'),
                 en: 'CRM Implementation',
                 desc: t(
-                  'SalesforceをはじめとするクラウドCRMの設計・実装。貴社の業務プロセスに合わせた柔軟な構築を実現します。',
-                  'Design and build of cloud CRMs led by Salesforce — flexible implementation tailored to your business processes.'
+                  'SalesforceをはじめとするクラウドCRMを、貴社の業務の流れに合わせて設計・構築します。',
+                  'We design and build cloud CRMs such as Salesforce around the way your business actually works.'
                 ),
               },
               {
@@ -1065,8 +1065,8 @@ const Home = () => {
                 title: t('CRM保守・運用サポート', 'Operations & Support'),
                 en: 'Operations & Support',
                 desc: t(
-                  '導入後の定着化支援から継続的な改善まで。長期パートナーとして運用をフルサポートします。',
-                  'From post-launch adoption to continuous improvement — full operational support as your long-term partner.'
+                  '導入後の定着支援から日々の改善まで、運用を続けてサポートします。',
+                  'From adoption after launch to ongoing improvements, we keep supporting your operations.'
                 ),
               },
               {
@@ -1074,8 +1074,8 @@ const Home = () => {
                 title: t('CRMの活用コンサルティング', 'CRM Consulting'),
                 en: 'CRM Consulting',
                 desc: t(
-                  'CRMデータの活用戦略策定から、AI・MAツールの連携支援まで。投資対効果を最大化します。',
-                  'From data-utilization strategy to AI and MA-tool integration — we maximize your return on investment.'
+                  'CRMに貯まったデータの活かし方を考え、AIやMAツールとの連携まで支援します。',
+                  'We help you put your CRM data to work, including integration with AI and MA tools.'
                 ),
               },
             ].map((s, i) => (
@@ -1123,8 +1123,8 @@ const Home = () => {
               </h2>
               <p className="text-[#555] leading-loose text-base md:text-lg mb-10">
                 {t(
-                  'S＆S合同会社は、CRM（Salesforce・HubSpot・Kintone等）の導入・構築・保守運用を専門とするコンサルティング会社です。元Salesforce Japan出身の代表を中心に、エンジニア・SIer・構築パートナー出身のメンバーが、戦略から実装・定着化まで一貫してサポートします。',
-                  'S&S LLC is a consulting firm specializing in the implementation, development, and operation of CRMs such as Salesforce, HubSpot, and Kintone. Led by a founder from Salesforce Japan, our members from engineering, SI, and build-partner backgrounds support you consistently — from strategy to implementation and adoption.'
+                  'S＆S合同会社は、CRM（Salesforce・HubSpot・Kintone等）の導入・構築・保守運用を専門とするコンサルティング会社です。元Salesforce Japan出身の代表を中心に、エンジニア・SIer・構築パートナー出身のメンバーが、戦略づくりから実装、定着まで担当します。',
+                  'S&S LLC is a consulting firm specializing in the implementation, development, and operation of CRMs such as Salesforce, HubSpot, and Kintone. Led by a founder from Salesforce Japan, our members from engineering, SI, and build-partner backgrounds support you from strategy through implementation and adoption.'
                 )}
               </p>
               <button
@@ -1140,7 +1140,7 @@ const Home = () => {
               {[
                 { label: 'Salesforce', desc: t('元Salesforce Japan出身の代表が対応', 'Led by a founder from Salesforce Japan'), icon: <Database size={22} /> },
                 { label: 'Speed', desc: t('少数精鋭のスピード感ある実行力', 'A lean, fast-moving team that delivers'), icon: <Zap size={22} /> },
-                { label: 'All-in-One', desc: t('導入から運用まで一気通貫', 'End to end, from rollout to operation'), icon: <CheckCircle size={22} /> },
+                { label: 'All-in-One', desc: t('導入から運用まで同じチームで', 'End to end, from rollout to operation'), icon: <CheckCircle size={22} /> },
                 { label: 'Team', desc: t('SIer・パートナー出身の多彩なチーム', 'A diverse team from SI and partner backgrounds'), icon: <Users size={22} /> },
               ].map((item, i) => (
                 <motion.div
@@ -1184,7 +1184,7 @@ const Home = () => {
             <p className="text-[#f9f9f3]/55 text-base md:text-lg mb-10 leading-loose">
               {t(
                 '導入を検討中の方から、既存システムの改善をお考えの方まで。初回のご相談は無料で承っております。',
-                'From those considering a new rollout to those improving an existing system — your first consultation is always free.'
+                'Whether you are planning a new rollout or improving an existing system, your first consultation is free.'
               )}
             </p>
             <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
@@ -1206,7 +1206,7 @@ const About = () => {
   const values = lang === 'en'
     ? [
         { num: '1', title: 'Speed & Share', sub: 'Move fastest, share value', desc: 'Drop perfectionism and act at top speed; share knowledge and inspiration generously with everyone involved.' },
-        { num: '2', title: 'Smart & Strong', sub: 'Clever strategy, unshakable resolve', desc: 'Hold a smart perspective (a hack) free of existing constraints — and the strength to see it through to the end.' },
+        { num: '2', title: 'Smart & Strong', sub: 'Clever strategy, unshakable resolve', desc: 'Hold a smart perspective (a hack) free of existing constraints, and the strength to see it through to the end.' },
         { num: '3', title: 'Smile & Synergy', sub: 'Smiles and synergy', desc: 'Meet others\' challenges with a smile and combine each other\'s strengths to create change and breathing room no one could alone.' },
       ]
     : [
@@ -1291,10 +1291,10 @@ const About = () => {
               <span className="text-[#a8d878] text-xs font-bold tracking-[0.3em] uppercase mb-6 block">Mission</span>
               <p className="text-[#f9f9f3] text-xl md:text-2xl font-serif leading-relaxed relative z-10">
                 {lang === 'en' ? (
-                  <>“Bring change to how people work, so that everyone involved can work <span className="text-[#a8d878]">their own way</span>.”</>
+                  <>Bring change to how people work, so that everyone involved can work <span className="text-[#a8d878]">their own way</span>.</>
                 ) : (
-                  <><span className="inline-block">「働く環境に</span><span className="inline-block">変化をもたらし</span><br />
-                  <span className="inline-block">関わる人たちが</span><span className="inline-block text-[#a8d878]">『自分らしく』</span><span className="inline-block">働ける毎日をつくる」</span></>
+                  <><span className="inline-block">働く環境に</span><span className="inline-block">変化をもたらし</span><br />
+                  <span className="inline-block">関わる人たちが</span><span className="inline-block text-[#a8d878]">自分らしく</span><span className="inline-block">働ける毎日をつくる</span></>
                 )}
               </p>
             </div>
@@ -1303,18 +1303,18 @@ const About = () => {
           {/* Story */}
           <FadeUp>
             <div className="bg-white rounded-3xl p-10 md:p-14 mb-10 border border-[#3a4a1d]/8">
-              <span className="text-[#3a4a1d] text-xs font-bold tracking-[0.3em] uppercase mb-6 block">{t('Story — 創業の背景', 'Story — Why we started')}</span>
+              <span className="text-[#3a4a1d] text-xs font-bold tracking-[0.3em] uppercase mb-6 block">{t('Story ／ 創業の背景', 'Story / Why we started')}</span>
               <div className="space-y-5 text-[#555] leading-[2] text-base">
                 {(lang === 'en'
                   ? [
-                      'I grew up in a rural area where graduating from high school or a vocational school and going straight to work was the norm. Thanks to my family\'s support, I went on to a university in Tokyo — and my world changed completely. Taking on a new sport, meeting diverse values — experiencing how "changing your environment" creates a chain of positive effects, not only for yourself but for those around you, became the foundation of who I am today.',
-                      'As a working professional, while improving operations with Salesforce at the core, I was repeatedly amazed at how dramatically the way people work can change with a single use of technology. With the rise of AI, that potential is now expanding exponentially.',
-                      '"I want to change the environment people work in." With that single thought, I started this company. Regardless of whether you are from the countryside or the city, your academic or work background — by making technology your ally, anyone can work in their own way. That is the origin of S&S LLC.',
+                      'I grew up in a rural area where graduating from high school or a vocational school and going straight to work was the norm. Thanks to my family\'s support, I went on to a university in Tokyo, and my world changed completely. Trying a new sport and meeting people with different values, I learned firsthand that when your environment changes, you change, and so do the people around you. That experience is still at the core of who I am.',
+                      'As a working professional, while improving operations with Salesforce at the core, I saw again and again how much the way people work can change with the right use of technology. With AI, there is even more we can change.',
+                      'I started this company because I wanted to change the environment people work in. Wherever you live, whatever your education or career, technology can help you work in your own way. Building that environment is where S&S LLC began.',
                     ]
                   : [
-                      '地方出身で、高卒・専門卒で就職するのが当たり前の環境で育ちました。家族の支えもあり都内の大学へ進学したことで、世界は一変しました。新しいスポーツへの挑戦、多様な価値観との出会い——「環境を変える」ことが、自分だけでなく周囲にも連鎖的に良い影響をもたらすことを体感した経験は、今の自分の根幹になっています。',
-                      '社会人になり、Salesforceを軸に業務効率化の現場に携わる中で、テクノロジーの使い方ひとつで人の働き方がここまで変わるのかという驚きを何度も経験しました。さらにAIの台頭により、その可能性は今まさに指数関数的に広がっています。',
-                      '「働く環境を、変えたい。」——その一心で起業しました。地方も都市も、学歴も職歴も関係なく、テクノロジーを味方につけることで誰もが自分らしく働ける環境をつくることが、S&S合同会社の原点です。',
+                      '地方出身で、高卒・専門卒で就職するのが当たり前の環境で育ちました。家族の支えもあり都内の大学へ進学したことで、世界は一変しました。新しいスポーツに挑戦し、いろいろな価値観の人と出会う中で、環境が変わると自分だけでなく周りの人まで変わっていくことを身をもって知りました。この経験が、今の自分の根っこにあります。',
+                      '社会人になり、Salesforceを軸に業務効率化の現場に携わる中で、テクノロジーの使い方ひとつで人の働き方が大きく変わる場面を何度も見てきました。AIが加わった今、変えられることはさらに増えています。',
+                      '働く環境を変えたい。そう思って起業しました。住んでいる場所や学歴、職歴に関係なく、テクノロジーを使って誰もが自分らしく働ける環境をつくる。それがS&S合同会社の原点です。',
                     ]
                 ).map((p, i) => <p key={i}>{p}</p>)}
               </div>
@@ -1323,7 +1323,7 @@ const About = () => {
 
           {/* Values */}
           <FadeUp className="mb-4">
-            <span className="text-[#3a4a1d] text-xs font-bold tracking-[0.3em] uppercase mb-8 block">{t('Value — 3つの行動指針', 'Value — Our 3 guiding principles')}</span>
+            <span className="text-[#3a4a1d] text-xs font-bold tracking-[0.3em] uppercase mb-8 block">{t('Value ／ 3つの行動指針', 'Value / Our 3 guiding principles')}</span>
           </FadeUp>
           <div className="grid md:grid-cols-3 gap-5">
             {values.map((v, i) => (
@@ -1377,8 +1377,8 @@ const Service = () => {
 
   const platforms = lang === 'en'
     ? [
-        { name: 'Salesforce', desc: 'Full product coverage — Sales Cloud / Service Cloud / Marketing Cloud / Experience Cloud / Agentforce and more.' },
-        { name: 'HubSpot', desc: 'Support for Marketing Hub / Sales Hub / Service Hub — implementation, setup, and operation.' },
+        { name: 'Salesforce', desc: 'Full product coverage: Sales Cloud / Service Cloud / Marketing Cloud / Experience Cloud / Agentforce and more.' },
+        { name: 'HubSpot', desc: 'Support for Marketing Hub / Sales Hub / Service Hub: implementation, setup, and operation.' },
         { name: 'Kintone', desc: 'Business-app development, CRM building, and external-system integration with kintone.' },
         { name: 'Claude Code Dev', desc: 'We also design and build custom CRM systems using Claude Code.' },
       ]
@@ -1392,13 +1392,13 @@ const Service = () => {
   const details = lang === 'en'
     ? [
         { num: '01', title: 'CRM Implementation', en: 'CRM Implementation', illust: <IllustImplement />, points: ['Salesforce design, build, customization', 'HubSpot / Kintone setup', 'Data migration & external integration', 'Agile, iterative development'], desc: 'Handled directly by a former SE with Salesforce certifications. From requirements to build, test, and release, we create a CRM environment that fits your business processes perfectly.' },
-        { num: '02', title: 'Operations & Support', en: 'Operations & Support', illust: <IllustOps />, points: ['Post-launch adoption & user training', 'Continuous improvement & add-on dev', 'System monitoring & incident response', 'Monthly reports & improvement proposals'], desc: 'Not "install and forget" — we build a system you can keep using. From adoption support to continuous improvement, we walk alongside you as a long-term partner.' },
+        { num: '02', title: 'Operations & Support', en: 'Operations & Support', illust: <IllustOps />, points: ['Post-launch adoption & user training', 'Continuous improvement & add-on dev', 'System monitoring & incident response', 'Monthly reports & improvement proposals'], desc: 'A system is not done at install. We build a setup your team can keep using, and stay with you from adoption through ongoing improvement.' },
         { num: '03', title: 'CRM Consulting', en: 'CRM Consulting', illust: <IllustConsult />, points: ['CRM data-utilization strategy', 'Integration with MA & AI tools', 'KPI design & reporting structure', 'CRM training & internal rollout support'], desc: 'We support the strategy design needed to truly make use of the CRM you implemented. Toward data-driven sales and marketing, we cover AI and MA-tool integration too.' },
       ]
     : [
-        { num: '01', title: 'CRM導入・構築', en: 'CRM Implementation', illust: <IllustImplement />, points: ['Salesforce設計・構築・カスタマイズ', 'HubSpot / Kintone の導入・設定', 'データ移行・外部システム連携', 'アジャイルな反復開発'], desc: 'Salesforce認定資格を持つ元SEが直接担当。要件定義から実装・テスト・リリースまで、貴社の業務プロセスに完全フィットしたCRM環境を構築します。' },
-        { num: '02', title: 'CRM保守・運用サポート', en: 'Operations & Support', illust: <IllustOps />, points: ['導入後の定着化・ユーザー研修', '継続的な機能改善・追加開発', 'システム監視・障害対応', '月次レポートと改善提案'], desc: '「システムを入れたら終わり」ではなく、使い続けられる体制を一緒に作ります。定着化支援から継続改善まで、長期パートナーとして伴走します。' },
-        { num: '03', title: 'CRMの活用コンサルティング', en: 'CRM Consulting', illust: <IllustConsult />, points: ['CRMデータの活用戦略策定', 'MA・AIツールとのシステム連携', 'KPI設計・レポーティング体制の構築', 'CRM活用研修・社内展開サポート'], desc: '導入したCRMを真に活用するための戦略設計から支援します。データドリブンな営業・マーケティングの実現に向け、AI・MAツール連携も含めてサポートします。' },
+        { num: '01', title: 'CRM導入・構築', en: 'CRM Implementation', illust: <IllustImplement />, points: ['Salesforce設計・構築・カスタマイズ', 'HubSpot / Kintone の導入・設定', 'データ移行・外部システム連携', 'アジャイルな反復開発'], desc: 'Salesforce認定資格を持つ元SEが直接担当。要件定義から実装・テスト・リリースまで、貴社の業務プロセスに合ったCRMを構築します。' },
+        { num: '02', title: 'CRM保守・運用サポート', en: 'Operations & Support', illust: <IllustOps />, points: ['導入後の定着化・ユーザー研修', '継続的な機能改善・追加開発', 'システム監視・障害対応', '月次レポートと改善提案'], desc: 'システムは入れて終わりではありません。現場で使い続けられる体制を一緒につくり、定着支援から継続的な改善まで長くお付き合いします。' },
+        { num: '03', title: 'CRMの活用コンサルティング', en: 'CRM Consulting', illust: <IllustConsult />, points: ['CRMデータの活用戦略策定', 'MA・AIツールとのシステム連携', 'KPI設計・レポーティング体制の構築', 'CRM活用研修・社内展開サポート'], desc: '導入したCRMを成果につなげるための戦略設計から支援します。データにもとづく営業・マーケティングに向けて、AIやMAツールとの連携もお手伝いします。' },
       ];
 
   const workflow = lang === 'en'
@@ -1409,8 +1409,8 @@ const Service = () => {
         { step: 'STEP 04', title: 'Adoption & operation', desc: 'From post-release training and adoption to ongoing improvement proposals, we support you over the long term.' },
       ]
     : [
-        { step: 'STEP 01', title: 'ヒアリング・現状把握', desc: '貴社の課題・目標・現状のシステム環境を丁寧にヒアリング。まずはご相談から。' },
-        { step: 'STEP 02', title: '戦略・提案', desc: '課題を整理し、最適なCRMと実装アプローチを選定。実現可能なロードマップをご提案します。' },
+        { step: 'STEP 01', title: 'ヒアリング・現状把握', desc: '貴社の課題・目標・現在のシステム環境をお伺いします。' },
+        { step: 'STEP 02', title: '戦略・提案', desc: '課題を整理し、貴社に合うCRMと進め方を選定。実現できるロードマップをご提案します。' },
         { step: 'STEP 03', title: '設計・実装', desc: '承認いただいた要件をもとに設計・開発。アジャイルに進め、途中の変化にも柔軟に対応します。' },
         { step: 'STEP 04', title: '定着化・運用支援', desc: 'リリース後の研修・定着化支援から継続的な改善提案まで、長期的にサポートします。' },
       ];
@@ -1421,14 +1421,14 @@ const Service = () => {
         { q: 'Do you support CRMs other than Salesforce?', a: 'Yes. We support HubSpot, Kintone, and other cloud CRMs, and also build custom CRMs with Claude Code.' },
         { q: 'Can we consult about using AI?', a: 'Yes. We support CRM integration and efficiency improvements using Salesforce Agentforce and generative AI.' },
         { q: 'Can we request operation/support only?', a: 'Yes. We welcome plans for improving existing systems or adoption support only, as well as spot work.' },
-        { q: 'How is pricing decided?', a: 'It varies by project scale, duration, and scope. Please reach out — we will propose the best plan for you.' },
+        { q: 'How is pricing decided?', a: 'It depends on project scale, duration, and scope. Tell us about your project and we will send you a quote.' },
       ]
     : [
         { q: 'プロジェクトの期間はどのくらいですか？', a: '規模によりますが、最短1ヶ月から対応可能です。大規模プロジェクトはチームを組んで長期的なサポートも承ります。' },
         { q: 'Salesforce以外のCRMにも対応していますか？', a: 'はい。HubSpot・Kintone・その他クラウドCRMにも対応しています。また、Claude Codeを活用したカスタムCRM開発も承ります。' },
         { q: 'AI活用についても相談できますか？', a: 'はい。SalesforceのAgentforceや生成AIを活用したCRM連携・業務効率化の支援も行っています。' },
         { q: '保守・運用サポートのみの依頼も可能ですか？', a: 'はい、可能です。既存システムの改修や定着化支援のみのプラン、スポット対応も歓迎しております。' },
-        { q: '料金はどのように決まりますか？', a: 'プロジェクトの規模・期間・内容によって異なります。まずはお気軽にご相談ください。最適なプランをご提案します。' },
+        { q: '料金はどのように決まりますか？', a: 'プロジェクトの規模・期間・内容によって異なります。内容をお伺いしたうえでお見積りをお出しします。' },
       ];
 
   return (
@@ -1444,8 +1444,8 @@ const Service = () => {
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
             className="text-[#666] text-base md:text-lg max-w-2xl leading-loose">
             {t(
-              'Salesforce・HubSpot・Kintoneなど、主要CRMの導入から活用・保守運用まで。貴社のフェーズに合わせた柔軟なサポートを提供します。',
-              'From implementation to utilization and operation of major CRMs such as Salesforce, HubSpot, and Kintone — flexible support tailored to your phase.'
+              'Salesforce・HubSpot・Kintoneなど、主要CRMの導入から活用・保守運用まで。貴社の状況に合わせてサポートします。',
+              'From implementation to utilization and operation of major CRMs such as Salesforce, HubSpot, and Kintone, matched to where you are today.'
             )}
           </motion.p>
         </div>
@@ -1605,7 +1605,7 @@ const Contact = () => {
             className="text-[#666] leading-loose text-base md:text-lg">
             {t(
               'CRM導入・DX推進に関するご相談は下記フォームより。初回相談無料・通常2営業日以内にご連絡いたします',
-              'For consultations on CRM implementation and DX, please use the form below. First consultation free — we usually reply within two business days.'
+              'For consultations on CRM implementation and DX, please use the form below. The first consultation is free, and we usually reply within two business days.'
             )}
           </motion.p>
         </div>
