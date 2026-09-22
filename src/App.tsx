@@ -489,49 +489,67 @@ const WhyChooseUs = () => {
 };
 
 // ---- Shared: Partners / Certifications ----
+// 表記は各社の承認フォーマットに合わせる。
+//  - OpenAI: "OpenAI Select Partner"（バッジ使用可）
+//  - Claude Partner Network: 現在の階層ではバッジ・階層名の対外表記は不可 → 参加の事実のみ文字で表記
+type Badge = { png?: string; fallback?: string; alt: string; wordmark: string; label: string; bg: string };
 const Partners = () => {
   const { t } = useLang();
-  const badges = [
+  const badges: Badge[] = [
     {
       png: '/images/salesforce-partner-Horizen.png',
       fallback: '/images/salesforce-partner.svg',
       alt: 'Salesforce Partner',
-      label: t('Salesforce 公式パートナー', 'Salesforce Official Partner'),
+      wordmark: 'Salesforce Partner',
+      label: t('Salesforce パートナー', 'Salesforce Partner'),
       bg: 'from-[#e8f4fc] to-[#f5fafe]',
     },
     {
-      png: '/images/claude-partner.png',
-      fallback: '/images/claude-partner.svg',
-      alt: 'Claude Partner Network — Preferred Services Partner',
-      label: t('Anthropic 公式パートナー', 'Anthropic Official Partner'),
+      png: '/images/openai-select-partner.png',
+      fallback: '/images/openai-select-partner.svg',
+      alt: 'OpenAI Select Partner',
+      wordmark: 'OpenAI Select Partner',
+      label: 'OpenAI Select Partner',
+      bg: 'from-[#ededed] to-[#fafafa]',
+    },
+    {
+      alt: 'Claude Partner Network',
+      wordmark: 'Claude Partner Network',
+      label: t('Claude Partner Network 参加', 'Member of the Claude Partner Network'),
       bg: 'from-[#f0ede6] to-[#faf8f4]',
     },
   ];
+  const [broken, setBroken] = useState<Record<number, boolean>>({});
   return (
     <section className="py-28 bg-white border-t border-[#3a4a1d]/8 overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         <FadeUp className="text-center mb-16">
           <p className="text-[#a8d878] font-black tracking-[0.35em] text-xs uppercase mb-5">Partners</p>
           <h2 className="text-4xl sm:text-5xl md:text-5xl font-serif font-bold text-[#192c0d] leading-tight mb-6">
-            {t('認定・パートナーシップ', 'Certifications & Partnerships')}
+            {t('パートナーシップ', 'Partnerships')}
           </h2>
           <div className="w-14 h-1.5 bg-gradient-to-r from-[#a8d878] to-[#3a4a1d] rounded-full mx-auto" />
         </FadeUp>
 
-        <div className="grid sm:grid-cols-2 gap-6 mb-14">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
           {badges.map((b, i) => (
             <FadeUp key={i} delay={i * 0.12}>
               <div className="bg-white rounded-3xl overflow-hidden h-full border border-[#3a4a1d]/8 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
                 <div className={`h-44 bg-gradient-to-br ${b.bg} flex items-center justify-center p-7`}>
-                  <img
-                    src={b.png}
-                    alt={b.alt}
-                    className="max-w-full max-h-full object-contain"
-                    onError={(e) => {
-                      const img = e.currentTarget;
-                      if (!img.src.endsWith('.svg')) img.src = b.fallback;
-                    }}
-                  />
+                  {b.png && !broken[i] ? (
+                    <img
+                      src={b.png}
+                      alt={b.alt}
+                      className="max-w-full max-h-full object-contain"
+                      onError={(e) => {
+                        const img = e.currentTarget;
+                        if (b.fallback && !img.src.endsWith('.svg')) img.src = b.fallback;
+                        else setBroken((prev) => ({ ...prev, [i]: true }));
+                      }}
+                    />
+                  ) : (
+                    <p className="font-serif text-2xl font-bold text-[#192c0d] text-center leading-snug">{b.wordmark}</p>
+                  )}
                 </div>
                 <div className="px-7 py-5 border-t border-[#3a4a1d]/5">
                   <p className="text-sm font-bold text-[#192c0d] text-center">{b.label}</p>
@@ -544,8 +562,8 @@ const Partners = () => {
         <FadeUp>
           <p className="text-[#555] leading-loose text-center max-w-2xl mx-auto text-base">
             {t(
-              '私たちはまだ駆け出しのパートナーです。それでも Salesforce と Claude（Anthropic）両社の認定パートナーとして、より上位の認定を目指して日々キャッチアップを続けています。CRM × AI の最新の知見を、いち早く貴社の現場へお届けします。',
-              'We are still an early-stage partner. Even so, as a certified partner of both Salesforce and Claude (Anthropic), we keep catching up every day toward higher-tier certifications — delivering the latest CRM × AI expertise to your team as fast as we can.'
+              '私たちはまだ駆け出しのパートナーです。Salesforce・OpenAI・Claude（Anthropic）それぞれのパートナープログラムに参加し、より上位の階層を目指して日々キャッチアップを続けています。CRM × AI の最新の知見を、いち早く貴社の現場へお届けします。',
+              'We are still an early-stage partner. We take part in the partner programs of Salesforce, OpenAI, and Claude (Anthropic), and keep catching up every day toward higher tiers — delivering the latest CRM × AI expertise to your team as fast as we can.'
             )}
           </p>
         </FadeUp>
