@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, createContext, useContext } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom';
+import AgentforceChat from './AgentforceChat';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import {
   ArrowRight, Menu, X,
@@ -1446,6 +1447,7 @@ const AppInner = ({ loading, setLoading }: { loading: boolean; setLoading: (v: b
             </AnimatePresence>
           </main>
           <Footer />
+          <AgentforceChat />
         </motion.div>
       )}
     </div>
