@@ -331,106 +331,6 @@ const IllustSupport = () => {
   );
 };
 
-// SVG illustrations for Service detail panels
-const IllustImplement = () => (
-  <svg viewBox="0 0 260 200" fill="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="lg_impl" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#a8d878" stopOpacity="0.2"/>
-        <stop offset="100%" stopColor="#192c0d" stopOpacity="0.04"/>
-      </linearGradient>
-    </defs>
-    {/* Connection lines */}
-    <line x1="130" y1="60" x2="80" y2="105" stroke="#a8d878" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4,3"/>
-    <line x1="130" y1="60" x2="130" y2="105" stroke="#a8d878" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4,3"/>
-    <line x1="130" y1="60" x2="180" y2="105" stroke="#a8d878" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4,3"/>
-    <line x1="80" y1="130" x2="55" y2="160" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="3,3"/>
-    <line x1="80" y1="130" x2="105" y2="160" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="3,3"/>
-    <line x1="180" y1="130" x2="155" y2="160" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="3,3"/>
-    <line x1="180" y1="130" x2="205" y2="160" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1" strokeDasharray="3,3"/>
-    {/* Top node */}
-    <rect x="105" y="35" width="50" height="32" rx="8" fill="#192c0d" fillOpacity="0.1" stroke="#192c0d" strokeOpacity="0.15" strokeWidth="1.5"/>
-    <rect x="113" y="45" width="34" height="5" rx="2" fill="#a8d878" fillOpacity="0.5"/>
-    <rect x="113" y="53" width="24" height="4" rx="2" fill="#a8d878" fillOpacity="0.3"/>
-    {/* Mid nodes */}
-    <rect x="55" y="105" width="50" height="30" rx="7" fill="#192c0d" fillOpacity="0.08" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1"/>
-    <rect x="62" y="114" width="30" height="4" rx="2" fill="#a8d878" fillOpacity="0.4"/>
-    <rect x="62" y="121" width="22" height="4" rx="2" fill="#a8d878" fillOpacity="0.25"/>
-    <rect x="105" y="105" width="50" height="30" rx="7" fill="#192c0d" fillOpacity="0.08" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1"/>
-    <rect x="112" y="114" width="30" height="4" rx="2" fill="#a8d878" fillOpacity="0.4"/>
-    <rect x="112" y="121" width="22" height="4" rx="2" fill="#a8d878" fillOpacity="0.25"/>
-    <rect x="155" y="105" width="50" height="30" rx="7" fill="#192c0d" fillOpacity="0.08" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1"/>
-    <rect x="162" y="114" width="30" height="4" rx="2" fill="#a8d878" fillOpacity="0.4"/>
-    <rect x="162" y="121" width="22" height="4" rx="2" fill="#a8d878" fillOpacity="0.25"/>
-    {/* Bottom nodes */}
-    <rect x="30" y="155" width="40" height="26" rx="6" fill="url(#lg_impl)" stroke="#a8d878" strokeOpacity="0.15" strokeWidth="1"/>
-    <rect x="80" y="155" width="40" height="26" rx="6" fill="url(#lg_impl)" stroke="#a8d878" strokeOpacity="0.15" strokeWidth="1"/>
-    <rect x="138" y="155" width="40" height="26" rx="6" fill="url(#lg_impl)" stroke="#a8d878" strokeOpacity="0.15" strokeWidth="1"/>
-    <rect x="188" y="155" width="40" height="26" rx="6" fill="url(#lg_impl)" stroke="#a8d878" strokeOpacity="0.15" strokeWidth="1"/>
-  </svg>
-);
-
-const IllustOps = () => (
-  <svg viewBox="0 0 260 200" fill="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-    {/* Outer ring */}
-    <circle cx="130" cy="100" r="80" stroke="#192c0d" strokeOpacity="0.08" strokeWidth="1.5" strokeDasharray="5,5"/>
-    {/* Middle ring */}
-    <circle cx="130" cy="100" r="58" stroke="#a8d878" strokeOpacity="0.18" strokeWidth="1.5"/>
-    {/* Inner ring */}
-    <circle cx="130" cy="100" r="36" stroke="#a8d878" strokeOpacity="0.28" strokeWidth="2"/>
-    {/* Center */}
-    <circle cx="130" cy="100" r="20" fill="#192c0d" fillOpacity="0.09"/>
-    <circle cx="130" cy="100" r="11" fill="#a8d878" fillOpacity="0.35"/>
-    {/* Ticks on outer ring */}
-    {[0,60,120,180,240,300].map((deg, i) => {
-      const rad = (deg - 90) * Math.PI / 180;
-      const x1 = 130 + 72 * Math.cos(rad); const y1 = 100 + 72 * Math.sin(rad);
-      const x2 = 130 + 80 * Math.cos(rad); const y2 = 100 + 80 * Math.sin(rad);
-      return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#a8d878" strokeOpacity="0.4" strokeWidth="2" strokeLinecap="round"/>;
-    })}
-    {/* Status dots on middle ring */}
-    {[30,90,150,210,270,330].map((deg, i) => {
-      const rad = (deg - 90) * Math.PI / 180;
-      const cx = 130 + 58 * Math.cos(rad); const cy = 100 + 58 * Math.sin(rad);
-      return <circle key={i} cx={cx} cy={cy} r="5" fill="#a8d878" fillOpacity={0.25 + i*0.08}/>;
-    })}
-    {/* Sweep indicator */}
-    <path d="M130 100 L130 44" stroke="#a8d878" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round"/>
-    <path d="M130 100 L168 68" stroke="#192c0d" strokeOpacity="0.25" strokeWidth="1.5" strokeLinecap="round"/>
-    <circle cx="130" cy="100" r="4" fill="#a8d878" fillOpacity="0.7"/>
-  </svg>
-);
-
-const IllustConsult = () => (
-  <svg viewBox="0 0 260 200" fill="none" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="lg_con" x1="0" y1="200" x2="0" y2="0" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#a8d878" stopOpacity="0.35"/>
-        <stop offset="100%" stopColor="#a8d878" stopOpacity="0.08"/>
-      </linearGradient>
-    </defs>
-    {/* Axes */}
-    <line x1="45" y1="165" x2="235" y2="165" stroke="#3a4a1d" strokeOpacity="0.12" strokeWidth="1.5"/>
-    <line x1="45" y1="30" x2="45" y2="165" stroke="#3a4a1d" strokeOpacity="0.12" strokeWidth="1.5"/>
-    {/* Grid */}
-    {[45,80,115,150].map((y, i) => (
-      <line key={i} x1="45" y1={y} x2="235" y2={y} stroke="#3a4a1d" strokeOpacity="0.05" strokeWidth="1" strokeDasharray="3,5"/>
-    ))}
-    {/* Area */}
-    <path d="M60 145 L95 130 L130 105 L165 80 L200 55 L225 40 L225 165 L60 165 Z" fill="url(#lg_con)"/>
-    {/* Line */}
-    <path d="M60 145 L95 130 L130 105 L165 80 L200 55 L225 40" stroke="#a8d878" strokeWidth="2.5" fill="none" strokeLinejoin="round"/>
-    {/* Data points */}
-    {[[60,145],[95,130],[130,105],[165,80],[200,55],[225,40]].map(([x,y],i) => (
-      <circle key={i} cx={x} cy={y} r="5" fill="white" stroke="#a8d878" strokeWidth="2" strokeOpacity="0.7"/>
-    ))}
-    {/* KPI boxes */}
-    <rect x="155" y="100" width="70" height="28" rx="6" fill="#192c0d" fillOpacity="0.07" stroke="#a8d878" strokeOpacity="0.2" strokeWidth="1"/>
-    <rect x="162" y="108" width="35" height="4" rx="2" fill="#a8d878" fillOpacity="0.45"/>
-    <rect x="162" y="116" width="25" height="4" rx="2" fill="#a8d878" fillOpacity="0.25"/>
-  </svg>
-);
-
 // ---- Shared: Why Choose Us ----
 const WhyChooseUs = () => {
   const { t } = useLang();
@@ -1093,6 +993,70 @@ const About = () => {
   );
 };
 
+// ---- Device frames for the Service page ----
+const ServiceVideo = ({ src, poster, label, className = '' }: { src: string; poster: string; label: string; className?: string }) => (
+  <video src={src} poster={poster} autoPlay muted loop playsInline preload="metadata" aria-label={label}
+    className={`block w-full aspect-[16/10] object-cover ${className}`} />
+);
+
+const MacFrame = ({ children }: { children: React.ReactNode }) => (
+  <div className="px-[7%]">
+    <div className="bg-[#26282b] rounded-t-[18px] rounded-b-[4px] p-3 pb-3.5 flex flex-col gap-2.5">
+      <div aria-hidden="true" className="self-center w-[7px] h-[7px] rounded-full bg-[#4a4d52]" />
+      <div className="bg-[#e9eae6] rounded-md overflow-hidden">
+        <div aria-hidden="true" className="flex items-center gap-[7px] px-3 py-2">
+          <span className="w-[11px] h-[11px] rounded-full bg-[#ee6a5f]" />
+          <span className="w-[11px] h-[11px] rounded-full bg-[#f5bd4f]" />
+          <span className="w-[11px] h-[11px] rounded-full bg-[#61c454]" />
+        </div>
+        {children}
+      </div>
+    </div>
+    <div aria-hidden="true" className="-mx-[8%] h-4 rounded-b-[18px] bg-[#c5c8cc] flex justify-center">
+      <div className="w-[16%] h-[7px] rounded-b-[10px] bg-[#9fa3a8]" />
+    </div>
+  </div>
+);
+
+const IPadFrame = ({ children }: { children: React.ReactNode }) => (
+  <div className="bg-[#1c1c1e] rounded-[20px] md:rounded-[34px] p-2.5 md:p-[22px] shadow-[0_24px_60px_rgba(25,44,13,0.2)]">
+    <div className="rounded-lg md:rounded-xl overflow-hidden">{children}</div>
+  </div>
+);
+
+const PhoneFrame = ({ src, alt }: { src: string; alt: string }) => (
+  <div className="mx-auto w-[230px] max-w-full bg-[#1c1c1e] rounded-[38px] p-[9px] shadow-[0_18px_40px_rgba(25,44,13,0.18)]">
+    <img src={src} alt={alt} loading="lazy" className="block w-full aspect-[390/844] object-cover rounded-[30px]" />
+  </div>
+);
+
+const WindowsFrame = ({ title, children }: { title: string; children: React.ReactNode }) => (
+  <div className="flex flex-col items-center">
+    <div className="w-full bg-[#111214] rounded-xl p-2.5 shadow-[0_24px_60px_rgba(25,44,13,0.2)]">
+      <div className="bg-[#f3f3f3]">
+        <div className="flex items-center justify-between min-h-[34px] pl-3 text-xs text-[#222]">
+          <div className="flex items-center gap-2"><span aria-hidden="true" className="w-3.5 h-3.5 rounded-[3px] bg-[#245e4c]" />{title}</div>
+          <div aria-hidden="true" className="flex items-stretch">
+            <span className="w-[46px] min-h-[34px] flex items-center justify-center"><svg width="10" height="10" viewBox="0 0 10 10" stroke="#222" strokeWidth="1"><path d="M0 5h10" /></svg></span>
+            <span className="w-[46px] min-h-[34px] flex items-center justify-center"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#222" strokeWidth="1"><rect x="0.5" y="0.5" width="9" height="9" /></svg></span>
+            <span className="w-[46px] min-h-[34px] flex items-center justify-center"><svg width="10" height="10" viewBox="0 0 10 10" stroke="#222" strokeWidth="1"><path d="M0 0l10 10M10 0L0 10" /></svg></span>
+          </div>
+        </div>
+        {children}
+        <div aria-hidden="true" className="flex items-center justify-center gap-2.5 min-h-10 bg-[#e4ebf3]">
+          <span className="w-[18px] h-[18px] rounded bg-[#3b82c4]" />
+          <span className="w-[18px] h-[18px] rounded bg-[#c9d3de]" />
+          <span className="w-[18px] h-[18px] rounded bg-[#c9d3de]" />
+          <span className="w-[18px] h-[18px] rounded bg-[#245e4c]" />
+          <span className="w-[18px] h-[18px] rounded bg-[#c9d3de]" />
+        </div>
+      </div>
+    </div>
+    <div aria-hidden="true" className="w-[12%] h-11 bg-[#9a9da1]" />
+    <div aria-hidden="true" className="w-[30%] h-3 rounded-t-lg rounded-b-sm bg-[#b9bcc0]" />
+  </div>
+);
+
 // ---- Service ----
 const Service = () => {
   const navigate = useNavigate();
@@ -1112,17 +1076,31 @@ const Service = () => {
         { name: 'Claude Code開発', desc: 'Claude Codeを活用したカスタムCRMシステムの設計・開発も請け負います' },
       ];
 
-  const details = lang === 'en'
+  const steps = lang === 'en'
     ? [
-        { num: '01', title: 'CRM Implementation', en: 'CRM Implementation', illust: <IllustImplement />, points: ['Salesforce design, build, customization', 'HubSpot / Kintone setup', 'Data migration & external integration', 'Agile, iterative development'], desc: 'Handled directly by a former SE with Salesforce certifications. From requirements to build, test, and release, we create a CRM environment that fits your business processes perfectly.' },
-        { num: '02', title: 'Operations & Support', en: 'Operations & Support', illust: <IllustOps />, points: ['Post-launch adoption & user training', 'Continuous improvement & add-on dev', 'System monitoring & incident response', 'Monthly reports & improvement proposals'], desc: 'A system is not done at install. We build a setup your team can keep using, and stay with you from adoption through ongoing improvement.' },
-        { num: '03', title: 'CRM Consulting', en: 'CRM Consulting', illust: <IllustConsult />, points: ['CRM data-utilization strategy', 'Integration with MA & AI tools', 'KPI design & reporting structure', 'CRM training & internal rollout support'], desc: 'We support the strategy design needed to truly make use of the CRM you implemented. Toward data-driven sales and marketing, we cover AI and MA-tool integration too.' },
+        { step: 'STEP 01', img: '/images/service/step-lesson.jpg', alt: 'Lesson screen on a phone, with an explainer video', title: 'Learn with video', desc: 'Each lesson combines a video, a short explanation, and questions.' },
+        { step: 'STEP 02', img: '/images/service/step-lab.jpg', alt: 'Practice lab screen on a phone, with Mebu guiding the steps', title: 'Try it on real AI', desc: 'In the practice lab, learners open ChatGPT, Claude, or Gemini and work hands-on.' },
+        { step: 'STEP 03', img: '/images/service/step-check.jpg', alt: 'Final check screen on a phone', title: 'Check at the end', desc: 'Answer the check questions to finish the session. Retry as many times as you like.' },
       ]
     : [
-        { num: '01', title: 'CRM導入・構築', en: 'CRM Implementation', illust: <IllustImplement />, points: ['Salesforce設計・構築・カスタマイズ', 'HubSpot / Kintone の導入・設定', 'データ移行・外部システム連携', 'アジャイルな反復開発'], desc: 'Salesforce認定資格を持つ元SEが直接担当。要件定義から実装・テスト・リリースまで、貴社の業務プロセスに合ったCRMを構築します。' },
-        { num: '02', title: 'CRM保守・運用サポート', en: 'Operations & Support', illust: <IllustOps />, points: ['導入後の定着化・ユーザー研修', '継続的な機能改善・追加開発', 'システム監視・障害対応', '月次レポートと改善提案'], desc: 'システムは入れて終わりではありません。現場で使い続けられる体制を一緒につくり、定着支援から継続的な改善まで長くお付き合いします。' },
-        { num: '03', title: 'CRMの活用コンサルティング', en: 'CRM Consulting', illust: <IllustConsult />, points: ['CRMデータの活用戦略策定', 'MA・AIツールとのシステム連携', 'KPI設計・レポーティング体制の構築', 'CRM活用研修・社内展開サポート'], desc: '導入したCRMを成果につなげるための戦略設計から支援します。データにもとづく営業・マーケティングに向けて、AIやMAツールとの連携もお手伝いします。' },
+        { step: 'STEP 01', img: '/images/service/step-lesson.jpg', alt: 'スマホで開いたレッスンの画面。解説動画が並ぶ', title: '動画で学ぶ', desc: 'レッスンは、動画と説明と問題の組み合わせ。' },
+        { step: 'STEP 02', img: '/images/service/step-lab.jpg', alt: 'スマホで開いた実践ラボの画面。メブが進め方を案内している', title: '本物のAIで試す', desc: '実践ラボで、ChatGPT、Claude、Geminiを実際に開いて進めます。' },
+        { step: 'STEP 03', img: '/images/service/step-check.jpg', alt: 'スマホで開いたさいごの確認の画面', title: 'さいごに確かめる', desc: '確認問題に答えて、セッションを終えます。何度でも挑戦できます。' },
       ];
+
+  const cases = lang === 'en'
+    ? [
+        { tag: 'Staffing industry', title: 'Migration to PORTERS, initial setup, and matching-flow design' },
+        { tag: 'B2C industry', title: 'Marketing-system implementation and data cleanup' },
+        { tag: 'Enterprise', title: 'Agentforce adoption support and Claude consulting' },
+      ]
+    : [
+        { tag: '人材業界', title: 'PORTERSへの移行と初期設定、マッチングフローの作成' },
+        { tag: 'toC業界', title: 'マーケティングシステムの導入とデータ整理' },
+        { tag: 'エンタープライズ企業', title: 'Agentforceの活用支援とClaudeのコンサルティング' },
+      ];
+
+  const scrollToId = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   const workflow = lang === 'en'
     ? [
@@ -1157,13 +1135,119 @@ const Service = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full">
 
-      {/* Hero */}
-      <div className="py-28 md:py-40 bg-[#f9f9f3] border-b border-[#3a4a1d]/10">
+      {/* Hero: demo video */}
+      <section className="bg-[#192c0d] text-[#f9f9f3] py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1fr_1.25fr] gap-10 lg:gap-14 items-center">
+          <div className="flex flex-col items-start gap-6 min-w-0">
+            <motion.span initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
+              className="text-[#a8d878] font-bold tracking-[0.2em] text-xs uppercase">Our Service</motion.span>
+            <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
+              className="text-4xl sm:text-5xl lg:text-[3.4rem] font-serif font-bold leading-[1.3]">
+              {lang === 'en' ? <>Learn it, hand it off,<br />keep using it.</> : <>学ぶ、任せる、<br />使い続ける。</>}
+            </motion.h1>
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
+              className="text-[#f9f9f3]/80 text-base md:text-[17px] leading-loose max-w-[500px]">
+              {t('生成AIの研修から、プラットフォームの構築、CRMの導入と運用まで。', 'From generative AI training to platform building and CRM implementation and operation.')}<br />
+              {t('まずは動いている画面をご覧ください。', 'Start by watching it in action.')}
+            </motion.p>
+            <div className="flex flex-wrap gap-3">
+              <button onClick={() => scrollToId('training')} className="min-h-12 px-6 rounded-full bg-[#f9f9f3] text-[#192c0d] text-sm font-bold hover:bg-white transition-colors">{t('生成AI研修', 'AI Training')}</button>
+              <button onClick={() => scrollToId('platform')} className="min-h-12 px-6 rounded-full border border-[#f9f9f3]/40 text-[#f9f9f3] text-sm font-bold hover:bg-[#f9f9f3]/10 transition-colors">{t('プラットフォーム構築', 'Platform Building')}</button>
+              <button onClick={() => scrollToId('crm')} className="min-h-12 px-6 rounded-full border border-[#f9f9f3]/40 text-[#f9f9f3] text-sm font-bold hover:bg-[#f9f9f3]/10 transition-colors">CRM</button>
+            </div>
+          </div>
+          <div className="flex flex-col gap-3.5 min-w-0">
+            <MacFrame>
+              <ServiceVideo src="/images/service/demo-lesson-lab.mp4" poster="/images/service/demo-poster.png" className="bg-[#f3f4ee]"
+                label={t('研修アプリでレッスンを進め、実践ラボで答えを貼り戻すまでの画面', 'The training app: working through a lesson and pasting an answer back in the practice lab')} />
+            </MacFrame>
+            <p className="text-[13px] text-[#f9f9f3]/80">{t('研修アプリStart & Successの画面。見本のデータで撮影', 'The Start & Success training app, recorded with sample data')}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Training */}
+      <section id="training" className="py-16 md:py-28 bg-white scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col gap-12 md:gap-[72px]">
+          <FadeUp>
+            <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-center">
+              <div className="flex flex-col gap-3.5 min-w-0">
+                <IPadFrame>
+                  <ServiceVideo src="/images/service/mebu-tour.mp4" poster="/images/service/mebu-tour-poster.png" className="bg-[#f3f4ee]"
+                    label={t('案内役のメブが、研修アプリの使い方を案内している場面', 'Mebu, the guide character, walking a learner through the training app')} />
+                </IPadFrame>
+                <p className="text-[13px] text-[#555]">{t('案内役のメブ。はじめて入ると、1分ほどで使い方を案内します', 'Mebu, the guide. On first login, a tour of about one minute shows how to use the app')}</p>
+              </div>
+              <div className="flex flex-col items-start gap-5 min-w-0">
+                <span className="text-[#3a4a1d] font-bold tracking-[0.25em] text-xs uppercase">Generative AI Training</span>
+                <h2 className="text-3xl md:text-[2.5rem] font-serif font-bold text-[#192c0d] leading-[1.35]">
+                  {lang === 'en' ? <>The app teaches,<br />instructors support</> : <>アプリが教え、<br />講師が支える生成AI研修</>}
+                </h2>
+                <p className="text-[#555] leading-loose">
+                  {t('動画、説明、問題、本物のAIでの実践、さいごの確認まで。', 'Video, explanation, questions, hands-on practice with real AI, and a final check.')}<br />
+                  {t('受講者は研修アプリStart & Successで、自分のペースで進めます。', 'Learners move at their own pace in the Start & Success training app.')}<br />
+                  {t('となりで道案内をするのは、案内役のメブ。講師は進み具合を見て、止まっている人を助け、相談に答えます。', 'Mebu guides them along the way, while instructors watch progress, help anyone who is stuck, and answer questions.')}
+                </p>
+                <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} onClick={() => navigate('/contact')}
+                  className="min-h-[52px] px-6 sm:px-8 py-2 rounded-full bg-[#192c0d] text-[#f9f9f3] text-sm sm:text-[15px] font-bold inline-flex items-center gap-3 text-left hover:bg-[#3a4a1d] transition-colors">
+                  {t('研修について相談する', 'Talk to us about training')} <ArrowRight size={16} />
+                </motion.button>
+              </div>
+            </div>
+          </FadeUp>
+          <div className="grid md:grid-cols-3 gap-6">
+            {steps.map((s, i) => (
+              <FadeUp key={i} delay={i * 0.08}>
+                <div className="bg-[#f9f9f3] rounded-3xl px-7 pt-10 pb-9 h-full flex flex-col gap-2.5">
+                  <PhoneFrame src={s.img} alt={s.alt} />
+                  <span className="text-[#3a4a1d] text-xs font-bold tracking-[0.2em] pt-6">{s.step}</span>
+                  <h3 className="text-lg font-bold text-[#192c0d]">{s.title}</h3>
+                  <p className="text-sm text-[#555] leading-loose">{s.desc}</p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Platform */}
+      <section id="platform" className="py-16 md:py-28 bg-[#f9f9f3] scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <FadeUp>
+            <div className="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-center">
+              <div className="flex flex-col gap-3.5 min-w-0">
+                <WindowsFrame title={t('経理デスク', 'Keiri Desk')}>
+                  <ServiceVideo src="/images/service/keiri-tour.mp4" poster="/images/service/keiri-poster.jpg" className="bg-[#f7f8f4]"
+                    label={t('経理デスクの画面。概要、確認待ちの処理、請求と入出金、案件の順に切り替わる', 'Keiri Desk screens: overview, items awaiting review, invoices and payments, and projects')} />
+                </WindowsFrame>
+                <p className="text-[13px] text-[#555]">{t('自社で開発中の経理アプリ、経理デスクの画面。金額と取引先はすべて架空', 'Keiri Desk, an accounting app we are building in-house. All amounts and company names are fictional')}</p>
+              </div>
+              <div className="flex flex-col items-start gap-5 min-w-0">
+                <span className="text-[#3a4a1d] font-bold tracking-[0.25em] text-xs uppercase">Platform</span>
+                <h2 className="text-[1.65rem] sm:text-3xl md:text-[2.5rem] font-serif font-bold text-[#192c0d] leading-[1.35] [word-break:auto-phrase] [overflow-wrap:anywhere] text-balance">
+                  {t('貴社専用のプラットフォームも、すぐに形にします', 'Your own platform, built fast')}
+                </h2>
+                <p className="text-[#555] leading-loose">
+                  {t('研修アプリも、この経理デスクも、S&Sが自社で開発しているものです。', 'Both the training app and Keiri Desk are built in-house at S&S.')}<br />
+                  {t('同じ進め方で、貴社の業務に合わせたプラットフォームを短期間で作成し、提供します。', 'With the same approach, we build and deliver a platform tailored to your operations in a short time.')}
+                </p>
+                <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} onClick={() => navigate('/contact')}
+                  className="min-h-[52px] px-6 sm:px-8 py-2 rounded-full bg-[#192c0d] text-[#f9f9f3] text-sm sm:text-[15px] font-bold inline-flex items-center gap-3 text-left hover:bg-[#3a4a1d] transition-colors">
+                  {t('プラットフォームについて相談する', 'Talk to us about platforms')} <ArrowRight size={16} />
+                </motion.button>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* CRM */}
+      <div id="crm" className="py-20 md:py-28 bg-[#f9f9f3] border-y border-[#3a4a1d]/10 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6">
           <motion.span initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
             className="text-[#3a4a1d] font-bold tracking-[0.2em] text-xs uppercase mb-6 block">Our Service</motion.span>
           <motion.h2 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[#192c0d] leading-tight mb-8">CRM{' '}<br className="hidden sm:block" />Consulting</motion.h2>
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-[#192c0d] leading-tight mb-8">CRM Consulting</motion.h2>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
             className="text-[#666] text-base md:text-lg max-w-2xl leading-loose">
             {t(
@@ -1171,6 +1255,17 @@ const Service = () => {
               'From implementation to utilization and operation of major CRMs such as Salesforce, HubSpot, and Kintone, matched to where you are today.'
             )}
           </motion.p>
+          <FadeUp className="mt-14">
+            <h3 className="text-base font-bold text-[#3a4a1d] mb-5">{t('これまでのご支援', 'Recent engagements')}</h3>
+            <div className="grid lg:grid-cols-3 gap-px bg-[#3a4a1d]/15 rounded-3xl overflow-hidden">
+              {cases.map((c, i) => (
+                <div key={i} className="bg-white px-8 py-9 md:px-9 md:py-10 flex flex-col gap-3">
+                  <span className="text-xs font-bold tracking-[0.16em] text-[#3a4a1d]">{c.tag}</span>
+                  <h4 className="text-xl font-serif font-bold text-[#192c0d] leading-relaxed [word-break:auto-phrase] [overflow-wrap:anywhere] text-balance">{c.title}</h4>
+                </div>
+              ))}
+            </div>
+          </FadeUp>
         </div>
       </div>
 
@@ -1193,40 +1288,6 @@ const Service = () => {
               </FadeUp>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Service Detail */}
-      <section className="py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-6 space-y-20">
-          {details.map((s, i) => (
-            <FadeUp key={i}>
-              <div className={`grid md:grid-cols-2 gap-16 items-center ${i % 2 === 1 ? 'md:grid-flow-dense' : ''}`}>
-                <div className={i % 2 === 1 ? 'md:col-start-2' : ''}>
-                  <div className="flex items-baseline gap-3 mb-6">
-                    <span className="text-6xl font-serif font-black text-[#3a4a1d]/10 leading-none">{s.num}</span>
-                    <div className="w-8 h-0.5 bg-[#a8d878] rounded-full" />
-                  </div>
-                  <h3 className="text-3xl font-serif font-bold text-[#192c0d] mb-2">{s.title}</h3>
-                  <p className="text-xs text-[#aaa] tracking-[0.25em] uppercase mb-6">{s.en}</p>
-                  <p className="text-[#555] leading-loose mb-8">{s.desc}</p>
-                  <ul className="space-y-3">
-                    {s.points.map((p, j) => (
-                      <li key={j} className="flex items-start gap-3 text-sm text-[#444]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#a8d878] shrink-0 mt-2" />{p}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className={`bg-gradient-to-br from-[#eef6e6] to-[#f5faf2] rounded-3xl overflow-hidden min-h-72 flex items-center justify-center p-8 ${i % 2 === 1 ? 'md:col-start-1 md:row-start-1' : ''}`}>
-                  <div className="w-full h-64">
-                    {s.illust}
-                  </div>
-                </div>
-              </div>
-              {i < 2 && <div className="border-t border-[#3a4a1d]/8 mt-20" />}
-            </FadeUp>
-          ))}
         </div>
       </section>
 
