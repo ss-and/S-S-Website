@@ -1083,9 +1083,9 @@ const Service = () => {
         { step: 'STEP 03', img: '/images/service/step-check.jpg', alt: 'Final check screen on a phone', title: 'Check at the end', desc: 'Answer the check questions to finish the session. Retry as many times as you like.' },
       ]
     : [
-        { step: 'STEP 01', img: '/images/service/step-lesson.jpg', alt: 'スマホで開いたレッスンの画面。解説動画が並ぶ', title: '動画で学ぶ', desc: 'レッスンは、動画と説明と問題の組み合わせ。' },
-        { step: 'STEP 02', img: '/images/service/step-lab.jpg', alt: 'スマホで開いた実践ラボの画面。メブが進め方を案内している', title: '本物のAIで試す', desc: '実践ラボで、ChatGPT、Claude、Geminiを実際に開いて進めます。' },
-        { step: 'STEP 03', img: '/images/service/step-check.jpg', alt: 'スマホで開いたさいごの確認の画面', title: 'さいごに確かめる', desc: '確認問題に答えて、セッションを終えます。何度でも挑戦できます。' },
+        { step: 'STEP 01', img: '/images/service/step-lesson.jpg', alt: 'スマホで開いたレッスンの画面。解説動画が並ぶ', title: '動画で学ぶ', desc: 'レッスンは、|動画と説明と問題の|組み合わせ。' },
+        { step: 'STEP 02', img: '/images/service/step-lab.jpg', alt: 'スマホで開いた実践ラボの画面。メブが進め方を案内している', title: '本物のAIで試す', desc: '実践ラボで、|ChatGPT、Claude、Geminiを|実際に開いて進めます。' },
+        { step: 'STEP 03', img: '/images/service/step-check.jpg', alt: 'スマホで開いたさいごの確認の画面', title: 'さいごに確かめる', desc: '確認問題に答えて、|セッションを終えます。|何度でも挑戦できます。' },
       ];
 
   const cases = lang === 'en'
@@ -1095,10 +1095,15 @@ const Service = () => {
         { tag: 'Enterprise', title: 'Agentforce adoption support and Claude consulting' },
       ]
     : [
-        { tag: '人材業界', title: 'PORTERSへの移行と初期設定、マッチングフローの作成' },
-        { tag: 'toC業界', title: 'マーケティングシステムの導入とデータ整理' },
-        { tag: 'エンタープライズ企業', title: 'Agentforceの活用支援とClaudeのコンサルティング' },
+        { tag: '人材業界', title: 'PORTERSへの移行と初期設定、|マッチングフローの作成' },
+        { tag: 'toC業界', title: 'マーケティングシステムの|導入とデータ整理' },
+        { tag: 'エンタープライズ企業', title: 'Agentforceの活用支援と|Claudeのコンサルティング' },
       ];
+
+  // Break Japanese copy only between phrases: '|' marks the allowed break points
+  const ph = (text: string) => text.includes('|')
+    ? text.split('|').map((seg, i) => <span key={i} className="inline-block">{seg}</span>)
+    : text;
 
   const scrollToId = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
@@ -1147,8 +1152,8 @@ const Service = () => {
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
               className="text-[#f9f9f3]/80 text-base md:text-[17px] leading-loose max-w-[500px]">
-              {t('生成AIの研修から、プラットフォームの構築、CRMの導入と運用まで。', 'From generative AI training to platform building and CRM implementation and operation.')}<br />
-              {t('まずは動いている画面をご覧ください。', 'Start by watching it in action.')}
+              {ph(t('生成AIの研修から、|プラットフォームの構築、|CRMの導入と運用まで。', 'From generative AI training to platform building and CRM implementation and operation.'))}<br />
+              {ph(t('まずは動いている画面を|ご覧ください。', 'Start by watching it in action.'))}
             </motion.p>
             <div className="flex flex-wrap gap-3">
               <button onClick={() => scrollToId('training')} className="min-h-12 px-6 rounded-full bg-[#f9f9f3] text-[#192c0d] text-sm font-bold hover:bg-white transition-colors">{t('生成AI研修', 'AI Training')}</button>
@@ -1161,7 +1166,7 @@ const Service = () => {
               <ServiceVideo src="/images/service/demo-lesson-lab.mp4" poster="/images/service/demo-poster.png" className="bg-[#f3f4ee]"
                 label={t('研修アプリでレッスンを進め、実践ラボで答えを貼り戻すまでの画面', 'The training app: working through a lesson and pasting an answer back in the practice lab')} />
             </MacFrame>
-            <p className="text-[13px] text-[#f9f9f3]/80">{t('研修アプリStart & Successの画面。見本のデータで撮影', 'The Start & Success training app, recorded with sample data')}</p>
+            <p className="text-[13px] text-[#f9f9f3]/80">{ph(t('研修アプリStart & Successの画面。|見本のデータで撮影', 'The Start & Success training app, recorded with sample data'))}</p>
           </div>
         </div>
       </section>
@@ -1176,7 +1181,7 @@ const Service = () => {
                   <ServiceVideo src="/images/service/mebu-tour.mp4" poster="/images/service/mebu-tour-poster.png" className="bg-[#f3f4ee]"
                     label={t('案内役のメブが、研修アプリの使い方を案内している場面', 'Mebu, the guide character, walking a learner through the training app')} />
                 </IPadFrame>
-                <p className="text-[13px] text-[#555]">{t('案内役のメブ。はじめて入ると、1分ほどで使い方を案内します', 'Mebu, the guide. On first login, a tour of about one minute shows how to use the app')}</p>
+                <p className="text-[13px] text-[#555]">{ph(t('案内役のメブ。|はじめて入ると、|1分ほどで使い方を案内します', 'Mebu, the guide. On first login, a tour of about one minute shows how to use the app'))}</p>
               </div>
               <div className="flex flex-col items-start gap-5 min-w-0">
                 <span className="text-[#3a4a1d] font-bold tracking-[0.25em] text-xs uppercase">Generative AI Training</span>
@@ -1184,9 +1189,9 @@ const Service = () => {
                   {lang === 'en' ? <>The app teaches,<br />instructors support</> : <>アプリが教え、<br />講師が支える生成AI研修</>}
                 </h2>
                 <p className="text-[#555] leading-loose">
-                  {t('動画、説明、問題、本物のAIでの実践、さいごの確認まで。', 'Video, explanation, questions, hands-on practice with real AI, and a final check.')}<br />
-                  {t('受講者は研修アプリStart & Successで、自分のペースで進めます。', 'Learners move at their own pace in the Start & Success training app.')}<br />
-                  {t('となりで道案内をするのは、案内役のメブ。講師は進み具合を見て、止まっている人を助け、相談に答えます。', 'Mebu guides them along the way, while instructors watch progress, help anyone who is stuck, and answer questions.')}
+                  {ph(t('動画、説明、問題、|本物のAIでの実践、|さいごの確認まで。', 'Video, explanation, questions, hands-on practice with real AI, and a final check.'))}<br />
+                  {ph(t('受講者は|研修アプリStart & Successで、|自分のペースで進めます。', 'Learners move at their own pace in the Start & Success training app.'))}<br />
+                  {ph(t('となりで道案内をするのは、|案内役のメブ。|講師は進み具合を見て、|止まっている人を助け、|相談に答えます。', 'Mebu guides them along the way, while instructors watch progress, help anyone who is stuck, and answer questions.'))}
                 </p>
                 <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} onClick={() => navigate('/contact')}
                   className="min-h-[52px] px-6 sm:px-8 py-2 rounded-full bg-[#192c0d] text-[#f9f9f3] text-sm sm:text-[15px] font-bold inline-flex items-center gap-3 text-left hover:bg-[#3a4a1d] transition-colors">
@@ -1202,7 +1207,7 @@ const Service = () => {
                   <PhoneFrame src={s.img} alt={s.alt} />
                   <span className="text-[#3a4a1d] text-xs font-bold tracking-[0.2em] pt-6">{s.step}</span>
                   <h3 className="text-lg font-bold text-[#192c0d]">{s.title}</h3>
-                  <p className="text-sm text-[#555] leading-loose">{s.desc}</p>
+                  <p className="text-sm text-[#555] leading-loose">{ph(s.desc)}</p>
                 </div>
               </FadeUp>
             ))}
@@ -1220,16 +1225,16 @@ const Service = () => {
                   <ServiceVideo src="/images/service/keiri-tour.mp4" poster="/images/service/keiri-poster.jpg" className="bg-[#f7f8f4]"
                     label={t('経理デスクの画面。概要、確認待ちの処理、請求と入出金、案件の順に切り替わる', 'Keiri Desk screens: overview, items awaiting review, invoices and payments, and projects')} />
                 </WindowsFrame>
-                <p className="text-[13px] text-[#555]">{t('自社で開発中の経理アプリ、経理デスクの画面。金額と取引先はすべて架空', 'Keiri Desk, an accounting app we are building in-house. All amounts and company names are fictional')}</p>
+                <p className="text-[13px] text-[#555]">{ph(t('自社で開発中の経理アプリ、|経理デスクの画面。|金額と取引先はすべて架空', 'Keiri Desk, an accounting app we are building in-house. All amounts and company names are fictional'))}</p>
               </div>
               <div className="flex flex-col items-start gap-5 min-w-0">
                 <span className="text-[#3a4a1d] font-bold tracking-[0.25em] text-xs uppercase">Platform</span>
                 <h2 className="text-[1.65rem] sm:text-3xl md:text-[2.5rem] font-serif font-bold text-[#192c0d] leading-[1.35] [word-break:auto-phrase] [overflow-wrap:anywhere] text-balance">
-                  {t('貴社専用のプラットフォームも、すぐに形にします', 'Your own platform, built fast')}
+                  {ph(t('貴社専用の|プラットフォームも、|すぐに形にします', 'Your own platform, built fast'))}
                 </h2>
                 <p className="text-[#555] leading-loose">
-                  {t('研修アプリも、この経理デスクも、S&Sが自社で開発しているものです。', 'Both the training app and Keiri Desk are built in-house at S&S.')}<br />
-                  {t('同じ進め方で、貴社の業務に合わせたプラットフォームを短期間で作成し、提供します。', 'With the same approach, we build and deliver a platform tailored to your operations in a short time.')}
+                  {ph(t('研修アプリも、|この経理デスクも、|S&Sが自社で開発しているものです。', 'Both the training app and Keiri Desk are built in-house at S&S.'))}<br />
+                  {ph(t('同じ進め方で、|貴社の業務に合わせたプラットフォームを|短期間で作成し、|提供します。', 'With the same approach, we build and deliver a platform tailored to your operations in a short time.'))}
                 </p>
                 <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} onClick={() => navigate('/contact')}
                   className="min-h-[52px] px-6 sm:px-8 py-2 rounded-full bg-[#192c0d] text-[#f9f9f3] text-sm sm:text-[15px] font-bold inline-flex items-center gap-3 text-left hover:bg-[#3a4a1d] transition-colors">
@@ -1250,10 +1255,10 @@ const Service = () => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-[#192c0d] leading-tight mb-8">CRM Consulting</motion.h2>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
             className="text-[#666] text-base md:text-lg max-w-2xl leading-loose">
-            {t(
-              'Salesforce・HubSpot・Kintoneなど、主要CRMの導入から活用・保守運用まで。貴社の状況に合わせてサポートします。',
+            {ph(t(
+              'Salesforce・HubSpot・Kintoneなど、|主要CRMの導入から|活用・保守運用まで。|貴社の状況に合わせて|サポートします。',
               'From implementation to utilization and operation of major CRMs such as Salesforce, HubSpot, and Kintone, matched to where you are today.'
-            )}
+            ))}
           </motion.p>
           <FadeUp className="mt-14">
             <h3 className="text-base font-bold text-[#3a4a1d] mb-5">{t('これまでのご支援', 'Recent engagements')}</h3>
@@ -1261,7 +1266,7 @@ const Service = () => {
               {cases.map((c, i) => (
                 <div key={i} className="bg-white px-8 py-9 md:px-9 md:py-10 flex flex-col gap-3">
                   <span className="text-xs font-bold tracking-[0.16em] text-[#3a4a1d]">{c.tag}</span>
-                  <h4 className="text-xl font-serif font-bold text-[#192c0d] leading-relaxed [word-break:auto-phrase] [overflow-wrap:anywhere] text-balance">{c.title}</h4>
+                  <h4 className="text-xl font-serif font-bold text-[#192c0d] leading-relaxed [word-break:auto-phrase] [overflow-wrap:anywhere] text-balance">{ph(c.title)}</h4>
                 </div>
               ))}
             </div>
